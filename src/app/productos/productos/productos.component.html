@@ -1,0 +1,259 @@
+<app-header></app-header>
+<div class="page-wrapper">
+
+    <main class="main">
+        <div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
+            <div class="container">
+                <h1 class="page-title">Lista de productos<span></span></h1>
+            </div>
+            <!-- End .container -->
+        </div>
+        <!-- End .page-header -->
+        <nav aria-label="breadcrumb" class="breadcrumb-nav mb-2">
+            <div class="container">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+                    <li class="breadcrumb-item"><a href="#">Productos</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Lista</li>
+                </ol>
+            </div>
+            <!-- End .container -->
+        </nav>
+        <!-- End .breadcrumb-nav -->
+
+        <div class="page-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9">
+                        <div class="toolbox">
+                            <div class="toolbox-left">
+                                <div class="toolbox-info">
+                                    Mostrando <span>{{totalActivos}}</span> Productos
+                                </div>
+                                <!-- End .toolbox-info -->
+                            </div>
+                            <!-- End .toolbox-left -->
+                        </div>
+                        <!-- End .toolbox -->
+                        <div class="" *ngFor="let producto of productos">
+                            <!-- ESTE CONTENIDO -->
+                            <!-- ESTO ES UN PRODUCTO -->
+                            <div *ngIf="producto.estado==true" class="product product-list">
+                                <div class="row">
+                                    <div class="col-6 col-lg-3">
+                                        <figure class="product-media">
+                                            <a href="product.html">
+                                                <img src="{{producto.urlImg}}" alt="Product image" class="product-image">
+                                            </a>
+                                        </figure>
+                                        <!-- End .product-media -->
+                                    </div>
+                                    <!-- End .col-sm-6 col-lg-3 -->
+
+                                    <div class="col-6 col-lg-3 order-lg-last">
+                                        <div class="product-list-action">
+                                            <div class="product-price">
+                                                ${{producto.precio}}
+                                            </div>
+                                            <!-- End .product-price -->
+
+                                            <button (click)="agregarACarrito(producto)" class="btn-product btn-cart btn btn-round"><span>Agregar al carrito</span></button>
+                                        </div>
+                                        <!-- End .product-list-action -->
+                                    </div>
+                                    <!-- End .col-sm-6 col-lg-3 -->
+
+                                    <div class="col-lg-6">
+                                        <div class="product-body product-action-inner">
+                                            <a href="#" class="btn-product btn-wishlist" title="Add to wishlist"><span>Agrega lo que desees</span></a>
+                                            <div class="product-cat">
+                                                <a href="#">{{producto.nombre}}</a>
+
+                                            </div>
+                                            <!-- End .product-cat -->
+                                            <h3 class="product-title"><a href="product.html">{{producto.modelo}}</a></h3>
+                                            <!-- End .product-title -->
+
+                                            <div class="product-content">
+                                                <p>{{producto.descripcion}}</p>
+                                            </div>
+                                            <!-- End .product-content -->
+
+                                            <div class="product-nav product-nav-thumbs">
+                                                <a href="#" class="active">
+                                                    <img src="{{producto.urlImg}}" alt="Product image">
+                                                </a>
+                                                <a href="#">
+                                                    <img src="{{producto.urlImg}}" alt="Product image">
+                                                </a>
+
+                                                <a href="#">
+                                                    <img src="{{producto.urlImg}}" alt="Product image">
+                                                </a>
+                                            </div>
+                                            <!-- End .product-nav -->
+                                        </div>
+                                        <!-- End .product-body -->
+                                    </div>
+                                    <!-- End .col-lg-6 -->
+                                </div>
+                                <!-- End .row -->
+                            </div>
+                            <!-- End .product -->
+                        </div>
+                        <!-- End .products -->
+                    </div>
+                    <!-- End .col-lg-9 -->
+                    <aside class="col-lg-3 order-lg-first">
+                        <div class="sidebar sidebar-shop">
+                            <div class="widget widget-clean">
+                                <label>Filtros:</label>
+                                <a href="#" class="sidebar-filter-clear">Limpiar todo</a>
+                            </div>
+                            <!-- End .widget widget-clean -->
+
+                            <div class="widget widget-collapsible">
+                                <h3 class="widget-title">
+                                    <a data-toggle="collapse" href="#widget-1" role="button" aria-expanded="true" aria-controls="widget-1">
+                                        Marcas disponibles 
+                                    </a>
+                                </h3>
+                                <!-- End .widget-title -->
+
+                                <div class="collapse show" id="widget-1">
+                                    <div class="widget-body">
+                                        <div class="filter-items filter-items-count">
+                                            <div class="filter-item" *ngFor="let marca of marcas;
+                                            let i = index" [attr.data-index]="i">
+                                                <div class="custom-control custom-text">
+                                                    <label class="" for="cat-1">{{marca.nombre}}</label>
+                                                </div>
+                                                <!-- End .custom-checkbox -->
+                                                <span class="item-count">{{cantidadMarcas[i]}}</span>
+                                            </div>
+                                            <!-- End .filter-item -->
+
+                                        </div>
+                                        <!-- End .filter-items -->
+                                    </div>
+                                    <!-- End .widget-body -->
+                                </div>
+                                <!-- End .collapse -->
+                            </div>
+                            <!-- End .widget -->
+
+                            <div class="widget widget-collapsible">
+                                <h3 class="widget-title">
+                                    <a data-toggle="collapse" href="#widget-2" role="button" aria-expanded="true" aria-controls="widget-2">
+                                        Tallas disponibles
+                                    </a>
+                                </h3>
+                                <!-- End .widget-title -->
+
+                                <div class="collapse show" id="widget-2">
+                                    <div class="filter-items filter-items-count">
+                                        <div class="filter-item" *ngFor="let talla of tallas;
+                                        let i = index" [attr.data-index]="i">
+                                            <div class="custom-control custom-text">
+                                                <label class="" for="cat-1">{{talla.nombre}}</label>
+                                            </div>
+                                            <!-- End .custom-checkbox -->
+                                            <span class="item-count">{{cantidadTallas[i]}}</span>
+                                        </div>
+                                        <!-- End .filter-item -->
+
+                                    </div>
+                                </div>
+                                <!-- End .collapse -->
+                            </div>
+                            <!-- End .widget -->
+
+                            <div class="widget widget-collapsible">
+                                <h3 class="widget-title">
+                                    <a data-toggle="collapse" href="#widget-3" role="button" aria-expanded="true" aria-controls="widget-3">
+                                        Colores disponibles
+                                    </a>
+                                </h3>
+                                <!-- End .widget-title -->
+
+                                <div class="collapse show" id="widget-3">
+                                    <div class="widget-body">
+                                        <div class="filter-items filter-items-count">
+                                            <div class="filter-item" *ngFor="let color of colores;
+                                            let i = index" [attr.data-index]="i">
+                                                <div class="">
+                                                    <label class="" for="cat-1">{{color.nombre}}</label>
+                                                </div>
+                                                <!-- End .custom-checkbox -->
+                                                <span class="item-count">{{cantidadColores[i]}}</span>
+                                            </div>
+                                            <!-- End .filter-item -->
+
+                                        </div>
+                                        <!-- End .filter-colors -->
+                                    </div>
+                                    <!-- End .widget-body -->
+                                </div>
+                                <!-- End .collapse -->
+                            </div>
+                            <!-- End .widget -->
+                        </div>
+                        <!-- End .sidebar sidebar-shop -->
+                    </aside>
+                    <!-- End .col-lg-3 -->
+                </div>
+                <!-- End .row -->
+            </div>
+            <!-- End .container -->
+        </div>
+        <!-- End .page-content -->
+    </main>
+    <!-- End .main -->
+
+</div>
+<!-- End .page-wrapper -->
+<button id="scroll-top" title="Volver arriba"><i class="icon-arrow-up"></i></button>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu-overlay"></div>
+<!-- End .mobil-menu-overlay -->
+
+<div class="mobile-menu-container">
+    <div class="mobile-menu-wrapper">
+        <span class="mobile-menu-close"><i class="icon-close"></i></span>
+
+        <form action="#" method="get" class="mobile-search">
+            <label for="mobile-search" class="sr-only">Search</label>
+            <input type="search" class="form-control" name="mobile-search" id="mobile-search" placeholder="Search in..." required>
+            <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
+        </form>
+
+        <div class="social-icons">
+            <a href="#" class="social-icon" target="_blank" title="Facebook"><i class="icon-facebook-f"></i></a>
+            <a href="#" class="social-icon" target="_blank" title="Twitter"><i class="icon-twitter"></i></a>
+            <a href="#" class="social-icon" target="_blank" title="Instagram"><i class="icon-instagram"></i></a>
+            <a href="#" class="social-icon" target="_blank" title="Youtube"><i class="icon-youtube"></i></a>
+        </div>
+        <!-- End .social-icons -->
+    </div>
+    <!-- End .mobile-menu-wrapper -->
+</div>
+<!-- End .mobile-menu-container -->
+
+<!-- Sign in / Register Modal -->
+<div class="modal fade" id="signin-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="icon-close"></i></span>
+                </button>
+            </div>
+            <!-- End .modal-body -->
+        </div>
+        <!-- End .modal-content -->
+    </div>
+    <!-- End .modal-dialog -->
+</div>
+<!-- End .modal -->
+<app-footer></app-footer>
