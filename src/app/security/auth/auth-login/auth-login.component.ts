@@ -13,7 +13,7 @@ export class AuthLoginComponent implements OnInit {
   isLogged = false;
   isLoginFail = false;
   loginUsuario!: LoginUsuario;
-  nombreUsuario!: string;
+  email!: string;
   password!: string;
   roles: string[] = [];
   errMsj!: string;
@@ -35,7 +35,7 @@ export class AuthLoginComponent implements OnInit {
   }
   
   onLogin(): void {
-    this.loginUsuario = new LoginUsuario(this.nombreUsuario, this.password);
+    this.loginUsuario = new LoginUsuario(this.email, this.password);
     this.authService.login(this.loginUsuario).subscribe(
       data => {
         this.isLogged = true;

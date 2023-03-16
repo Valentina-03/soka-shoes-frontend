@@ -15,9 +15,9 @@
                 <div class="tab-content">                    
                         <form #f="ngForm" (ngSubmit)="onLogin()" novalidate>
                             <div class="form-group">
-                                <label for="nombreUsuario">Nombre de Usuario</label>
-                                <input type="text" name="nombreUsuario" id="nombreUsuario" class="form-control"
-                                [(ngModel)]="nombreUsuario" required>
+                                <label for="email">Correo Electronico</label>
+                                <input type="text" name="email" id="email" class="form-control"
+                                [(ngModel)]="email" required>
                             </div>
                             <div class="form-group">
                                 <label for="password">Contraseña</label>

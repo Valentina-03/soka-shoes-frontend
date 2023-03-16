@@ -13,7 +13,6 @@ export class AuthRegistroComponent implements OnInit {
 
 
   nuevoUsuario?: NuevoUsuario;
-  nombreUsuario="";
   email=""
   password=""
   errMsj?: string;
@@ -32,7 +31,7 @@ export class AuthRegistroComponent implements OnInit {
   }
 
   onRegister(): void {
-    this.nuevoUsuario = new NuevoUsuario(this.nombreUsuario, this.email, this.password);
+    this.nuevoUsuario = new NuevoUsuario(this.email, this.email, this.password);
     this.authService.nuevo(this.nuevoUsuario).subscribe(
       data => {
         // this.toastr.success('Cuenta Creada', 'OK', {
