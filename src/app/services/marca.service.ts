@@ -11,12 +11,32 @@ export class MarcaService {
   uri = `${global.url}/marca`;
   constructor(private http:HttpClient) { }
 
-  public consultarMarcas():Observable<any>{
+  public getProductos(id:any):Observable<any>{
+    return this.http.get<any>(`${this.uri}/${id}/productos`);
+  }
+
+  public getCntProductos(id:any):Observable<any>{
+    return this.http.get<any>(`${this.uri}/${id}/cntProductos`);
+  }
+
+  public getMarcas():Observable<any>{
     return this.http.get<any>(`${this.uri}`);
   }
 
-  public consultarCantidad(idmarca: any):Observable<any>{
-    return this.http.get<any>(`${this.uri}/${idmarca}/cantidad`);
+  public guardarMarca(marca:any):Observable<any>{
+    return this.http.post<any>(`${this.uri}`, marca);
+  }
+
+  public encontrarMarca(id:any):Observable<any>{
+    return this.http.get<any>(`${this.uri}/${id}`);
+  }
+
+  public editarMarca(marca:any):Observable<any>{
+    return this.http.put<any>(`${this.uri}`,marca);
+  }
+
+  public eliminarMarca(id:any):Observable<any>{
+    return this.http.delete<any>(`${this.uri}/${id}`);
   }
 
 }

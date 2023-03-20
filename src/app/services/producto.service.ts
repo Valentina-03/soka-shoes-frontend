@@ -12,9 +12,33 @@ export class ProductoService {
   uri = `${global.url}/producto`;
   constructor(private http:HttpClient) { }
 
-  public consultarProductos():Observable<any>{
+  public getDetallesProducto(id:any):Observable<any>{
+    return this.http.get<any>(`${this.uri}/${id}/detalles`);
+  }
+
+  public deshabilitar(id:any):Observable<any>{
+    return this.http.get<any>(`${this.uri}/${id}/deshabilitar`);
+  }
+  public habilitar(id:any):Observable<any>{
+    return this.http.get<any>(`${this.uri}/${id}/habilitar`);
+  }
+
+  public getProductos():Observable<any>{
     return this.http.get<any>(`${this.uri}`);
   }
+
+  public getAllProductos():Observable<any>{
+    return this.http.get<any>(`${this.uri}/all`);
+  }
+
+  public getProductosClass():Observable<producto[]>{
+    return this.http.get<any>(`${this.uri}`);
+  }
+
+  public getCantidadProductos():Observable<producto[]>{
+    return this.http.get<any>(`${this.uri}/cantidadDisponible`);
+  }
+
   public guardarProducto(producto:any):Observable<any>{
     return this.http.post<any>(`${this.uri}`,producto);
   }
@@ -30,19 +54,4 @@ export class ProductoService {
   public eliminarProducto(id:any):Observable<any>{
     return this.http.delete<any>(`${this.uri}/${id}`);
   }
-  public deshabilitar(id:any):Observable<any>{
-    return this.http.get<any>(`${this.uri}/${id}/deshabilitar`);
-  }
-  public habilitar(id:any):Observable<any>{
-    return this.http.get<any>(`${this.uri}/${id}/habilitar`);
-  }
-
-  public consultarProductosClass():Observable<producto[]>{
-    return this.http.get<any>(`${this.uri}`);
-  }
-
-  public contarProductos():Observable<producto[]>{
-    return this.http.get<any>(`${this.uri}/cantidadDisponible`);
-  }
-
 }

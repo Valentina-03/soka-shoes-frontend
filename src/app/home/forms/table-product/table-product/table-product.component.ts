@@ -9,7 +9,7 @@ import { ProductoService } from 'src/app/services/producto.service';
 })
 export class TableProductComponent implements OnInit {
   productos:any [] = [];
-  
+
   constructor(
     private productoService:ProductoService,
     private router: Router,
@@ -17,7 +17,7 @@ export class TableProductComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.productoService.consultarProductos().subscribe(productos=>{
+    this.productoService.getProductos().subscribe(productos=>{
       this.productos = productos;
     })
   }

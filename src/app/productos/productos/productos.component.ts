@@ -1,6 +1,5 @@
-import { ClassGetter } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
-import { CarritoService } from 'src/app/services/carrito.service';
+import { CategoriaService } from 'src/app/services/categoria.service';
 import { ColorService } from 'src/app/services/color.service';
 import { MarcaService } from 'src/app/services/marca.service';
 import { ProductoService } from 'src/app/services/producto.service';
@@ -8,101 +7,98 @@ import { TallaService } from 'src/app/services/talla.service';
 import { TokenService } from 'src/app/services/token.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { ToastrService } from 'ngx-toastr';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-productos',
   templateUrl: './productos.component.html',
+  styleUrls: ['./productos.component.css']
 })
 export class ProductosComponent implements OnInit {
-  
+
   productos:any = [];
-  tallas:any = [];
-  colores:any = [];
-  marcas:any = [];
-  carrito:any=null;
-  cantidadMarcas: any = [];
-  cantidadTallas: any = [];
-  cantidadColores: any = [];
+  productos_detalles:any = [];
+  detalle_seleccionado = [-1, -1];
   usuario:any;
-  totalActivos = 0;
   username = "";
 
+  //Seleccion filtros
+  allMarcas:any = [];
+  allCategorias:any = [];
+  allColores:any = [];
+  allTallas:any = [];
+
   constructor(
-    private pser: ProductoService,
-    private caser: CarritoService,
-    private tser: TallaService,
-    private cser: ColorService,
-    private mser: MarcaService,
+    private prodser: ProductoService,
+    private usuarioService:UsuarioService,
     private toastr: ToastrService,
     private token:TokenService,
-    private usuarioService:UsuarioService
 
-  ){}
+    private mser: MarcaService,
+    private catser: CategoriaService,
+    private colser: ColorService,
+    private tser: TallaService,)
+    {}
 
 
   ngOnInit(): void {
-
     this.username= this.token.getUserName();
     this.usuarioService.usuarioPorUsername(this.username).subscribe(usuarioEncontrado=>{
       this.usuario = usuarioEncontrado;
-      this.usuarioService.carritoDeUsuario(this.usuario.id_Usuario).subscribe(carrito=>{
-        this.carrito = carrito;
-      })
     });
 
-    this.pser.consultarProductos().subscribe( productos => {
+    this.prodser.getProductos().subscribe(productos => {
       this.productos = productos;
-
-      for (let i = 0; i < productos.length; i++) {
-        if(productos[i].estado==true){
-          this.totalActivos++;
-        }
-        
-      }
-
+      this.cargarDetallesProductos();
     });
-    this.tser.consultarTallas().subscribe( tallas => {
-      this.tallas = tallas;
-      this.cantidadPorTallas();
-    });
-    this.cser.consultarColores().subscribe( colores => {
-      this.colores = colores;
-      this.cantidadPorColores();
-    });
-    this.mser.consultarMarcas().subscribe( marcas => {
-      this.marcas = marcas;
-      this.cantidadPorMarcas();
-    });
+    this.mser.getMarcas().subscribe(marcas =>
+      this.allMarcas = marcas
+    );
+    this.catser.getCategorias().subscribe(categorias =>
+      this.allCategorias = categorias
+    );
+    this.colser.getColors().subscribe(colores =>
+      this.allColores = colores
+    );
+    this.tser.getTallas().subscribe(tallas =>
+      this.allTallas = tallas
+    );
   }
-  cantidadPorMarcas(){
-    for (let i = 0; i < this.marcas.length; i++) {
-      this.mser.consultarCantidad(this.marcas[i].idMarca).subscribe( cantidad => {
-        this.cantidadMarcas[i] = cantidad;
-      })
+
+  cargarDetallesProductos(){
+    for(let i = 0; i<this.productos.length; i++){
+      this.prodser.getDetallesProducto(this.productos[0].idProducto).subscribe(detalles =>
+        this.productos_detalles[i] = detalles
+      );
     }
   }
-  cantidadPorTallas(){
-      for (let i = 0; i < this.tallas.length; i++) {
-        this.tser.consultarCantidad(this.tallas[i].idTalla).subscribe( cantidad => {
-          this.cantidadTallas[i] = cantidad;
-        })
-      }
+
+  setTallas(detalle: any, i:any, j:any)
+  {
+    if(this.detalle_seleccionado[0] != -1){
+      var ant_but = $("#btn-product-"+this.detalle_seleccionado[0]+"-"+this.detalle_seleccionado[1]);
+      ant_but.removeClass('btn-product-img-focus');
+      ant_but.addClass('btn-product-img');
     }
-    cantidadPorColores(){
-      for (let i = 0; i < this.colores.length; i++) {
-        this.cser.consultarCantidad(this.colores[i].idColor).subscribe( cantidad => {
-          this.cantidadColores[i] = cantidad;
-        })
-      }
+    this.detalle_seleccionado = [i, j];
+    var but = $("#btn-product-"+i+"-"+j);
+      but.removeClass('btn-product-img');
+      but.addClass('btn-product-img-focus');
+
+    var sel = $("#talla-sel");
+    sel.empty();
+
+    var tallas = detalle.tallas;
+    for(let i = 0; i<tallas.length; i++){
+      var option = $('<option></option>').attr("value", i+1).text(tallas[i].numero);
+      sel.append(option);
     }
+  }
 
-
-  
-
-  agregarACarrito(producto:any){
-    
-    
-    if(this.estaEnCarrito(producto.idProducto)){
+  agregarACarrito(producto:any)
+  {
+    console.log("agregando " + producto.idProducto);
+    /*if(this.estaEnCarrito(producto.idProducto)){
       this.toastr.warning('¡Producto ya registrado!', '', {
         timeOut: 3000, positionClass: 'toast-top-center'
       });
@@ -114,23 +110,24 @@ export class ProductosComponent implements OnInit {
     "usuario":this.usuario
     }
     this.caser.guardarCarrito(carrito).subscribe(async data=>{
-     
+
       this.toastr.success('¡Producto agregado con exito!', '', {
         timeOut: 3000, positionClass: 'toast-top-center'
       })
       await new Promise(f => setTimeout(f, 1500));
       window.location.reload();
-    })
-    
+    })*/
+
   }
 
   estaEnCarrito(idProducto:any):boolean{
-    for (let i = 0; i <this.carrito.length; i++) {
+    return false;
+    /*for (let i = 0; i <this.carrito.length; i++) {
       if(this.carrito[i].producto.idProducto == idProducto){
         return true;
-      }      
+      }
     }
-    return false;
+    return false;*/
   }
 
 }

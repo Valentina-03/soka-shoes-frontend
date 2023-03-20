@@ -25,7 +25,7 @@ export class FormProductComponent implements OnInit {
     private toastS:ToastrService
 
     ) { }
-  
+
   ngOnInit(): void {
 
     this.form = this.formBuilder.group({
@@ -38,16 +38,16 @@ export class FormProductComponent implements OnInit {
       marca:['',Validators.required],
     })
 
-    this.categoriaService.consultarTallas().subscribe(categorias=>{
+    this.categoriaService.getCategorias().subscribe(categorias=>{
       this.categorias = categorias;
     })
-    
-    this.marcaService.consultarMarcas().subscribe(marcas=>{
+
+    this.marcaService.getMarcas().subscribe(marcas=>{
       this.marcas = marcas;
     })
   }
   eliminar(producto:any){
-    
+
   }
   onSubmit(){
     this.productoService.guardarProducto(this.form.value).subscribe(async producto=>{

@@ -12,6 +12,7 @@ import { InicioComponent } from './home/inicio/inicio/inicio.component';
 import { TallaService } from './services/talla.service';
 import { ColorService } from './services/color.service';
 import {MarcaService} from './services/marca.service';
+import {CategoriaService} from './services/categoria.service';
 import { AuthLoginComponent } from './security/auth/auth-login/auth-login.component';
 import { AuthRegistroComponent } from './security/auth/auth-register/auth-registro.component';
 import { FormsModule } from '@angular/forms';
@@ -66,14 +67,14 @@ import { InformacionPagoComponent } from './informacion-pago/informacion-pago.co
     BrowserAnimationsModule
   ],
   providers: [
-    TallaService, 
+    TallaService,
     ColorService,
     UsuarioService,
     TransaccionService,
     PaqInterceptorService,
     interceptorProvider,
     MarcaService,
-    
+    CategoriaService
     ],
   bootstrap: [AppComponent]
 

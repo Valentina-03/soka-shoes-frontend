@@ -28,7 +28,7 @@ export class EditProductosComponent implements OnInit {
     private router: Router
 
     ) { }
-  
+
   ngOnInit(): void {
     this.id = this.aRouter.snapshot.paramMap.get('idProducto');
     this.form = this.formBuilder.group({
@@ -43,7 +43,7 @@ export class EditProductosComponent implements OnInit {
       estado:['',Validators.required],
     });
     this.productoService.encontrarProducto(this.id).subscribe(producto => {
-      
+
       this.form.setValue({
       idProducto: producto.idProducto,
       categoria: producto.categoria.idCategoria,
@@ -57,16 +57,16 @@ export class EditProductosComponent implements OnInit {
       });
     });
 
-    this.categoriaService.consultarTallas().subscribe(categorias=>{
+    this.categoriaService.getCategorias().subscribe(categorias=>{
       this.categorias = categorias;
     })
-    
-    this.marcaService.consultarMarcas().subscribe(marcas=>{
+
+    this.marcaService.getMarcas().subscribe(marcas=>{
       this.marcas = marcas;
     })
   }
   eliminar(producto:any){
-    
+
   }
   onSubmit(){
     this.productoService.editarProducto(this.form.value).subscribe(async producto=>{

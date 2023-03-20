@@ -11,14 +11,31 @@ export class ColorService {
   uri = `${global.url}/color`;
   constructor(private http:HttpClient) { }
 
-  public consultarColores():Observable<any>{
-    return this.http.get<any>(`${this.uri}`);
-  }
-  consultarColoresPorCantidad(id:any):Observable<any>{
-    return this.http.get<any>(`${this.uri}/id/cantidad`);
-  }
-  public consultarCantidad(id:any):Observable<any>{
-    return this.http.get<any>(`${this.uri}/${id}/cantidad`);
+  public getProductos(id:any):Observable<any>{
+    return this.http.get<any>(`${this.uri}/${id}/productos`);
   }
 
+  public getCntProductos(id:any):Observable<any>{
+    return this.http.get<any>(`${this.uri}/${id}/cntProductos`);
+  }
+
+  public getColors():Observable<any>{
+    return this.http.get<any>(`${this.uri}`);
+  }
+
+  public guardarColor(color:any):Observable<any>{
+    return this.http.post<any>(`${this.uri}`, color);
+  }
+
+  public encontrarColor(id:any):Observable<any>{
+    return this.http.get<any>(`${this.uri}/${id}`);
+  }
+
+  public editarColor(color:any):Observable<any>{
+    return this.http.put<any>(`${this.uri}`,color);
+  }
+
+  public eliminarColor(id:any):Observable<any>{
+    return this.http.delete<any>(`${this.uri}/${id}`);
+  }
 }
