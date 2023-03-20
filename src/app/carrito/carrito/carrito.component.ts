@@ -23,7 +23,7 @@ export class CarritoComponent implements OnInit {
   iva = 0.19;
   moneda = "COP";
   apikey = "yn1jslEAEe809I0BVfHp0VOUIW";
- 
+
   idMercado = "953228";
   idCuenta = "960860";
 
@@ -41,7 +41,7 @@ export class CarritoComponent implements OnInit {
 
   firmaElectronicaTest!:string;
   firmaElectronicaMD5Test!:string;
-  
+
   firmaElectronica!:string;
   firmaElectronicaMD5!:string;
   // test =================================================================
@@ -72,19 +72,19 @@ export class CarritoComponent implements OnInit {
 
     })
 
-    
+
   }
-  
+
    cargarDatos(form:any){
-    
+
     var compra= {
       "idCompra":this.referenciaUnic,
       "totalCompra":this.total,
       "estado":"PENDIENTE"
     }
-    this.carritoService.cargarCarritos(this.carrito).subscribe(data=>{
+    this.carritoService.guardarCarritos(this.carrito).subscribe(data=>{
     })
-  
+
     this.compraService.guardarCompra(compra,this.usuario.id_Usuario).subscribe(async data=>{
       this.toastS.success('¡Compra registrada!', '', {
         timeOut: 3000, positionClass: 'toast-top-center'
@@ -93,7 +93,7 @@ export class CarritoComponent implements OnInit {
       window.location.reload();
       form.submit()
     })
-    
+
   }
 
 
@@ -104,7 +104,7 @@ export class CarritoComponent implements OnInit {
     this.firmaElectronicaTest = `${this.apikeyTest}~508029~${this.referenciaUnic}~${this.total}~${this.moneda}`;
     this.firmaElectronicaMD5Test = crypto.MD5(this.firmaElectronicaTest).toString();
     this.generarDescripcion()
-    
+
   }
 
   generarDescripcion(){
@@ -115,7 +115,7 @@ export class CarritoComponent implements OnInit {
       }else{
         desc+=` (${this.carrito[i].cantidad}) ${this.carrito[i].producto.modelo},`;
       }
-        
+
     }
     this.descripcion = desc;
   }
@@ -127,7 +127,7 @@ export class CarritoComponent implements OnInit {
   }
 
   mostrar(event:any, i:number){
-    
+
     let cant = parseInt(event.target.value);
     if(cant<=0 || cant>10 || isNaN(cant)){
       event.target.value = 1;

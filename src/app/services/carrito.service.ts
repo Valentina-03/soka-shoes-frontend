@@ -7,24 +7,35 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CarritoService {
-  uri = global.url;
+  uri =  `${global.url}/carrito`;
 
-  constructor(private http:HttpClient) {
+  constructor(private http:HttpClient) {}
 
-   }
-
-   public cargarCarritos(carritos:any):Observable<any>{
-    return this.http.patch<any>(`${this.uri}/carrito/grupo`, carritos);
-  }
-   public consultarCarritoDeUsuario(id:number):Observable<any>{
-    return this.http.get<any>(`${this.uri}/carrito`);
-  }
-
-  public eliminarCarrito(id:number):Observable<any>{
-    return this.http.delete<any>(`${this.uri}/carrito/${id}`);
+   public getCarritos():Observable<any>{
+    return this.http.get<any>(`${this.uri}`);
   }
 
   public guardarCarrito(carrito:any):Observable<any>{
-    return this.http.post<any>(`${this.uri}/carrito`,carrito);
+    return this.http.post<any>(`${this.uri}`,carrito);
+  }
+
+  public guardarCarritos(carritos:Observable<any>):Observable<any>{
+    return this.http.patch<any>(`${this.uri}/grupo`,carritos);
+  }
+
+  public eliminarCarritos(carritos:Observable<any>):Observable<any>{
+    return this.http.patch<any>(`${this.uri}/grupo`, carritos);
+  }
+
+  public editarCarrito(carrito:any):Observable<any>{
+    return this.http.put<any>(`${this.uri}`, carrito);
+  }
+
+  public encontrarCarrito(id:any):Observable<any>{
+    return this.http.get<any>(`${this.uri}/${id}`);
+  }
+
+  public eliminarCarrito(id:number):Observable<any>{
+    return this.http.delete<any>(`${this.uri}/${id}`);
   }
 }

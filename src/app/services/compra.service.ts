@@ -7,18 +7,31 @@ import * as global from 'global'
 })
 export class CompraService {
 
-  uri = global.url+"/compra";
+  uri = `${global.url}/compra`;
 
   constructor(private http:HttpClient){}
 
-  public consultarCompras():Observable<any>{
+  public getTotalVentas():Observable<any>{
+    return this.http.get<any>(`${this.uri}/total`);
+  }
+
+  public getTransaccionesPorCompra(id:any):Observable<any>{
+    return this.http.get<any>(`${this.uri}/${id}/transacciones`);
+  }
+
+  public getCompras():Observable<any>{
     return this.http.get<any>(`${this.uri}`);
   }
 
-  public valorVentas():Observable<any>{
-    return this.http.get<any>(`${this.uri}/preciototal`);
+  public encontrarCompra(id:any):Observable<any>{
+    return this.http.get<any>(`${this.uri}/${id}`);
   }
-    public guardarCompra(compra:any,idPersona:any):Observable<any>{
-    return this.http.post<any>(`${this.uri}/${idPersona}`,compra);
+
+  public guardarCompra(idUsuario:any, idDireccion:any):Observable<any>{
+    return this.http.get<any>(`${this.uri}/${idUsuario}/${idDireccion}`);
+  }
+
+  public editarCompra(compra:any):Observable<any>{
+    return this.http.put<any>(`${this.uri}`,compra);
   }
 }

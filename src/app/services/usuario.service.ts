@@ -6,29 +6,45 @@ import * as global from 'global'
 @Injectable({
   providedIn: 'root'
 })
+
 export class UsuarioService {
 
-  url = `${global.url}/usuario`;
+  uri = `${global.url}/usuario`;
   constructor(private http: HttpClient) { }
 
-  public usuarioPorId(idUsuario:number):Observable<any>{
-    return this.http.get<any>(`${this.url}/${idUsuario}`);
+  public getCntClientes():Observable<any>{
+    return this.http.get<any>(`${this.uri}/cantidadClientes`);
   }
 
   public usuarioPorUsername(username:string):Observable<any>{
-    return this.http.get<any>(`${this.url}/${username}/username`);
-  }
-
-  public comprasPorUsuario(idUsuario:number):Observable<any>{
-    return this.http.get<any>(`${this.url}/${idUsuario}/compras`);
+    return this.http.get<any>(`${this.uri}/${username}/username`);
   }
 
   public carritoDeUsuario(idUsuario:number):Observable<any>{
-    return this.http.get<any>(`${this.url}/${idUsuario}/carrito`);
+    return this.http.get<any>(`${this.uri}/${idUsuario}/carrito`);
   }
 
-  public contarClientesReg():Observable<any>{
-    return this.http.get<any>(`${this.url}/cantidadclientes`);
+  public comprasDeUsuario(id:any):Observable<any>{
+    return this.http.get<any>(`${this.uri}/${id}/compras`);
   }
 
+  public getUsuarios():Observable<any>{
+    return this.http.get<any>(`${this.uri}`);
+  }
+
+  public guardarUsuario(user:any):Observable<any>{
+    return this.http.post<any>(`${this.uri}`,user);
+  }
+
+  public encontrarUsuario(id:any):Observable<any>{
+    return this.http.get<any>(`${this.uri}/${id}`);
+  }
+
+  public editarUsuario(user:any):Observable<any>{
+    return this.http.put<any>(`${this.uri}`,user);
+  }
+
+  public eliminarUsuario(id:any):Observable<any>{
+    return this.http.delete<any>(`${this.uri}/${id}`);
+  }
 }

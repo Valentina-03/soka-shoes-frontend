@@ -36,13 +36,13 @@ export class DashboardAdminComponent implements OnInit {
     this.roles = this.token.getAuthorities();
   }
   this.usuario = this.token.getUserName();
-    this.usuarioService.contarClientesReg().subscribe(cantidad => {
+    this.usuarioService.getCntClientes().subscribe(cantidad => {
       this.cantidadClientes = cantidad;
     })
     this.pser.getCantidadProductos().subscribe(producto => {
       this.cantidadProductos = producto;
     })
-    this.cser.valorVentas().subscribe(venta => {
+    this.cser.getTotalVentas().subscribe(venta => {
       this.cantidadVentas = venta;
     })
   }

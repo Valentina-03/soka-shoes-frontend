@@ -7,10 +7,10 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class TransaccionService {
-  uri = global.url;
+  uri = `${global.url}/transaccion`
   constructor(private http:HttpClient){}
 
-  public consultarTransacciones():Observable<any>{
-    return this.http.get<any>(`${this.uri}/transaccion`);
+  public getTransacciones():Observable<any>{
+    return this.http.get<any>(`${this.uri}`);
   }
 }

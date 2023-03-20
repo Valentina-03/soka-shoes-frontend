@@ -1,4 +1,3 @@
-import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TokenService } from 'src/app/services/token.service';
@@ -24,14 +23,14 @@ export class DashboardComponent implements OnInit {
     private router: Router
     )
     { }
-  
+
   ngOnInit(): void {
    this.username= this.token.getUserName();
    if (this.token.getToken()) {
     this.isLogged = true;
     this.isLoginFail = false;
     this.roles = this.token.getAuthorities();
-  } 
+  }
    this.usuarioService.usuarioPorUsername(this.username).subscribe(usuarioEncontrado=>{
      this.usuario = usuarioEncontrado;
      this.cargarCompras();
@@ -42,8 +41,7 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(["/inicio"]);
   }
   cargarCompras(){
-    this.usuarioService.comprasPorUsuario(this.usuario.id_Usuario).subscribe(compras=>{
-
+    this.usuarioService.comprasDeUsuario(this.usuario.id_Usuario).subscribe(compras=>{
       for (let i = 0; i < compras.length; i++) {
         if(compras[i].usuario.id_Usuario == this.usuario.id_Usuario){
           this.compras.push(compras[i])
@@ -51,5 +49,4 @@ export class DashboardComponent implements OnInit {
       }
     })
   }
-
 }

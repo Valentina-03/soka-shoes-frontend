@@ -19,24 +19,25 @@ export class ProductoService {
   public deshabilitar(id:any):Observable<any>{
     return this.http.get<any>(`${this.uri}/${id}/deshabilitar`);
   }
+
   public habilitar(id:any):Observable<any>{
     return this.http.get<any>(`${this.uri}/${id}/habilitar`);
+  }
+
+  public getCantidadProductos():Observable<producto[]>{
+    return this.http.get<any>(`${this.uri}/cantidadDisponible`);
   }
 
   public getProductos():Observable<any>{
     return this.http.get<any>(`${this.uri}`);
   }
 
+  public getProductosFiltrados(ids: [[]]): Observable<any>{
+    return this.http.post<any>(`${this.uri}/filtrar`, ids);
+  }
+
   public getAllProductos():Observable<any>{
     return this.http.get<any>(`${this.uri}/all`);
-  }
-
-  public getProductosClass():Observable<producto[]>{
-    return this.http.get<any>(`${this.uri}`);
-  }
-
-  public getCantidadProductos():Observable<producto[]>{
-    return this.http.get<any>(`${this.uri}/cantidadDisponible`);
   }
 
   public guardarProducto(producto:any):Observable<any>{
