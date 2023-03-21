@@ -14,15 +14,18 @@ import * as $ from 'jquery';
   templateUrl: './productos.component.html',
   styleUrls: ['./productos.component.css']
 })
-export class ProductosComponent implements OnInit {
-
-  productos:any = [];
-  productos_detalles:any = [];
-  detalle_seleccionado = [-1, -1];
+export class ProductosComponent implements OnInit
+{
+  //Usuario
   usuario:any;
   username = "";
 
-  //Seleccion filtros
+  //Cargar productos y detalles
+  productos:any = [];
+  productos_detalles:any = [];
+  detalle_seleccionado = [-1, -1];
+
+  //Cargar filtros
   allMarcas:any = [];
   allCategorias:any = [];
   allColores:any = [];
@@ -67,7 +70,7 @@ export class ProductosComponent implements OnInit {
 
   cargarDetallesProductos(){
     for(let i = 0; i<this.productos.length; i++){
-      this.prodser.getDetallesProducto(this.productos[0].idProducto).subscribe(detalles =>
+      this.prodser.getDetallesProducto(this.productos[i].idProducto).subscribe(detalles =>
         this.productos_detalles[i] = detalles
       );
     }
@@ -76,28 +79,25 @@ export class ProductosComponent implements OnInit {
   setTallas(detalle: any, i:any, j:any)
   {
     if(this.detalle_seleccionado[0] != -1){
-      var ant_but = $("#btn-product-"+this.detalle_seleccionado[0]+"-"+this.detalle_seleccionado[1]);
-      ant_but.removeClass('btn-product-img-focus');
-      ant_but.addClass('btn-product-img');
+      $("#prod-img-"+this.detalle_seleccionado[0]).attr("src",this.productos_detalles[this.detalle_seleccionado[0]][0].url).addClass("product-image");
+      $("#prod-agg-btn-"+this.detalle_seleccionado[0]).prop('disabled', true);
+      $("#prod-col-btn-"+this.detalle_seleccionado[0]+"-"+this.detalle_seleccionado[1]).removeClass('btn-product-img-focus') .addClass('btn-product-img');
+      $("#prod-talla-sel-"+this.detalle_seleccionado[0]).empty();
     }
     this.detalle_seleccionado = [i, j];
-    var but = $("#btn-product-"+i+"-"+j);
-      but.removeClass('btn-product-img');
-      but.addClass('btn-product-img-focus');
+    $("#prod-agg-btn-"+i).prop('disabled', false);
+    $("#prod-img-"+i).attr("src",this.productos_detalles[i][j].url).addClass("product-image");
+    $("#prod-col-btn-"+i+"-"+j).removeClass('btn-product-img').addClass('btn-product-img-focus');
 
-    var sel = $("#talla-sel");
-    sel.empty();
-
+    var sel = $("#prod-talla-sel-"+i).empty();
     var tallas = detalle.tallas;
-    for(let i = 0; i<tallas.length; i++){
-      var option = $('<option></option>').attr("value", i+1).text(tallas[i].numero);
-      sel.append(option);
-    }
+    for(let i = 0; i<tallas.length; i++)
+      sel.append($('<option></option>').attr("value", i+1).text(tallas[i].numero));
   }
 
   agregarACarrito(producto:any)
   {
-    console.log("agregando " + producto.idProducto);
+    console.log("agregando " + producto);
     /*if(this.estaEnCarrito(producto.idProducto)){
       this.toastr.warning('¡Producto ya registrado!', '', {
         timeOut: 3000, positionClass: 'toast-top-center'
@@ -130,4 +130,80 @@ export class ProductosComponent implements OnInit {
     return false;*/
   }
 
+  toggleClick(id:any)
+  {
+    $("#"+id).toggle();
+    if(id == "filter-talla"){
+      $("#filter-talla-min").val(0);
+      $("#filter-talla-max").val(0);
+      return;
+    }
+    if(id == "filter-precio"){
+      $("#filter-precio-min").val(0);
+      $("#filter-precio-max").val(0);
+      return;
+    }
+    $("[name= '"+ id + "']").prop("checked", false);
+  }
+
+  filtrar()
+  {
+    //var filter:any = [{}, {}, {}, {}, {}];
+    var filter:any = [[]];
+    filter[0] = []; filter[1] = []; filter[2] = []; filter[3] = []; filter[4] = [];
+    if($("#filter-marca").is(':visible')) {
+      let i = 0;
+      $("[name= 'filter-marca']").each(function () {
+        if ($(this).is(':checked')) {
+          filter[0][i++] = $(this).val();
+        }
+      });
+    }
+    if($("#filter-cat").is(':visible')) {
+      let i = 0;
+      $("[name= 'filter-cat']").each(function () {
+        if ($(this).is(':checked')) {
+          filter[1][i++] = $(this).val();
+        }
+      });
+    }
+    if($("#filter-color").is(':visible')) {
+      let i = 0;
+      $("[name= 'filter-color']").each(function () {
+        if ($(this).is(':checked')) {
+          filter[2][i++] = $(this).val();
+        }
+      });
+    }
+    if($("#filter-talla").is(':visible')) {
+      if($("#filter-talla-min").val() != 0 && $("#filter-talla-max").val() != 0){
+        filter[3][0] = $("#filter-talla-min").val();
+        filter[3][1] = $("#filter-talla-max").val();
+      }
+    }
+    if($("#filter-precio").is(':visible')) {
+      if($("#filter-precio-min").val() != 0 && $("#filter-precio-max").val() != 0){
+        alert($("#filter-precio-max").val());
+        filter[4][0] = $("#filter-precio-min").val();
+        filter[4][1] = $("#filter-precio-max").val();
+      }
+    }
+    this.productos = this.prodser.getProductosFiltrados(filter).subscribe(productos => {
+      this.productos = productos;
+      this.cargarDetallesProductos();
+    });
+  }
+
+  cleanFilter(){
+    if($("#filter-marca").is(':visible')) this.toggleClick("filter-marca");
+    if($("#filter-cat").is(':visible')) this.toggleClick("filter-cat");
+    if($("#filter-color").is(':visible')) this.toggleClick("filter-color");
+    if($("#filter-talla").is(':visible')) this.toggleClick("filter-talla");
+    if($("#filter-precio").is(':visible')) this.toggleClick("filter-precio");
+
+    this.prodser.getProductos().subscribe(productos => {
+      this.productos = productos;
+      this.cargarDetallesProductos();
+    });
+  }
 }

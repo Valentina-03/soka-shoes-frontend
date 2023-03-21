@@ -40,7 +40,7 @@
                   <div class="col-6 col-lg-3">
                     <figure class="product-media">
                       <a href="product.html">
-                        <img src="{{productos_detalles[i][0].url}}" alt="Product image" class="product-image">
+                        <img id="prod-img-{{i}}" src="{{productos_detalles[i][0].url}}" alt="Product image" class="product-image">
                       </a>
                     </figure>
                     <!-- End .product-media -->
@@ -51,7 +51,7 @@
                     <div class="col-6 col-lg-2 order-lg-last">
                       <div class="product-list-action">
                         <div class="product-title"> Tallas</div>
-                        <select id="talla-sel" ng-model="selectedName" ng-options="x for x in names"> </select>
+                        <select id="prod-talla-sel-{{i}}" ng-model="selectedName" ng-options="x for x in names"> </select>
                       </div>
                       <!-- End .product-list-action -->
                     </div>
@@ -60,14 +60,14 @@
                         ${{producto.precio}}
                       </div>
                       <!-- End .product-price -->
-                      <button (click)="agregarACarrito(producto)"
-                        class="btn-product btn-cart btn btn-round"><span>Agregar al carrito</span></button>
+                      <button id="prod-agg-btn-{{i}}" (click)="agregarACarrito(producto)" class="btn-product btn-cart btn btn-round" disabled><span>Agregar al carrito</span></button>
                     </div>
                     <!-- End .product-list-action -->
                   </div>
                   <!-- End .col-sm-6 col-lg-3 -->
 
                   <div class="col-lg-6">
+                    <div class="row">
                     <div class="product-body product-action-inner">
                       <div class="product-title"> <a href="#">{{producto.nombre}}</a> </div>
                       <!-- End .product-title -->
@@ -77,13 +77,12 @@
                         <p>{{producto.descripcion}}</p>
                       </div>
                       <!-- End .product-content -->
-                      <div class="col-md-6 img-container">
-                        <div *ngFor="let dp of productos_detalles[i]; let j = index"
-                          class="product-nav product-nav-thumbs">
-                          <button id="btn-product-{{i}}-{{j}}" type="button" class="btn-product-img"
-                            (click)="setTallas(dp, i, j)">
-                            <img src="{{dp.url}}" alt="Product image" class="img-product">
-                          </button>
+                    </div>
+                      <div class="row justify-content-start">
+                        <div *ngFor="let dp of productos_detalles[i]; let j = index" class="col-lg-2 img-container">
+                          <div class="product-nav product-nav-thumbs ">
+                            <img id="prod-col-btn-{{i}}-{{j}}" src="{{dp.url}}" alt="Product image" class="btn-product-img" (click)="setTallas(dp, i, j)">
+                          </div>
                         </div>
                       </div>
                       <!-- End .product-nav -->
@@ -101,27 +100,25 @@
           <!-- End .col-lg-9 -->
           <aside class="col-lg-3 order-lg-first">
             <div class="sidebar sidebar-shop">
-              <div class="widget widget-clean">
+              <div class="widget widget-clean" >
                 <label>Filtros:</label>
-                <a href="#" class="sidebar-filter-clear">Limpiar todo</a>
+                <a href="#" (click) ="cleanFilter()" class="sidebar-filter-clear">Limpiar todo</a>
               </div>
               <!-- End .widget widget-clean -->
-
               <div class="widget widget-collapsible">
                 <h3 class="widget-title">
-                  <a data-toggle="collapse" href="#widget-1" role="button" aria-expanded="true"
-                    aria-controls="widget-1">
+                  <a data-toggle="collapse" href="#" (click) ="toggleClick('filter-marca')">
                     Marcas disponibles
                   </a>
                 </h3>
                 <!-- End .widget-title -->
 
-                <div class="collapse show" id="widget-1">
+                <div id="filter-marca" class="collapse">
                   <div class="widget-body">
                     <div class="filter-items filter-items-count">
-                      <div class="filter-item" *ngFor="let marca of allMarcas; let i = index" [attr.data-index]="i">
+                      <div class="filter-item" *ngFor="let marca of allMarcas; let i = index">
                         <div class="custom-control custom-text">
-                          <input id="marca-{{marca.idMarca}}" type="checkbox" name="marcas" />
+                          <input id="marca-{{i}}" type="checkbox" name="filter-marca" value="{{marca.idMarca}}"/>
                           <label class="" for="cat-1">{{marca.nombre}}</label>
                         </div>
                       </div>
@@ -132,19 +129,18 @@
 
               <div class="widget widget-collapsible">
                 <h3 class="widget-title">
-                  <a data-toggle="collapse" href="#widget-1" role="button" aria-expanded="true"
-                    aria-controls="widget-1">
+                  <a data-toggle="collapse" href="#" (click) ="toggleClick('filter-cat')">
                     Categorias disponibles
                   </a>
                 </h3>
                 <!-- End .widget-title -->
 
-                <div class="collapse show" id="widget-1">
+                <div class="collapse" id="filter-cat">
                   <div class="widget-body">
                     <div class="filter-items filter-items-count">
-                      <div class="filter-item" *ngFor="let categoria of allCategorias; let i = index" [attr.data-index]="i">
+                      <div class="filter-item" *ngFor="let categoria of allCategorias; let i = index">
                         <div class="custom-control custom-text">
-                          <input id="categoria-{{categoria.idCategoria}}" type="checkbox" name="categorias" />
+                          <input id="cat-{{i}}" type="checkbox" name="filter-cat" value="{{categoria.idCategoria}}" />
                           <label class="" for="cat-1">{{categoria.nombre}}</label>
                         </div>
                       </div>
@@ -156,18 +152,18 @@
 
               <div class="widget widget-collapsible">
                 <h3 class="widget-title">
-                  <a data-toggle="collapse" href="#widget-3" role="button" aria-expanded="true" aria-controls="widget-3">
+                  <a data-toggle="collapse" href="#" (click) ="toggleClick('filter-color')">
                     Colores disponibles
                   </a>
                 </h3>
                 <!-- End .widget-title -->
 
-                <div class="collapse show" id="widget-3">
+                <div class="collapse" id="filter-color">
                   <div class="widget-body">
                     <div class="filter-items filter-items-count">
-                      <div class="filter-item" *ngFor="let color of allColores; let i = index" [attr.data-index]="i">
-                        <div class="">
-                          <input id="color-{{color.idColor}}" type="checkbox" name="colores" />
+                      <div class="filter-item" *ngFor="let color of allColores; let i = index">
+                        <div class="custom-control custom-text">
+                          <input id="color-{{i}}" type="checkbox" name="filter-color" value="{{color.idColor}}" />
                           <label class="" for="cat-1">{{color.nombre}}</label>
                         </div>
                       </div>
@@ -179,19 +175,18 @@
 
               <div class="widget widget-collapsible">
                 <h3 class="widget-title">
-                  <a data-toggle="collapse" href="#widget-2" role="button" aria-expanded="true"
-                    aria-controls="widget-2">
+                  <a data-toggle="collapse" href="#" (click) ="toggleClick('filter-talla')">
                     Tallas disponibles
                   </a>
                 </h3>
                 <!-- End .widget-title -->
 
-                <div class="collapse show" id="widget-1">
+                <div class="collapse" id="filter-talla">
                   <div class="widget-body">
                     <div class="filter-items filter-items-count">
                       <div class="range-slider">
-                        <input type="range" class="min-price" value="100" min="30" max="50" step="2">
-                        <input type="range" class="max-price" value="250" min="30" max="50" step="2">
+                        <input id="filter-talla-min" type="range" class="min-price" value="100" min="30" max="50" step="2">
+                        <input id="filter-talla-max" type="range" class="max-price" value="250" min="30" max="50" step="2">
                       </div>
                     </div>
                   </div>
@@ -201,24 +196,27 @@
 
               <div class="widget widget-collapsible">
                 <h3 class="widget-title">
-                  <a data-toggle="collapse" href="#widget-2" role="button" aria-expanded="true" aria-controls="widget-2">
+                  <a data-toggle="collapse" href="#" (click) ="toggleClick('filter-precio')">
                     Precio
                   </a>
                 </h3>
                 <!-- End .widget-title -->
 
-                <div class="collapse show" id="widget-1">
+                <div class="collapse" id="filter-precio">
                   <div class="widget-body">
                     <div class="filter-items filter-items-count">
                       <div class="range-slider">
-                        <input type="range" class="min-price" value="100" min="0" max="1000000" step="5000">
-                        <input type="range" class="max-price" value="250" min="0" max="1000000" step="5000">
+                        <input id="filter-precio-min" type="range" class="min-price" value="100" min="0" max="1000000" step="5000">
+                        <input id="filter-precio-max" type="range" class="max-price" value="250" min="0" max="1000000" step="5000">
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
               <!-- End .widget -->
+              <div class="product-list-action">
+                <button id="filter-btn" (click)="filtrar()" class="btn-product btn btn-round">Filtrar</button>
+              </div>
             </div>
             <!-- End .sidebar sidebar-shop -->
           </aside>
