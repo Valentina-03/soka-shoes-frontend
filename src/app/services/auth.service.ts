@@ -9,9 +9,8 @@ import * as global from 'global'
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
-  
-
+export class AuthService
+{
   authURL = `${global.url}/auth/`;
 
   constructor(private httpClient: HttpClient) { }
@@ -23,5 +22,5 @@ export class AuthService {
   public login(loginUsuario: LoginUsuario): Observable<JwtDto> {
     return this.httpClient.post<JwtDto>(this.authURL + 'login', loginUsuario);
   }
-  
+
 }

@@ -19,6 +19,7 @@ export class ProductosComponent implements OnInit
   //Usuario
   usuario:any;
   username = "";
+  email  = "";
 
   //Cargar productos y detalles
   productos:any = [];
@@ -45,9 +46,11 @@ export class ProductosComponent implements OnInit
 
 
   ngOnInit(): void {
-    this.username= this.token.getUserName();
-    this.usuarioService.usuarioPorUsername(this.username).subscribe(usuarioEncontrado=>{
+    this.username= this.token.getEmail();
+    this.usuarioService.usuarioPorEmail(this.username).subscribe(usuarioEncontrado=>{
       this.usuario = usuarioEncontrado;
+      this.username = usuarioEncontrado.username;
+      this.email = usuarioEncontrado.email;
     });
 
     this.prodser.getProductos().subscribe(productos => {

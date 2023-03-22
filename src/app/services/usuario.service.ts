@@ -16,8 +16,8 @@ export class UsuarioService {
     return this.http.get<any>(`${this.uri}/cantidadClientes`);
   }
 
-  public usuarioPorUsername(username:string):Observable<any>{
-    return this.http.get<any>(`${this.uri}/${username}/username`);
+  public usuarioPorEmail(email:string):Observable<any>{
+    return this.http.get<any>(`${this.uri}/${email}/email`);
   }
 
   public carritoDeUsuario(idUsuario:number):Observable<any>{

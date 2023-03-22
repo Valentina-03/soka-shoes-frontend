@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CarritoService } from 'src/app/services/carrito.service';
 import { TokenService } from 'src/app/services/token.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
@@ -11,7 +10,7 @@ export class HeaderComponent implements OnInit {
 
   total!:number;
   carrito:any = [];
-  username = "";
+  email = "";
   usuario!:any;
   isLogged = false;
   isLoginFail = false;
@@ -25,33 +24,31 @@ export class HeaderComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    if(this.token.getAuthorities().length>1){
-      this.isAdmin=true;
+    if(this.token.getToken() != null){
+      if(this.token.getAuthorities().length>1){
+        this.isAdmin=true;
+      }
+      this.email= this.token.getEmail();
+      if (this.token.getToken()) {
+        this.isLogged = true;
+        this.isLoginFail = false;
+        this.roles = this.token.getAuthorities();
+      }
+      this.usuarioService.usuarioPorEmail(this.email).subscribe(usuarioEncontrado=>{
+        this.usuario = usuarioEncontrado;
+        this.usuarioService.carritoDeUsuario(this.usuario.idUsuario).subscribe(carritos=>{
+          this.carrito = carritos;
+          this.calcularTotal();
+          this.calcularCantidad();
+        })
+      })
     }
-    this.username= this.token.getUserName();
-    if (this.token.getToken()) {
-      this.isLogged = true;
-      this.isLoginFail = false;
-      this.roles = this.token.getAuthorities();
-    }
-    this.usuarioService.usuarioPorUsername(this.username).subscribe(usuarioEncontrado=>{
-      this.usuario = usuarioEncontrado;
-      this.usuarioService.carritoDeUsuario(this.usuario.id_Usuario).subscribe(carritos=>{
-      this.carrito = carritos;
-      this.calcularTotal();
-      this.calcularCantidad();
-    })
-   })
-
-    
-
   }
 
   calcularCantidad(){
     for (let i = 0; i < this.carrito.length; i++) {
-      this.cantidadTotal+=this.carrito[i].cantidad;      
+      this.cantidadTotal+=this.carrito[i].cantidad;
     }
-    console.log(this.cantidadTotal);
   }
   calcularTotal(){
     this.total = 0;

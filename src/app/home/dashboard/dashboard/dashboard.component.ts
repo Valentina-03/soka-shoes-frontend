@@ -7,9 +7,10 @@ import { UsuarioService } from 'src/app/services/usuario.service';
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
 })
-export class DashboardComponent implements OnInit {
-
+export class DashboardComponent implements OnInit
+{
   username = "";
+  email = "";
   usuario!:any;
   isLogged = false;
   isLoginFail = false;
@@ -25,14 +26,15 @@ export class DashboardComponent implements OnInit {
     { }
 
   ngOnInit(): void {
-   this.username= this.token.getUserName();
+   this.email= this.token.getEmail();
    if (this.token.getToken()) {
     this.isLogged = true;
     this.isLoginFail = false;
     this.roles = this.token.getAuthorities();
   }
-   this.usuarioService.usuarioPorUsername(this.username).subscribe(usuarioEncontrado=>{
+   this.usuarioService.usuarioPorEmail(this.email).subscribe(usuarioEncontrado=>{
      this.usuario = usuarioEncontrado;
+     this.username = usuarioEncontrado.username;
      this.cargarCompras();
    })
   }

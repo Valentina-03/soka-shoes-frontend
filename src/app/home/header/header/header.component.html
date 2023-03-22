@@ -10,7 +10,7 @@
                     <span class="sr-only">Toggle mobile menu</span>
                     <i class="icon-bars"></i>
                 </button>
-                
+
                 <a href="index.html" class="logo">
                     <img src="https://github.com/SantiagoAndresSerrano/img-soka/blob/master/sokaSlogo.png?raw=true" alt="Molla Logo" width="105" height="25">
                 </a>
@@ -47,7 +47,7 @@
                 </div>End .compare-dropdown -->
 
                 <div class="dropdown cart-dropdown">
-                    <a routerLink="/carrito" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
+                    <a routerLink="" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
                         <div class="icon">
                             <i class="icon-shopping-cart"></i>
                             <span *ngIf="cantidadTotal>0" class="cart-count">{{cantidadTotal}}</span>
@@ -84,7 +84,7 @@
                         </div><!-- End .dropdown-cart-total -->
 
                         <div class="dropdown-cart-action">
-                            <a routerLink="/carrito" class="btn btn-primary">Ver carrito</a>
+                            <a routerLink="" class="btn btn-primary">Ver carrito</a>
                         </div><!-- End .dropdown-cart-total -->
                     </div><!-- End .dropdown-menu -->
                 </div><!-- End .cart-dropdown -->
@@ -95,8 +95,8 @@
 
     <div class="header-bottom sticky-header">
         <div class="container">
-            
-            
+
+
             <div class="header-center">
                 <nav class="main-nav">
                     <ul class="menu sf-arrows">
@@ -110,11 +110,11 @@
                         </li>
                         <li>
                             <a href="#" routerLink="/contacto" class="sf-with">Contactanos</a>
-                        </li>  
+                        </li>
                         <li>
                             <a href="#" *ngIf="isAdmin" routerLink="/admin" class="sf-with">Admin</a>
-                        </li>    
-                
+                        </li>
+
                     </ul><!-- End .menu -->
                 </nav><!-- End .main-nav -->
             </div><!-- End .header-center -->

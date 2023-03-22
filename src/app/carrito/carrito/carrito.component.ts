@@ -27,7 +27,7 @@ export class CarritoComponent implements OnInit {
   idMercado = "953228";
   idCuenta = "960860";
 
-  email = "genesisd@gmial.com"
+  //email = "genesisd@gmial.com"
   nombrePersona = "Genesis";
   idUsuario = "116";
 
@@ -46,7 +46,7 @@ export class CarritoComponent implements OnInit {
   firmaElectronicaMD5!:string;
   // test =================================================================
 
-  username = "";
+  email = "";
   usuario!:any;
 
   constructor(
@@ -59,9 +59,9 @@ export class CarritoComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.username= this.token.getUserName();
+    this.email= this.token.getEmail();
 
-    this.usuarioService.usuarioPorUsername(this.username).subscribe(usuarioEncontrado=>{
+    this.usuarioService.usuarioPorEmail(this.email).subscribe(usuarioEncontrado=>{
      this.usuario = usuarioEncontrado;
 
      this.usuarioService.carritoDeUsuario(this.usuario.id_Usuario).subscribe(carritos=>{

@@ -25,36 +25,32 @@ export class AuthLoginComponent implements OnInit {
     private toastr:ToastrService
   ) { }
 
-  ngOnInit() {
-   
+  ngOnInit()
+  {
     if (this.tokenService.getToken()) {
       this.isLogged = true;
       this.isLoginFail = false;
       this.roles = this.tokenService.getAuthorities();
     }
   }
-  
+
   onLogin(): void {
     this.loginUsuario = new LoginUsuario(this.email, this.password);
     this.authService.login(this.loginUsuario).subscribe(
       data => {
         this.isLogged = true;
-
         this.tokenService.setToken(data.token);
-        this.tokenService.setUserName(data.nombreUsuario);
+        this.tokenService.setEmail(data.email);
         this.tokenService.setAuthorities(data.authorities);
         this.roles = data.authorities;
-        this.toastr.success('Bienvenido ' + data.nombreUsuario, 'OK', {
+        this.toastr.success('Bienvenido ' + data.username, 'OK', {
           timeOut: 3000, positionClass: 'toast-top-center'
         });
-        console.log(this.tokenService.getAuthorities());
-        if(this.tokenService.getAuthorities().length>1){
+
+        if(this.tokenService.getAuthorities().length>1)
           this.router.navigate(['/admin']);
-        }else{
+        else
           this.router.navigate(['/']);
-
-        }
-
       },
       err => {
         this.isLogged = false;
@@ -62,9 +58,7 @@ export class AuthLoginComponent implements OnInit {
         this.toastr.error(this.errMsj, 'Fail', {
           timeOut: 3000,  positionClass: 'toast-top-center',
         });
-        console.log(err.error.message);
       }
     );
   }
-
 }
