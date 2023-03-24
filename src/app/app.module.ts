@@ -1,3 +1,5 @@
+import { ProductoService } from 'src/app/services/producto.service';
+import { DetalleProductoService } from './services/detalle_producto.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
@@ -67,14 +69,18 @@ import { InformacionPagoComponent } from './informacion-pago/informacion-pago.co
     BrowserAnimationsModule
   ],
   providers: [
+    MarcaService,
+    CategoriaService,
+    DetalleProductoService,
+    ProductoService,
     TallaService,
     ColorService,
     UsuarioService,
     TransaccionService,
+
     PaqInterceptorService,
     interceptorProvider,
-    MarcaService,
-    CategoriaService
+
     ],
   bootstrap: [AppComponent]
 

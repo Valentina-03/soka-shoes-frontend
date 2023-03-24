@@ -1,3 +1,4 @@
+import { Usuario } from './../models/Usuario';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -16,7 +17,7 @@ export class UsuarioService {
     return this.http.get<any>(`${this.uri}/cantidadClientes`);
   }
 
-  public usuarioPorEmail(email:string):Observable<any>{
+  public usuarioPorEmail(email:string):Observable<Usuario>{
     return this.http.get<any>(`${this.uri}/${email}/email`);
   }
 
@@ -28,19 +29,19 @@ export class UsuarioService {
     return this.http.get<any>(`${this.uri}/${id}/compras`);
   }
 
-  public getUsuarios():Observable<any>{
+  public getUsuarios():Observable<Usuario[]>{
     return this.http.get<any>(`${this.uri}`);
   }
 
-  public guardarUsuario(user:any):Observable<any>{
+  public guardarUsuario(user:Usuario):Observable<any>{
     return this.http.post<any>(`${this.uri}`,user);
   }
 
-  public encontrarUsuario(id:any):Observable<any>{
+  public encontrarUsuario(id:any):Observable<Usuario>{
     return this.http.get<any>(`${this.uri}/${id}`);
   }
 
-  public editarUsuario(user:any):Observable<any>{
+  public editarUsuario(user:Usuario):Observable<any>{
     return this.http.put<any>(`${this.uri}`,user);
   }
 

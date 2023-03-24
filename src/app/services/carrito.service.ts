@@ -1,3 +1,4 @@
+import { Carrito } from './../models/Carrito';
 import { Injectable } from '@angular/core';
 import * as global from 'global'
 import { HttpClient } from '@angular/common/http';
@@ -15,7 +16,7 @@ export class CarritoService {
     return this.http.get<any>(`${this.uri}`);
   }
 
-  public guardarCarrito(carrito:any):Observable<any>{
+  public guardarCarrito(carrito:Carrito):Observable<any>{
     return this.http.post<any>(`${this.uri}`,carrito);
   }
 

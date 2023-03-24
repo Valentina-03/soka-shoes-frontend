@@ -1,8 +1,9 @@
+import { Producto } from './../models/Producto';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as global from 'global'
 import { Observable } from 'rxjs';
-import { producto } from '../interfaces/producto.interface';
+import { DetalleProducto } from '../models/DetalleProducto';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,12 @@ export class ProductoService {
   uri = `${global.url}/producto`;
   constructor(private http:HttpClient) { }
 
-  public getDetallesProducto(id:any):Observable<any>{
+  public getDetallesProducto(id:any):Observable<DetalleProducto[]>{
     return this.http.get<any>(`${this.uri}/${id}/detalles`);
+  }
+
+  public getDetalle(id:any, color:any, talla:any, cantidad:any):Observable<DetalleProducto>{
+    return this.http.get<any>(`${this.uri}/${id}/disponible/${color}/${talla}/${cantidad}`);
   }
 
   public deshabilitar(id:any):Observable<any>{
@@ -24,31 +29,31 @@ export class ProductoService {
     return this.http.get<any>(`${this.uri}/${id}/habilitar`);
   }
 
-  public getCantidadProductos():Observable<producto[]>{
+  public getCantidadProductos():Observable<any>{
     return this.http.get<any>(`${this.uri}/cantidadDisponible`);
   }
 
-  public getProductos():Observable<any>{
+  public getProductos():Observable<Producto[]>{
     return this.http.get<any>(`${this.uri}`);
   }
 
-  public getProductosFiltrados(ids: [[]]): Observable<any>{
+  public getProductosFiltrados(ids: [[]]): Observable<Producto[]>{
     return this.http.post<any>(`${this.uri}/filtrar`, ids);
   }
 
-  public getAllProductos():Observable<any>{
+  public getAllProductos():Observable<Producto[]>{
     return this.http.get<any>(`${this.uri}/all`);
   }
 
-  public guardarProducto(producto:any):Observable<any>{
+  public guardarProducto(producto:Producto):Observable<any>{
     return this.http.post<any>(`${this.uri}`,producto);
   }
 
-  public encontrarProducto(id:any):Observable<any>{
+  public encontrarProducto(id:any):Observable<Producto>{
     return this.http.get<any>(`${this.uri}/${id}`);
   }
 
-  public editarProducto(producto:any):Observable<any>{
+  public editarProducto(producto:Producto):Observable<any>{
     return this.http.put<any>(`${this.uri}`,producto);
   }
 
