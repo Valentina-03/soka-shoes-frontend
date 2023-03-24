@@ -60,7 +60,7 @@
                         ${{producto.precio}}
                       </div>
                       <!-- End .product-price -->
-                      <button id="prod-agg-btn-{{i}}" (click)="agregarACarrito(producto)" class="btn-product btn-cart btn btn-round" disabled><span>Agregar al carrito</span></button>
+                      <button id="prod-agg-btn-{{i}}" (click)="agregarACarrito(producto.idProducto)" class="btn-product btn-cart btn btn-round" disabled><span>Agregar al carrito</span></button>
                     </div>
                     <!-- End .product-list-action -->
                   </div>
@@ -79,9 +79,9 @@
                       <!-- End .product-content -->
                     </div>
                       <div class="row justify-content-start">
-                        <div *ngFor="let dp of productos_detalles[i]; let j = index" class="col-lg-2 img-container">
+                        <div *ngFor="let pd of productos_detalles[i]; let j = index" class="col-lg-2 img-container">
                           <div class="product-nav product-nav-thumbs ">
-                            <img id="prod-col-btn-{{i}}-{{j}}" src="{{dp.url}}" alt="Product image" class="btn-product-img" (click)="setTallas(dp, i, j)">
+                            <img id="prod-col-btn-{{i}}-{{j}}" src="{{pd.url}}" alt="Product image" class="btn-product-img" (click)="setTallas(pd, i, j)">
                           </div>
                         </div>
                       </div>

@@ -1,3 +1,7 @@
+import { Carrito } from './../../models/Carrito';
+import { Usuario } from './../../models/Usuario';
+import { DetalleProductoService } from './../../services/detalle_producto.service';
+import { CarritoService } from 'src/app/services/carrito.service';
 import { Component, OnInit } from '@angular/core';
 import { CategoriaService } from 'src/app/services/categoria.service';
 import { ColorService } from 'src/app/services/color.service';
@@ -17,8 +21,7 @@ import * as $ from 'jquery';
 export class ProductosComponent implements OnInit
 {
   //Usuario
-  usuario:any;
-  username = "";
+  usuario: Usuario;
   email  = "";
 
   //Cargar productos y detalles
@@ -35,9 +38,10 @@ export class ProductosComponent implements OnInit
   constructor(
     private prodser: ProductoService,
     private usuarioService:UsuarioService,
+    private detprodser:DetalleProductoService,
     private toastr: ToastrService,
     private token:TokenService,
-
+    private carser: CarritoService,
     private mser: MarcaService,
     private catser: CategoriaService,
     private colser: ColorService,
@@ -46,10 +50,9 @@ export class ProductosComponent implements OnInit
 
 
   ngOnInit(): void {
-    this.username= this.token.getEmail();
-    this.usuarioService.usuarioPorEmail(this.username).subscribe(usuarioEncontrado=>{
+    this.email= this.token.getEmail();
+    this.usuarioService.usuarioPorEmail(this.email).subscribe(usuarioEncontrado=>{
       this.usuario = usuarioEncontrado;
-      this.username = usuarioEncontrado.username;
       this.email = usuarioEncontrado.email;
     });
 
@@ -95,12 +98,30 @@ export class ProductosComponent implements OnInit
     var sel = $("#prod-talla-sel-"+i).empty();
     var tallas = detalle.tallas;
     for(let i = 0; i<tallas.length; i++)
-      sel.append($('<option></option>').attr("value", i+1).text(tallas[i].numero));
+      sel.append($('<option></option>').attr("value", tallas[i].idTalla).text(tallas[i].numero));
   }
 
-  agregarACarrito(producto:any)
+  agregarACarrito(id: any)
   {
-    console.log("agregando " + producto);
+    var color = this.productos_detalles[this.detalle_seleccionado[0]][this.detalle_seleccionado[1]].color.idColor;
+    var talla = $("#prod-talla-sel-"+ this.detalle_seleccionado[0]).find(":selected").val();
+
+    this.prodser.getDetalle(id, color, talla, 1).subscribe(detalle =>{
+      if(detalle == null){
+        this.toastr.error('Lo sentimos! Este producto no se encuentra disponible', 'No disponible', {
+          timeOut: 3000, positionClass: 'toast-top-center'
+        });
+        return;
+      }
+      var carrito: Carrito = new Carrito(detalle, 1, this.usuario);
+      this.carser.guardarCarrito(carrito).subscribe(data =>(
+        this.toastr.success('¡Producto agregado con exito!', '', {
+          timeOut: 3000, positionClass: 'toast-top-center'
+        })
+      ));
+    });
+  }
+
     /*if(this.estaEnCarrito(producto.idProducto)){
       this.toastr.warning('¡Producto ya registrado!', '', {
         timeOut: 3000, positionClass: 'toast-top-center'
@@ -121,7 +142,7 @@ export class ProductosComponent implements OnInit
       window.location.reload();
     })*/
 
-  }
+
 
   estaEnCarrito(idProducto:any):boolean{
     return false;
@@ -207,6 +228,14 @@ export class ProductosComponent implements OnInit
     this.prodser.getProductos().subscribe(productos => {
       this.productos = productos;
       this.cargarDetallesProductos();
+    });
+  }
+
+  createCarrito(id:any):any{
+    this.detprodser.encontrarProducto(id).pipe(detail => {
+      //console.log(detail.idDetalle);
+
+      return detail;
     });
   }
 }

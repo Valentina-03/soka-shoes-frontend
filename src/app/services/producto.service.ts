@@ -49,7 +49,7 @@ export class ProductoService {
     return this.http.post<any>(`${this.uri}`,producto);
   }
 
-  public encontrarProducto(id:any):Observable<Producto>{
+  public encontrarProducto(id:number):Observable<any>{
     return this.http.get<any>(`${this.uri}/${id}`);
   }
 

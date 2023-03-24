@@ -1,3 +1,4 @@
+import { Usuario } from './../../models/Usuario';
 import { Component, OnInit } from '@angular/core';
 import { CarritoService } from 'src/app/services/carrito.service';
 import { CompraService } from 'src/app/services/compra.service';
@@ -13,13 +14,14 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class CarritoComponent implements OnInit {
 
-  carrito:any = [];
+  carritos:any = [];
+  totales: any = [];
   total!:number;
   uri = global.url_front;
   descripcion= "";
 
   // Variables Payu ==============================================
-  referenciaUnic = this.generarReferencia();
+  referenciaUnic = 0;
   iva = 0.19;
   moneda = "COP";
   apikey = "yn1jslEAEe809I0BVfHp0VOUIW";
@@ -47,7 +49,7 @@ export class CarritoComponent implements OnInit {
   // test =================================================================
 
   email = "";
-  usuario!:any;
+  usuario:Usuario;
 
   constructor(
     private usuarioService:UsuarioService,
@@ -60,19 +62,26 @@ export class CarritoComponent implements OnInit {
 
   ngOnInit(): void {
     this.email= this.token.getEmail();
-
+    console.log(this.email);
     this.usuarioService.usuarioPorEmail(this.email).subscribe(usuarioEncontrado=>{
-     this.usuario = usuarioEncontrado;
+      console.log(usuarioEncontrado);
+      this.usuario = usuarioEncontrado;
+      this.cargarCarrito();
+    });
+  }
 
-     this.usuarioService.carritoDeUsuario(this.usuario.id_Usuario).subscribe(carritos=>{
-      this.carrito = carritos;
-      this.calcularTotal();
+  cargarCarrito(){
+    console.log(this.usuario);
+    this.usuarioService.carritoDeUsuario(this.usuario.idUsuario).subscribe(carritos=>{
+      this.carritos = carritos;
+      this.getTotales();
       this.actializarFirma();
     })
+  }
 
-    })
-
-
+  getTotales(){
+    for(let i = 0; i<this.carritos.length; i++)
+    this.totales[i] = this.carritos[i].detalleProducto.producto.precio * this.carritos[i].cantidad;
   }
 
    cargarDatos(form:any){
@@ -82,10 +91,10 @@ export class CarritoComponent implements OnInit {
       "totalCompra":this.total,
       "estado":"PENDIENTE"
     }
-    this.carritoService.guardarCarritos(this.carrito).subscribe(data=>{
+    this.carritoService.guardarCarritos(this.carritos).subscribe(data=>{
     })
 
-    this.compraService.guardarCompra(compra,this.usuario.id_Usuario).subscribe(async data=>{
+    this.compraService.guardarCompra(compra,this.usuario.idUsuario).subscribe(async data=>{
       this.toastS.success('¡Compra registrada!', '', {
         timeOut: 3000, positionClass: 'toast-top-center'
       })
@@ -108,60 +117,19 @@ export class CarritoComponent implements OnInit {
   }
 
   generarDescripcion(){
-    let desc = "Pago de ";
-    for (let i = 0; i < this.carrito.length; i++) {
-      if((i+1)==this.carrito.length){
-        desc+=` (${this.carrito[i].cantidad}) ${this.carrito[i].producto.modelo}.`;
-      }else{
-        desc+=` (${this.carrito[i].cantidad}) ${this.carrito[i].producto.modelo},`;
-      }
 
-    }
-    this.descripcion = desc;
   }
 
   eliminarCarrito(idCarrito:number){
-    this.carritoService.eliminarCarrito(idCarrito).subscribe(data=>{});
-    document.getElementById(`carrito${idCarrito}`)?.remove();
-    this.calcularTotal();
+
   }
 
   mostrar(event:any, i:number){
 
-    let cant = parseInt(event.target.value);
-    if(cant<=0 || cant>10 || isNaN(cant)){
-      event.target.value = 1;
-      return;
-    }
 
-    let produc= this.carrito[i];
-
-    produc.cantidad = parseInt(event.target.value)
-    this.carrito[i] = produc;
-    this.calcularTotal();
-    document.getElementById("subtotal-pagar")!.innerHTML="$"+this.total;
-    document.getElementById("total-pagar")!.innerHTML="$"+this.total;
   }
 
-  calcularTotalInd(carrito:any):number{
-    let cantidad = parseInt(carrito.cantidad);
-    let precio = parseInt(carrito.producto.precio);
-    return cantidad*precio;
-  }
-
-  generarReferencia():string{
-    const fecha = new Date();
-    return Math.round((Math.random()*4754))+""+Math.round(fecha.getMilliseconds());
-  }
-
-  calcularTotal(){
-    this.total = 0;
-    let totalCompra = 0;
-    let carritoCompra = this.carrito;
-    for (let i = 0; i < carritoCompra.length; i++) {
-        let producto = carritoCompra[i];
-        totalCompra+=(producto.cantidad*producto.producto.precio);
-    }
-    this.total = totalCompra;
+  calcularTotal(i:number){
+    this.carritos[i].precio * this.carritos[i].cantidad;
   }
 }
