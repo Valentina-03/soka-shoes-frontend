@@ -1,3 +1,4 @@
+import { Producto } from './../../../../models/Producto';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -33,38 +34,36 @@ export class EditProductosComponent implements OnInit {
     this.id = this.aRouter.snapshot.paramMap.get('idProducto');
     this.form = this.formBuilder.group({
       idProducto:['',Validators.required],
-      categoria:['',Validators.required],
-      precio:['',Validators.required],
-      urlImg:['',Validators.required],
-      modelo:['',Validators.required],
-      cantidad:['',Validators.required],
+      nombre:['',Validators.required],
       descripcion:['',Validators.required],
+      precio:['',Validators.required],
+      cantidad:['',Validators.required],
       marca:['',Validators.required],
-      estado:['',Validators.required],
+      categoria:['',Validators.required]
     });
-    this.productoService.encontrarProducto(this.id).subscribe(producto => {
 
-      this.form.setValue({
-      idProducto: producto.idProducto,
-      categoria: producto.categoria.idCategoria,
-      precio: producto.precio,
-      urlImg: producto.urlImg,
-      modelo: producto.modelo,
-      cantidad:producto.cantidad,
-      descripcion: producto.descripcion,
-      marca: producto.marca.idMarca,
-      estado:producto.estado
+    this.categoriaService.getCategorias().subscribe(categorias=>
+      this.categorias = categorias
+    )
+
+    this.marcaService.getMarcas().subscribe(marcas=>
+      this.marcas = marcas
+    )
+
+    this.productoService.encontrarProducto(this.id).subscribe(producto =>
+    {
+      this.form.patchValue({
+        idProducto: producto.idProducto,
+        nombre: producto.nombre,
+        descripcion: producto.descripcion,
+        precio: producto.precio,
+        cantidad:producto.cantidad,
+        marca: producto.marca.idMarca,
+        categoria: producto.categoria.idCategoria
       });
     });
-
-    this.categoriaService.getCategorias().subscribe(categorias=>{
-      this.categorias = categorias;
-    })
-
-    this.marcaService.getMarcas().subscribe(marcas=>{
-      this.marcas = marcas;
-    })
   }
+
   eliminar(producto:any){
 
   }
