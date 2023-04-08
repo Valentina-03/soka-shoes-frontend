@@ -1,6 +1,6 @@
-import { Carrito } from './../../models/Carrito';
-import { Usuario } from './../../models/Usuario';
-import { DetalleProductoService } from './../../services/detalle_producto.service';
+import { Carrito } from './../models/Carrito';
+import { Usuario } from './../models/Usuario';
+import { DetalleProductoService } from './../services/detalle_producto.service';
 import { CarritoService } from 'src/app/services/carrito.service';
 import { Component, OnInit } from '@angular/core';
 import { CategoriaService } from 'src/app/services/categoria.service';

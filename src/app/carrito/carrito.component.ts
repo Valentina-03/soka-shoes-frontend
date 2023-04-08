@@ -1,4 +1,4 @@
-import { Usuario } from './../../models/Usuario';
+import { Usuario } from './../models/Usuario';
 import { Component, OnInit } from '@angular/core';
 import { CarritoService } from 'src/app/services/carrito.service';
 import { CompraService } from 'src/app/services/compra.service';

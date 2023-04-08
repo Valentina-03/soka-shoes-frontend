@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CarritoComponent } from './carrito/carrito/carrito.component';
-import { DashboardAdminComponent } from './dashboard-admin/dashboard-admin/dashboard-admin.component';
+import { CarritoComponent } from './carrito/carrito.component';
+import { DashboardAdminComponent } from './dashboard-admin/dashboard-admin.component';
 import { ContactoComponent } from './home/contacto/contacto.component';
-import { DashboardComponent } from './home/dashboard/dashboard/dashboard.component';
+import { DashboardComponent } from './home/dashboard/dashboard.component';
 import { EditProductosComponent } from './home/forms/form-product/edit-productos/edit-productos.component';
-import { FormProductComponent } from './home/forms/form-product/form-product/form-product.component';
-import { TableProductComponent } from './home/forms/table-product/table-product/table-product.component';
-import { InicioComponent } from './home/inicio/inicio/inicio.component';
-import { PayuComponent } from './payu/payu/payu.component';
-import { ProductosComponent } from './productos/productos/productos.component';
+import { FormProductComponent } from './home/forms/form-product/form-product.component';
+import { TableProductComponent } from './home/forms/table-product/table-product.component';
+import { InicioComponent } from './home/inicio/inicio.component';
+import { PayuComponent } from './payu/payu.component';
+import { ProductosComponent } from './productos/productos.component';
 import { AuthLoginComponent } from './security/auth/auth-login/auth-login.component';
 import { AuthRegistroComponent } from './security/auth/auth-register/auth-registro.component';
 
