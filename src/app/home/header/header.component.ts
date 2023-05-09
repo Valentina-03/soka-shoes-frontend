@@ -8,8 +8,6 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 })
 export class HeaderComponent implements OnInit {
 
-  total!:number;
-  carrito:any = [];
   email = "";
   usuario!:any;
   isLogged = false;
@@ -17,6 +15,7 @@ export class HeaderComponent implements OnInit {
   cantidadTotal=0;
   roles: string[] = [];
   isAdmin = false;
+
   constructor(
     private token:TokenService,
     private usuarioService:UsuarioService
@@ -36,29 +35,7 @@ export class HeaderComponent implements OnInit {
       }
       this.usuarioService.usuarioPorEmail(this.email).subscribe(usuarioEncontrado=>{
         this.usuario = usuarioEncontrado;
-        this.usuarioService.carritoDeUsuario(this.usuario.idUsuario).subscribe(carritos=>{
-          this.carrito = carritos;
-          this.calcularTotal();
-          this.calcularCantidad();
-        })
       })
     }
   }
-
-  calcularCantidad(){
-    for (let i = 0; i < this.carrito.length; i++) {
-      this.cantidadTotal+=this.carrito[i].cantidad;
-    }
-  }
-  calcularTotal(){
-    this.total = 0;
-    let totalCompra = 0;
-    let carritoCompra = this.carrito;
-    for (let i = 0; i < carritoCompra.length; i++) {
-        let producto = carritoCompra[i];
-        totalCompra+=(producto.cantidad*producto.producto.precio);
-    }
-    this.total = totalCompra;
-  }
-
 }

@@ -50,45 +50,10 @@
                     <a routerLink="/carrito" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
                         <div class="icon">
                             <i class="icon-shopping-cart"></i>
-                            <span *ngIf="cantidadTotal>0" class="cart-count">{{cantidadTotal}}</span>
                         </div>
                         <p>Carrito</p>
                     </a>
-
-                    <div *ngIf="cantidadTotal>0" class="dropdown-menu dropdown-menu-right">
-                        <div  class="dropdown-cart-products" *ngFor="let carrito of carrito">
-                            <div class="product">
-                                <div class="product-cart-details">
-                                    <h4 class="product-title">
-                                        <a href="product.html">{{carrito.producto.modelo}}</a>
-                                    </h4>
-
-                                    <span class="cart-product-info">
-                                        <span class="cart-product-qty">{{carrito.cantidad}}</span>
-                                        x {{carrito.producto.precio}}
-                                    </span>
-                                </div><!-- End .product-cart-details -->
-
-                                <figure class="product-image-container">
-                                    <a href="product.html" class="product-image">
-                                        <img src="{{carrito.producto.urlImg}}" alt="product">
-                                    </a>
-                                </figure>
-                            </div><!-- End .product -->
-                        </div><!-- End .cart-product -->
-
-                        <div class="dropdown-cart-total">
-                            <span>Total</span>
-
-                            <span class="cart-total-price">{{total}}</span>
-                        </div><!-- End .dropdown-cart-total -->
-
-                        <div class="dropdown-cart-action">
-                            <a routerLink="/carrito" class="btn btn-primary">Ver carrito</a>
-                        </div><!-- End .dropdown-cart-total -->
-                    </div><!-- End .dropdown-menu -->
                 </div><!-- End .cart-dropdown -->
-
             </div><!-- End .header-right -->
         </div><!-- End .container -->
     </div><!-- End .header-middle -->
@@ -102,19 +67,16 @@
                     <ul class="menu sf-arrows">
                         <li>
                             <a routerLink="/inicio" class="sf-with">Inicio</a>
-
                         </li>
                         <li>
                             <a routerLink="/productos" class="sf-with">Lista de Productos</a>
-
                         </li>
                         <li>
-                            <a href="#" routerLink="/contacto" class="sf-with">Contactanos</a>
+                            <a routerLink="/contacto" class="sf-with">Contactanos</a>
                         </li>
                         <li>
-                            <a href="#" *ngIf="isAdmin" routerLink="/admin" class="sf-with">Admin</a>
+                            <a *ngIf="isAdmin" routerLink="/admin" class="sf-with">Admin</a>
                         </li>
-
                     </ul><!-- End .menu -->
                 </nav><!-- End .main-nav -->
             </div><!-- End .header-center -->
