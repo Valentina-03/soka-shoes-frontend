@@ -4,11 +4,11 @@ export class Carrito
 {
   idCarrito: number;
   cantidad: number;
-  detalleProducto: DetalleProducto;
+  detalle: DetalleProducto;
   usuario: Usuario;
 
   constructor(detalle: DetalleProducto, cantidad: number, usuario:Usuario) {
-    this.detalleProducto = detalle;
+    this.detalle = detalle;
     this.cantidad = cantidad;
     this.usuario = usuario;
   }

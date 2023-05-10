@@ -1,7 +1,7 @@
 import { DetalleProducto } from './DetalleProducto';
 export class Talla
 {
-  id_talla: number;
+  idTalla: number;
   numero: number;
-  detallesProducto: DetalleProducto[];
+  detalleProductoCollection: DetalleProducto[];
 }

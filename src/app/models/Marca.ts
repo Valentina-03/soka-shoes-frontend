@@ -1,7 +1,7 @@
 import { Producto } from './Producto';
 export class Marca
 {
-  id_marca: number;
+  idMarca: number;
   nombre: string;
-  productos: Producto[];
+  productoCollection: Producto[];
 }

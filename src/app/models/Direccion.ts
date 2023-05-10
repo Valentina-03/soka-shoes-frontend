@@ -2,11 +2,11 @@ import { Usuario } from './Usuario';
 import { Ciudad } from './Ciudad';
 export class Direccion
 {
-  id_direccion: number;
+  idDireccion: number;
   nombre: string;
   direccion: string;
-  info_adic: string;
-  cod_postal: string;
+  infoAdic: string;
+  codPostal: string;
   ciudad: Ciudad;
   usuario: Usuario;
 }

@@ -4,12 +4,12 @@ import { Direccion } from './Direccion';
 import { Usuario } from './Usuario';
 export class Compra
 {
-  id_compra: number;
+  idCompra: number;
   estado: string;
-  total_compra: number;
+  totalCompra: number;
   fecha: Date;
   usuario: Usuario;
   direccion: Direccion;
-  detallesCompra: DetalleCompra[];
-  transacciones: Transaccionp;
+  detalleCompraCollection: DetalleCompra[];
+  transaccionpCollection: Transaccionp;
 }

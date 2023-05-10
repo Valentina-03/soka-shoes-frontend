@@ -3,15 +3,15 @@ import { Categoria } from './Categoria';
 import { Marca } from './Marca';
 export class Producto
 {
-  id_producto: number;
+  idProducto: number;
   nombre: string;
   descripcion: string;
   precio: number;
   estado: boolean;
   cantidad: number;
-  created_at: Date;
-  updated_at: Date;
+  createdAt: Date;
+  updatedAt: Date;
   marca: Marca;
   categoria: Categoria;
-  detallesProducto: DetalleProducto[];
+  detalleProductoCollection: DetalleProducto[];
 }

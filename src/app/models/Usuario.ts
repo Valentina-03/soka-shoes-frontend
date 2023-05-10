@@ -8,8 +8,8 @@ export class Usuario
   username: string;
   email: string;
   password: string;
-  direcciones: Direccion[];
-  compras: Compra[];
-  carritos: Carrito[];
+  direccionCollection: Direccion[];
+  compraCollection: Compra[];
+  carritoCollection: Carrito[];
   roles: Rol[];
 }

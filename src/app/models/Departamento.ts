@@ -1,7 +1,7 @@
 import { Ciudad } from './Ciudad';
 export class Departamento
 {
-  id_departamento: number;
+  idDepartamento: number;
   nombre: string;
-  ciudades: Ciudad[];
+  ciudadCollection: Ciudad[];
 }

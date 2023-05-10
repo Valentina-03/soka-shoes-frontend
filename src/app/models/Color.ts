@@ -1,7 +1,7 @@
 import { DetalleProducto } from './DetalleProducto';
 export class Color
 {
-  id_color: string;
+  idColor: string;
   nombre: string;
-  detallesProducto: DetalleProducto[];
+  detalleProductoCollection: DetalleProducto[];
 }

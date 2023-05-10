@@ -1,7 +1,7 @@
 import { Persona } from './Persona';
 export class TipoIdentificacion
 {
-  id_tipo: number;
+  idTipo: number;
   nombre: number;
-  personas: Persona[];
+  personaCollection: Persona[];
 }
