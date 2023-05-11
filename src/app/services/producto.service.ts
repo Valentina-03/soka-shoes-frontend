@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import * as global from 'global'
 import { Observable } from 'rxjs';
 import { DetalleProducto } from '../models/DetalleProducto';
+import { DetalleProductoDTO } from '../models/dto/detalleProducto-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class ProductoService {
   uri = `${global.url}/producto`;
   constructor(private http:HttpClient) { }
 
-  public getDetallesProducto(id:any):Observable<DetalleProducto[]>{
+  public getDetallesProducto(id:any):Observable<DetalleProductoDTO[]>{
     return this.http.get<any>(`${this.uri}/${id}/detalles`);
   }
 
@@ -45,19 +46,19 @@ export class ProductoService {
     return this.http.get<any>(`${this.uri}/all`);
   }
 
-  public guardarProducto(producto:Producto):Observable<any>{
+  public guardarProducto(producto:Producto):Observable<Producto>{
     return this.http.post<any>(`${this.uri}`,producto);
   }
 
-  public encontrarProducto(id:number):Observable<any>{
+  public encontrarProducto(id:number):Observable<Producto>{
     return this.http.get<any>(`${this.uri}/${id}`);
   }
 
-  public editarProducto(producto:Producto):Observable<any>{
+  public editarProducto(producto:Producto):Observable<Producto>{
     return this.http.put<any>(`${this.uri}`,producto);
   }
 
-  public eliminarProducto(id:any):Observable<any>{
+  public eliminarProducto(id:number):Observable<any>{
     return this.http.delete<any>(`${this.uri}/${id}`);
   }
 }

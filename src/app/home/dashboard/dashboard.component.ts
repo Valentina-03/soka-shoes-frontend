@@ -45,7 +45,7 @@ export class DashboardComponent implements OnInit
   cargarCompras(){
     this.usuarioService.comprasDeUsuario(this.usuario.id_Usuario).subscribe(compras=>{
       for (let i = 0; i < compras.length; i++) {
-        if(compras[i].usuario.id_Usuario == this.usuario.id_Usuario){
+        if(compras[i].usuario.idUsuario == this.usuario.id_Usuario){
           this.compras.push(compras[i])
         }
       }

@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import * as global from 'global'
+import { Carrito } from '../models/Carrito';
+import { Compra } from '../models/Compra';
 
 @Injectable({
   providedIn: 'root'
@@ -21,11 +23,11 @@ export class UsuarioService {
     return this.http.get<any>(`${this.uri}/${email}/email`);
   }
 
-  public carritoDeUsuario(idUsuario:number):Observable<any>{
+  public carritoDeUsuario(idUsuario:number):Observable<Carrito[]>{
     return this.http.get<any>(`${this.uri}/${idUsuario}/carrito`);
   }
 
-  public comprasDeUsuario(id:any):Observable<any>{
+  public comprasDeUsuario(id:any):Observable<Compra[]>{
     return this.http.get<any>(`${this.uri}/${id}/compras`);
   }
 
@@ -33,7 +35,7 @@ export class UsuarioService {
     return this.http.get<any>(`${this.uri}`);
   }
 
-  public guardarUsuario(user:Usuario):Observable<any>{
+  public guardarUsuario(user:Usuario):Observable<Usuario>{
     return this.http.post<any>(`${this.uri}`,user);
   }
 
@@ -41,7 +43,7 @@ export class UsuarioService {
     return this.http.get<any>(`${this.uri}/${id}`);
   }
 
-  public editarUsuario(user:Usuario):Observable<any>{
+  public editarUsuario(user:Usuario):Observable<Usuario>{
     return this.http.put<any>(`${this.uri}`,user);
   }
 

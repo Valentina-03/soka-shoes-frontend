@@ -12,7 +12,7 @@ export class CarritoService {
 
   constructor(private http:HttpClient) {}
 
-   public getCarritos():Observable<any>{
+   public getCarritos():Observable<Carrito[]>{
     return this.http.get<any>(`${this.uri}`);
   }
 
@@ -20,19 +20,19 @@ export class CarritoService {
     return this.http.post<any>(`${this.uri}`,carrito);
   }
 
-  public guardarCarritos(carritos:Observable<any>):Observable<any>{
+  public guardarCarritos(carritos:Observable<Carrito[]>):Observable<Carrito[]>{
     return this.http.patch<any>(`${this.uri}/grupo`,carritos);
   }
 
-  public eliminarCarritos(carritos:Observable<any>):Observable<any>{
+  public eliminarCarritos(carritos:Observable<Carrito>):Observable<Carrito>{
     return this.http.patch<any>(`${this.uri}/grupo`, carritos);
   }
 
-  public editarCarrito(carrito:any):Observable<any>{
+  public editarCarrito(carrito:Carrito):Observable<Carrito>{
     return this.http.put<any>(`${this.uri}`, carrito);
   }
 
-  public encontrarCarrito(id:any):Observable<any>{
+  public encontrarCarrito(id:any):Observable<Carrito>{
     return this.http.get<any>(`${this.uri}/${id}`);
   }
 

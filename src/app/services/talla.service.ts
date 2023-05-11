@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as global from 'global'
 import { Observable } from 'rxjs';
+import { Talla } from '../models/Talla';
+import { Producto } from '../models/Producto';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +13,7 @@ export class TallaService {
   uri = `${global.url}/talla`;
   constructor(private http:HttpClient) { }
 
-  public getProductos(id:any):Observable<any>{
+  public getProductos(id:any):Observable<Producto[]>{
     return this.http.get<any>(`${this.uri}/${id}/productos`);
   }
 
@@ -19,19 +21,19 @@ export class TallaService {
     return this.http.get<any>(`${this.uri}/${id}/cntProductos`);
   }
 
-  public getTallas():Observable<any>{
+  public getTallas():Observable<Talla[]>{
     return this.http.get<any>(`${this.uri}`);
   }
 
-  public guardarTalla(talla:any):Observable<any>{
+  public guardarTalla(talla:Talla):Observable<Talla>{
     return this.http.post<any>(`${this.uri}`, talla);
   }
 
-  public encontrarTalla(id:any):Observable<any>{
+  public encontrarTalla(id:any):Observable<Talla>{
     return this.http.get<any>(`${this.uri}/${id}`);
   }
 
-  public editarTalla(talla:any):Observable<any>{
+  public editarTalla(talla:Talla):Observable<Talla>{
     return this.http.put<any>(`${this.uri}`,talla);
   }
 

@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as global from 'global'
 import { Observable } from 'rxjs';
+import { Producto } from '../models/Producto';
+import { Color } from '../models/Color';
 
 @Injectable({
   providedIn: 'root'
@@ -11,31 +13,31 @@ export class ColorService {
   uri = `${global.url}/color`;
   constructor(private http:HttpClient) { }
 
-  public getProductos(id:any):Observable<any>{
+  public getProductos(id:number):Observable<Producto[]>{
     return this.http.get<any>(`${this.uri}/${id}/productos`);
   }
 
-  public getCntProductos(id:any):Observable<any>{
+  public getCntProductos(id:number):Observable<number>{
     return this.http.get<any>(`${this.uri}/${id}/cntProductos`);
   }
 
-  public getColors():Observable<any>{
+  public getColors():Observable<Color[]>{
     return this.http.get<any>(`${this.uri}`);
   }
 
-  public guardarColor(color:any):Observable<any>{
+  public guardarColor(color:Color):Observable<Color>{
     return this.http.post<any>(`${this.uri}`, color);
   }
 
-  public encontrarColor(id:any):Observable<any>{
+  public encontrarColor(id:number):Observable<Color>{
     return this.http.get<any>(`${this.uri}/${id}`);
   }
 
-  public editarColor(color:any):Observable<any>{
+  public editarColor(color:Color):Observable<Color>{
     return this.http.put<any>(`${this.uri}`,color);
   }
 
-  public eliminarColor(id:any):Observable<any>{
+  public eliminarColor(id:number):Observable<any>{
     return this.http.delete<any>(`${this.uri}/${id}`);
   }
 }

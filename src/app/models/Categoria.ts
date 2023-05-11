@@ -1,7 +1,7 @@
 import { Producto } from './Producto';
 export class Categoria
 {
-  idCateogria: number;
+  idCategoria: number;
   nombre: string;
   descripcion: string;
   productoCollection: Producto[];

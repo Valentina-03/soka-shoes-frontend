@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { JwtDto } from '../models/jwt-dto';
-import { LoginUsuario } from '../models/login-usuario';
-import { NuevoUsuario } from '../models/nuevo-usuario';
+import { JwtDto } from '../models/dto/jwt-dto';
+import { LoginUsuario } from '../models/dto/login-usuario';
+import { NuevoUsuario } from '../models/dto/nuevo-usuario';
 import * as global from 'global'
 
 @Injectable({

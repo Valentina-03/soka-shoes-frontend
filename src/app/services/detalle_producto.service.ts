@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as global from 'global'
 import { Observable } from 'rxjs';
+import { DetalleProducto } from '../models/DetalleProducto';
 
 @Injectable({
   providedIn: 'root'
@@ -11,23 +12,27 @@ export class DetalleProductoService {
   uri = `${global.url}/detproducto`;
   constructor(private http:HttpClient) { }
 
-  public getProductos():Observable<any>{
+  public getByAll(idProducto:number, idColor:string, idTalla:number):Observable<DetalleProducto>{
+    return this.http.get<any>(`${this.uri}/${idProducto}/${idColor}/${idTalla}`)
+  }
+
+  public getDetalles():Observable<DetalleProducto[]>{
     return this.http.get<any>(`${this.uri}`);
   }
 
-  public guardarProducto(producto:any):Observable<any>{
-    return this.http.post<any>(`${this.uri}`,producto);
+  public guardarDetalle(detalle:DetalleProducto):Observable<DetalleProducto>{
+    return this.http.post<any>(`${this.uri}`,detalle);
   }
 
-  public encontrarProducto(id:any):Observable<any>{
+  public encontrarDetalle(id:any):Observable<DetalleProducto>{
     return this.http.get<any>(`${this.uri}/${id}`);
   }
 
-  public editarProducto(producto:any):Observable<any>{
-    return this.http.put<any>(`${this.uri}`,producto);
+  public editarDetalle(detalle:any):Observable<DetalleProducto>{
+    return this.http.put<any>(`${this.uri}`,detalle);
   }
 
-  public eliminarProducto(id:any):Observable<any>{
+  public eliminarDetalle(id:any):Observable<any>{
     return this.http.delete<any>(`${this.uri}/${id}`);
   }
 }

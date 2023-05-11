@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import * as global from 'global'
+import { Compra } from '../models/Compra';
 @Injectable({
   providedIn: 'root'
 })
@@ -19,15 +20,15 @@ export class CompraService {
     return this.http.get<any>(`${this.uri}/${id}/transacciones`);
   }
 
-  public getCompras():Observable<any>{
+  public getCompras():Observable<Compra[]>{
     return this.http.get<any>(`${this.uri}`);
   }
 
-  public encontrarCompra(id:any):Observable<any>{
+  public encontrarCompra(id:any):Observable<Compra>{
     return this.http.get<any>(`${this.uri}/${id}`);
   }
 
-  public guardarCompra(idUsuario:any, idDireccion:any):Observable<any>{
+  public guardarCompra(idUsuario:any, idDireccion:any):Observable<Compra>{
     return this.http.get<any>(`${this.uri}/${idUsuario}/${idDireccion}`);
   }
 
