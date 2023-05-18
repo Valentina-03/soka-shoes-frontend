@@ -4,8 +4,7 @@ import { CarritoComponent } from './carrito/carrito.component';
 import { DashboardAdminComponent } from './dashboard-admin/dashboard-admin.component';
 import { ContactoComponent } from './home/contacto/contacto.component';
 import { DashboardComponent } from './home/dashboard/dashboard.component';
-import { EditProductosComponent } from './home/forms/form-product/edit-productos/edit-productos.component';
-import { FormProductComponent } from './home/forms/form-product/form-product.component';
+import { FormProductComponent } from './home/forms/form-product/form-productos.component';
 import { TableProductComponent } from './home/forms/table-product/table-product.component';
 import { InicioComponent } from './home/inicio/inicio.component';
 import { PayuComponent } from './payu/payu.component';
@@ -22,12 +21,12 @@ const routes: Routes = [
   {path: 'registro',component: AuthRegistroComponent},
   {path: 'miCuenta',component: DashboardComponent},
   {path: 'admin',component: DashboardAdminComponent},
-  {path: 'agregarProducto',component: FormProductComponent},
   {path: 'contacto',component: ContactoComponent},
 
   {path: '',component: InicioComponent},
   {path: 'listaproductos',component: TableProductComponent},
-  {path: 'editarProducto/:idProducto',component: EditProductosComponent},
+  {path: 'agregarProducto',component: FormProductComponent},
+  {path: 'editarProducto/:idProducto',component: FormProductComponent},
 
 ];
 

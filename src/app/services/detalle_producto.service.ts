@@ -12,7 +12,7 @@ export class DetalleProductoService {
   uri = `${global.url}/detproducto`;
   constructor(private http:HttpClient) { }
 
-  public getByAll(idProducto:number, idColor:string, idTalla:number):Observable<DetalleProducto>{
+  public getByAll(idProducto:number, idColor:string, idTalla:number):Observable<any>{
     return this.http.get<any>(`${this.uri}/${idProducto}/${idColor}/${idTalla}`)
   }
 
@@ -32,7 +32,7 @@ export class DetalleProductoService {
     return this.http.put<any>(`${this.uri}`,detalle);
   }
 
-  public eliminarDetalle(id:any):Observable<any>{
+  public eliminarDetalle(id:number):Observable<any>{
     return this.http.delete<any>(`${this.uri}/${id}`);
   }
 }

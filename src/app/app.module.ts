@@ -26,12 +26,11 @@ import { interceptorProvider } from './security/interceptors/paq-interceptor.ser
 import { DashboardComponent } from './home/dashboard/dashboard.component';
 import { DashboardAdminComponent } from './dashboard-admin/dashboard-admin.component';
 import { XdComponent } from './prueba/xd/xd.component';
-import { FormProductComponent } from './home/forms/form-product/form-product.component';
+import { FormProductComponent } from './home/forms/form-product/form-productos.component';
 import { HeaderAdminComponent } from './home/header-admin/header-admin.component';
 import { MenuAdminComponent } from './home/menu-admin/menu-admin.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TableProductComponent } from './home/forms/table-product/table-product.component';
-import { EditProductosComponent } from './home/forms/form-product/edit-productos/edit-productos.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ContactoComponent } from './home/contacto/contacto.component';
@@ -54,7 +53,6 @@ import { InformacionPagoComponent } from './informacion-pago/informacion-pago.co
     HeaderAdminComponent,
     MenuAdminComponent,
     TableProductComponent,
-    EditProductosComponent,
     ContactoComponent,
     InformacionPagoComponent,
   ],

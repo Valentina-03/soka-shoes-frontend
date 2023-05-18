@@ -50,6 +50,22 @@ export class ProductoService {
     return this.http.post<any>(`${this.uri}`,producto);
   }
 
+  public registrarProducto(producto:Producto, detalles:any[]):Observable<any>{
+    const body = {
+      producto: producto,
+      detalles: detalles
+    };
+    return this.http.post<any>(`${this.uri}/registrar`, body);
+  }
+
+  public actualizarProducto(producto:Producto, detalles:any[]):Observable<any>{
+    const body = {
+      producto: producto,
+      detalles: detalles
+    };
+    return this.http.post<any>(`${this.uri}/actualizar`, body);
+  }
+
   public encontrarProducto(id:number):Observable<Producto>{
     return this.http.get<any>(`${this.uri}/${id}`);
   }
