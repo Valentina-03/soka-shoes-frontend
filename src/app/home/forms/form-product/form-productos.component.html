@@ -1,0 +1,209 @@
+<body>
+  <div class="dash">
+    <div class="dash-app">
+      <app-menu-admin></app-menu-admin>
+      <app-header-admin></app-header-admin>
+      <main class="dash-content">
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="col-9">
+            <div class="card spur-card">
+              <div class="card-header rounded-card">
+                <div class="spur-card-icon">
+                  <i class="fas fa-chart-bar"></i>
+                </div>
+                <div class="spur-card-title" id="spur-card-title"></div>
+              </div>
+              <div class="card-body rounded">
+                <form [formGroup]="form">
+                  <input formControlName="idProducto" type="hidden" class="form-control">
+                  <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input formControlName="nombre" type="text" class="form-control" id="nombre" placeholder="Nombre">
+                    <span *ngIf="this.form.get('nombre')?.errors?.['required']">
+                      (El nombre no es válido)
+                    </span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="descripcion">Descripcion</label>
+                    <input formControlName="descripcion" type="text" class="form-control" id="descripcion" placeholder="Descripcion">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="precio">Precio</label>
+                    <input formControlName="precio" type="number" class="form-control" id="precio" placeholder="0.0$">
+                    <span *ngIf="this.form.get('precio')?.errors?.['min'] || this.form.get('precio')?.errors?.['required']">
+                      (El precio no es válido)
+                    </span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="marca">Marca</label>
+                    <select class="form-control" formControlName="marca">
+                      <option *ngFor="let marca of marcas" value="{{marca.idMarca}}">{{marca.nombre}}</option>
+                    </select>
+                    <span *ngIf="this.form.get('marca')?.errors?.['required']">
+                      (Debe seleccionar la marca)
+                    </span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="categoria">Categoria</label>
+                    <select class="form-control" formControlName="categoria">
+                      <option *ngFor="let categoria of categorias" value="{{categoria.idCategoria}}">
+                        {{categoria.nombre}}</option>
+                    </select>
+                    <span *ngIf="this.form.get('categoria')?.errors?.['required']">
+                      (Debe seleccionar la categoria)
+                    </span>
+                  </div>
+                </form><br>
+
+                <table style="width:85%; margin: 0 auto;" class="table table-in-card">
+                  <thead>
+                    <tr>
+                      <th width="150" scope="col"></th>
+                      <th width="165" scope="col">Color</th>
+                      <th width="150" scope="col">Talla</th>
+                      <th width="125" scope="col">Cantidad</th>
+                      <th width="125" scope="col">Total</th>
+                      <th width="100" scope="col">Editar</th>
+                      <th scope="col">Eliminar</th>
+                    </tr>
+                  </thead>
+                  <tbody >
+                    <tr *ngFor="let detalle of detalles; let i=index">
+                      <td style="vertical-align: middle;"><img class="img-tabla" src="{{detalle.url}}" alt=""></td>
+                      <td style="vertical-align: middle;">{{detalle.color.nombre}}</td>
+                      <td style="vertical-align: middle;">
+                        <select id="talla-{{i}}" (change)="onSelectTalla(i)">
+                          <option *ngFor="let talla of detalle.tallas; let j=index" value="{{j}}">{{talla.first.numero}}
+                          </option>
+                        </select>
+                      </td>
+                      <td style="vertical-align: middle;" id="cnt-det-{{i}}">{{detalle.tallas[0].second}}</td>
+                      <td style="vertical-align: middle;">{{detalle.cantidad}}</td>
+                      <td style="vertical-align: middle;"><button (click)="mostrarDetalle(i)" class="btn-editar">
+                        <i class="fas fa-edit"></i></button></td>
+                      <td style="vertical-align: middle;"><button (click)="eliminar(i)"class="btn-eliminar btn-danger">
+                          <i class="fas fa-trash-alt"></i></button></td>
+                    </tr>
+                  </tbody>
+                </table><br>
+                <button class="btn btn-primary" (click)="mostrarDetalle(-1)">Agregar</button>
+                <div class="row justify-content-end">
+                  <button (click)="cancelar()" class="col-md-2 btn btn-primary">Cancelar</button>
+                  <button (click)="onSubmit()" id="btn-submit" [disabled]="!this.form.valid" class="col-md-2 btn btn-primary">Terminar</button>
+                </div>
+              </div>
+
+              <div id="editDetail-modal" class="modal card-body rounded">
+                <!-- Modal content -->
+                <div class="card-body rounded modal-content">
+                  <div class="card-body rounded">
+                    <div id="first-edit">
+                      <div class="form-group-row">
+                        <label for="img">Url</label>
+                        <input type="url" class="form-control" id="img-edit" required>
+                      </div>
+                      <table id="edit-table" style="width:75%;  margin: 0 auto;" class="table table-in-card">
+                        <thead>
+                          <tr>
+                            <th width="150" scope="col">Talla</th>
+                            <th width="125" scope="col">Cantidad</th>
+                          </tr>
+                        </thead>
+                        <tbody id="edit-table-body">
+                          <tr *ngFor="let talla of detalle?.tallas; let i=index">
+                            <input type="hidden" id="talla-edit-{{i}}" value="talla">
+                            <td>{{talla.first.numero}}</td>
+                            <td><input id="cnt-edit-{{i}}" type="number" min="1" value="{{talla.second}}"></td>
+                          </tr>
+                        </tbody>
+                      </table><br><br>
+
+                      <div class="form-group row">
+                        <button (click)="submitDetalle()" id="submit-detalle" class="btn btn-primary">Terminar</button>
+                        <button (click)="ocultarDetalle()" class="btn btn-primary">Cancelar</button>
+                        <button (click)="newTalla(0)" id="new-talla" class="btn btn-primary">Nueva talla</button>
+                      </div>
+                    </div>
+
+                    <div id="second-edit">
+                      <div class="form-group row">
+                        <div class="col-md-6">
+                          <label>Talla</label>
+                          <select id="talla-sel-edit" class="form-control"></select>
+                        </div>
+                        <div class="col-md-6">
+                          <label>Cantidad</label>
+                          <input type="number" min="1" class="form-control" id="cantidad-edit">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <button (click)="newTalla(2)" class="btn btn-primary">Terminar</button>
+                        <button (click)="newTalla(1)" id="other-talla-edit" class="btn btn-primary">Agregar Otra</button>
+                        <button (click)="ocultarDetalle()" class="btn btn-primary">Cancelar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="aggDetail-modal" class="modal card-body rounded">
+                <!-- Modal content -->
+                <div class="card-body rounded modal-content">
+                  <div class="card-body rounded">
+                    <div id="first">
+                      <input type="hidden" id="id-detalle">
+                      <div class="form-group row">
+                        <div class="col-md-3">
+                          <label for="color">Color</label>
+                          <div class="row">
+                            <div class="col-md-3">
+                              <div class="color-box" id="color-box"></div>
+                            </div>
+                            <select id="color-sel" (change)="onSelectColor($event)" class="form-control col-md-9">
+                              <option *ngFor="let color of colores; let i=index" value="{{i}}">{{color.nombre}}</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-md-9">
+                          <label for="img">Url</label>
+                          <input type="url" class="form-control" id="img-add" placeholder="https://www...">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <button (click)="addTalla(0)" id="new-talla" class="btn btn-primary">Agregar Tallas</button>
+                        <button (click)="ocultarDetalle()" class="btn btn-primary">Cancelar</button>
+                      </div>
+                    </div>
+
+                    <div id="second">
+                      <div class="form-group row">
+                        <div class="col-md-6">
+                          <label>Talla</label>
+                          <select id="talla-sel" class="form-control"> </select>
+                        </div>
+                        <div class="col-md-6">
+                          <label>Cantidad</label>
+                          <input type="number" min="1" class="form-control" id="cantidad">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <button (click)="addTalla(2)" class="btn btn-primary">Terminar</button>
+                        <button (click)="addTalla(1)" id="other-talla" class="btn btn-primary">Agregar Otra</button>
+                        <button (click)="ocultarDetalle()" class="btn btn-primary">Cancelar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</body>

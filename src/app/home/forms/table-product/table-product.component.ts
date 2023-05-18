@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Toast, ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 import { ProductoService } from 'src/app/services/producto.service';
 
 @Component({
@@ -17,22 +17,29 @@ export class TableProductComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.productoService.getProductos().subscribe(productos=>{
-      this.productos = productos;
-    })
+    this.productoService.getAllProductos().subscribe(productos=> this.productos = productos);
   }
-  editar(id:any){
-    this.router.navigateByUrl("/editarProducto/"+id);
+
+  estado(id:any, e:any){
+    if(e == 0){
+    this.productoService.deshabilitar(id).subscribe(async producto => {
+      this.toastS.success('¡Producto deshabilitado!', '', {
+        timeOut: 2000, positionClass: 'toast-top-center'
+      })
+      await new Promise(f => setTimeout(f, 1500));
+      window.location.reload();
+      })
+    }else{
+      this.productoService.habilitar(id).subscribe(async producto => {
+        this.toastS.success('¡Producto habilitado!', '', {
+          timeOut: 2000, positionClass: 'toast-top-center'
+        })
+        await new Promise(f => setTimeout(f, 1500));
+        window.location.reload();
+        })
+    }
   }
-  eliminar(id:any){
-   this.productoService.deshabilitar(id).subscribe(async producto => {
-    this.toastS.success('¡Producto deshabilitado!', '', {
-      timeOut: 3000, positionClass: 'toast-top-center'
-    })
-    await new Promise(f => setTimeout(f, 1500));
-    window.location.reload();
-    })
-  }
+
   activar(id:any){
     this.productoService.habilitar(id).subscribe(async producto => {
       this.toastS.success('¡Producto habilitado!', '', {
@@ -42,5 +49,11 @@ export class TableProductComponent implements OnInit {
       window.location.reload();
      })
    }
+   editar(id:any){
+    this.router.navigateByUrl("/editarProducto/"+id);
+  }
 
+  agregar(){
+    this.router.navigateByUrl("/agregarProducto");
+  }
 }

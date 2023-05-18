@@ -1,63 +1,58 @@
 <body>
-    <div class="dash">
-        <div class="dash-app">
-            <app-menu-admin></app-menu-admin>
-            <app-header-admin></app-header-admin>
-            <div class="row">
-                <div class="col-lg-1"></div>
-                <div class="col-lg-10">
-                    <div  style="margin: 10px;" class="card spur-card">
-                        <div class="card-header">
-                            <div class="spur-card-icon">
-                                <i class="fas fa-table"></i>
-                            </div>
-                            <div class="spur-card-title">Lista de productos</div>
-                        </div>
-                        <div class="card-body ">
-                            <table class="table table-in-card">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Id</th>
-                                        <th scope="col">Categoria</th>
-                                        <th scope="col">Img</th>
-                                        <th scope="col">Modelo</th>
-                                        <th scope="col">Marca</th>
-                                        <th scope="col">Stock</th>
-                                        <th scope="col">Estado</th>
-                                        <th scope="col">Precio</th>
-                                        <th scope="col">Accion</th>
-
-
-                                    </tr>
-                                </thead>
-                                <tbody *ngFor="let producto of productos;let i =index">
-                                    <tr>
-                                        <th scope="row">{{i}}</th>
-                                        <td>{{producto.idProducto}}</td>
-                                        <td>{{producto.categoria.nombre}}</td>
-                                        <td><img class="img-tabla" src="{{producto.urlImg}}" alt=""></td>
-                                        <td>{{producto.modelo}}</td>
-                                        <td>{{producto.marca.nombre}}</td>
-                                        <td>{{producto.cantidad}}</td>
-                                        <td *ngIf="producto.estado==true">ACTIVO</td>
-                                        <td *ngIf="producto.estado==false">INACTIVO</td>
-                                        <td>{{producto.precio}}</td>
-                                        <td *ngIf="producto.estado==true"><button (click)="eliminar(producto.idProducto)" class="btn-eliminar btn-danger"><i class="fas fa-trash-alt"></i></button>
-                                        </td>
-                                        <td *ngIf="producto.estado==false">
-                                            <button (click)="activar(producto.idProducto)" class="btn-activar"><i class="fas fa-check"></i></button>
-                                        </td>
-                                        
-                                        <button (click)="editar(producto.idProducto)" class="btn-editar"><i class="fas fa-edit"></i></button>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+  <div class="dash">
+    <div class="dash-app">
+      <app-menu-admin></app-menu-admin>
+      <app-header-admin></app-header-admin>
+      <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10">
+          <div style="margin: 10px;" class="card spur-card">
+            <div class="card-header">
+              <div class="spur-card-icon">
+                <i class="fas fa-table"></i>
+              </div>
+              <div class="spur-card-title">Lista de productos</div>
             </div>
-
+            <div class="card-body ">
+              <table class="table table-in-card">
+                <thead>
+                  <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Stock</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">Estado</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let producto of productos; let i =index">
+                    <td scope="row">{{i+1}}</td>
+                    <td>{{producto.nombre}}</td>
+                    <td>{{producto.precio}}</td>
+                    <td>{{producto.categoria.nombre}}</td>
+                    <td>{{producto.marca.nombre}}</td>
+                    <td>{{producto.cantidad}}</td>
+                    <td *ngIf="producto.estado==true">ACTIVO</td>
+                    <td *ngIf="producto.estado==false">INACTIVO</td>
+                    <td><button (click)="editar(producto.idProducto)" class="btn-editar"><i class="fas fa-edit"></i></button></td>
+                    <td *ngIf="producto.estado==true" style="vertical-align: middle;">
+                      <button (click)="estado(producto.idProducto, 0)" class="btn-eliminar btn-danger"><i class="fas fa-trash-alt"></i></button>
+                    </td>
+                    <td *ngIf="producto.estado==false" style="vertical-align: middle; align-items:center; display:felx;">
+                      <button (click)="estado(producto.idProducto, 1)" class="btn-success btn-eliminar"><i class="fas fa-solid fa-plus"></i></button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table><br>
+              <button (click)="agregar()" class="btn btn-primary">Agregar</button>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </body>
