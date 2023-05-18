@@ -2,8 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as global from 'global'
 import { Observable } from 'rxjs';
-import { Producto } from '../models/Producto';
-import { Color } from '../models/Color';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +11,7 @@ export class ColorService {
   uri = `${global.url}/color`;
   constructor(private http:HttpClient) { }
 
-  public getProductos(id:number):Observable<Producto[]>{
+  public getProductos(id:number):Observable<any[]>{
     return this.http.get<any>(`${this.uri}/${id}/productos`);
   }
 
@@ -21,11 +19,11 @@ export class ColorService {
     return this.http.get<any>(`${this.uri}/${id}/cntProductos`);
   }
 
-  public getColors():Observable<Color[]>{
+  public getColors():Observable<any[]>{
     return this.http.get<any>(`${this.uri}`);
   }
 
-  public encontrarColor(id:number):Observable<Color>{
+  public encontrarColor(id:number):Observable<any>{
     return this.http.get<any>(`${this.uri}/${id}`);
   }
 
