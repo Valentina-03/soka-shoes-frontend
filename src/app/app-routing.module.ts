@@ -4,11 +4,11 @@ import { CarritoComponent } from './carrito/carrito.component';
 import { DashboardAdminComponent } from './dashboard-admin/dashboard-admin.component';
 import { ContactoComponent } from './home/contacto/contacto.component';
 import { DashboardComponent } from './home/dashboard/dashboard.component';
-import { FormProductComponent } from './home/forms/form-product/form-productos.component';
-import { TableProductComponent } from './home/forms/table-product/table-product.component';
+import { FormProductComponent } from './home/productos/form-product/form-productos.component';
+import { TableProductComponent } from './home/productos/table-product/table-product.component';
 import { InicioComponent } from './home/inicio/inicio.component';
 import { PayuComponent } from './payu/payu.component';
-import { ProductosComponent } from './home/forms/productos.component';
+import { ProductosComponent } from './home/productos/productos.component';
 import { AuthLoginComponent } from './security/auth/auth-login/auth-login.component';
 import { AuthRegistroComponent } from './security/auth/auth-register/auth-registro.component';
 
