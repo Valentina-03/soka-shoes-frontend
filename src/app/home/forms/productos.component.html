@@ -40,7 +40,7 @@
                   <div class="col-6 col-lg-3">
                     <figure class="product-media">
                       <a href="product.html">
-                        <img id="prod-img-{{i}}" src="{{productos_detalles[i][0].url}}" alt="Product image" class="product-image">
+                        <img id="prod-img-{{i}}" src="{{detalles[i]?.[0].url}}" alt="Product image" class="product-image">
                       </a>
                     </figure>
                     <!-- End .product-media -->
@@ -51,7 +51,7 @@
                     <div class="col-6 col-lg-2 order-lg-last">
                       <div class="product-list-action">
                         <div class="product-title"> Tallas</div>
-                        <select id="prod-talla-sel-{{i}}" ng-model="selectedName" ng-options="x for x in names"> </select>
+                        <select id="prod-talla-sel-{{i}}"> </select>
                       </div>
                       <!-- End .product-list-action -->
                     </div>
@@ -79,7 +79,7 @@
                       <!-- End .product-content -->
                     </div>
                       <div class="row justify-content-start">
-                        <div *ngFor="let pd of productos_detalles[i]; let j = index" class="col-lg-2 img-container">
+                        <div *ngFor="let pd of detalles[i]; let j = index" class="col-lg-2 img-container">
                           <div class="product-nav product-nav-thumbs ">
                             <img id="prod-col-btn-{{i}}-{{j}}" src="{{pd.url}}" alt="Product image" class="btn-product-img" (click)="setTallas(pd, i, j)">
                           </div>

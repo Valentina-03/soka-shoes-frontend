@@ -20,16 +20,8 @@ export class DetalleProductoService {
     return this.http.get<any>(`${this.uri}`);
   }
 
-  public guardarDetalle(detalle:DetalleProducto):Observable<DetalleProducto>{
-    return this.http.post<any>(`${this.uri}`,detalle);
-  }
-
   public encontrarDetalle(id:any):Observable<DetalleProducto>{
     return this.http.get<any>(`${this.uri}/${id}`);
-  }
-
-  public editarDetalle(detalle:any):Observable<DetalleProducto>{
-    return this.http.put<any>(`${this.uri}`,detalle);
   }
 
   public eliminarDetalle(id:number):Observable<any>{

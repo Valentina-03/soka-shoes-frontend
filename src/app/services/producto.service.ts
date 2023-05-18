@@ -38,7 +38,7 @@ export class ProductoService {
     return this.http.get<any>(`${this.uri}`);
   }
 
-  public getProductosFiltrados(ids: [[]]): Observable<Producto[]>{
+  public getProductosFiltrados(ids: any[][]): Observable<Producto[]>{
     return this.http.post<any>(`${this.uri}/filtrar`, ids);
   }
 
@@ -46,35 +46,24 @@ export class ProductoService {
     return this.http.get<any>(`${this.uri}/all`);
   }
 
-  public guardarProducto(producto:Producto):Observable<Producto>{
-    return this.http.post<any>(`${this.uri}`,producto);
-  }
-
-  public registrarProducto(producto:Producto, detalles:any[]):Observable<any>{
+  public guardarProducto(producto:Producto, detalles:any[]):Observable<any>{
     const body = {
       producto: producto,
       detalles: detalles
     };
-    return this.http.post<any>(`${this.uri}/registrar`, body);
+    return this.http.post<any>(`${this.uri}`, body);
   }
 
-  public actualizarProducto(producto:Producto, detalles:any[]):Observable<any>{
+  public editarProducto(producto:Producto, detalles:any[]):Observable<any>{
     const body = {
       producto: producto,
       detalles: detalles
     };
-    return this.http.post<any>(`${this.uri}/actualizar`, body);
+    return this.http.put<any>(`${this.uri}`, body);
   }
 
   public encontrarProducto(id:number):Observable<Producto>{
     return this.http.get<any>(`${this.uri}/${id}`);
   }
 
-  public editarProducto(producto:Producto):Observable<Producto>{
-    return this.http.put<any>(`${this.uri}`,producto);
-  }
-
-  public eliminarProducto(id:number):Observable<any>{
-    return this.http.delete<any>(`${this.uri}/${id}`);
-  }
 }

@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { PayuComponent } from './payu/payu.component';
 import { HeaderComponent } from './home/header/header.component';
 import { FooterComponent } from './home/footer/footer.component';
-import { ProductosComponent } from './productos/productos.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { InicioComponent } from './home/inicio/inicio.component';
 import { TallaService } from './services/talla.service';
@@ -21,7 +20,7 @@ import { FormsModule } from '@angular/forms';
 import { UsuarioService } from './services/usuario.service';
 import { TransaccionService } from './services/transaccion.service';
 import { PaqInterceptorService } from './security/interceptors/paq-interceptor.service';
-
+import { ProductosComponent } from './home/forms/productos.component';
 import { interceptorProvider } from './security/interceptors/paq-interceptor.service';
 import { DashboardComponent } from './home/dashboard/dashboard.component';
 import { DashboardAdminComponent } from './dashboard-admin/dashboard-admin.component';

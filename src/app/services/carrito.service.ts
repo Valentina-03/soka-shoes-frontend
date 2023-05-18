@@ -16,10 +16,6 @@ export class CarritoService {
     return this.http.get<any>(`${this.uri}`);
   }
 
-  public guardarCarrito(carrito:Carrito):Observable<Carrito>{
-    return this.http.post<any>(`${this.uri}`,carrito);
-  }
-
   public guardarCarritos(carritos:Observable<Carrito[]>):Observable<Carrito[]>{
     return this.http.patch<any>(`${this.uri}/grupo`,carritos);
   }

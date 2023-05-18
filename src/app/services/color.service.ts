@@ -25,19 +25,8 @@ export class ColorService {
     return this.http.get<any>(`${this.uri}`);
   }
 
-  public guardarColor(color:Color):Observable<Color>{
-    return this.http.post<any>(`${this.uri}`, color);
-  }
-
   public encontrarColor(id:number):Observable<Color>{
     return this.http.get<any>(`${this.uri}/${id}`);
   }
 
-  public editarColor(color:Color):Observable<Color>{
-    return this.http.put<any>(`${this.uri}`,color);
-  }
-
-  public eliminarColor(id:number):Observable<any>{
-    return this.http.delete<any>(`${this.uri}/${id}`);
-  }
 }

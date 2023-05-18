@@ -8,7 +8,7 @@ import { FormProductComponent } from './home/forms/form-product/form-productos.c
 import { TableProductComponent } from './home/forms/table-product/table-product.component';
 import { InicioComponent } from './home/inicio/inicio.component';
 import { PayuComponent } from './payu/payu.component';
-import { ProductosComponent } from './productos/productos.component';
+import { ProductosComponent } from './home/forms/productos.component';
 import { AuthLoginComponent } from './security/auth/auth-login/auth-login.component';
 import { AuthRegistroComponent } from './security/auth/auth-register/auth-registro.component';
 

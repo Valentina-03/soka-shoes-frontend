@@ -25,20 +25,7 @@ export class TallaService {
     return this.http.get<any>(`${this.uri}`);
   }
 
-  public guardarTalla(talla:Talla):Observable<Talla>{
-    return this.http.post<any>(`${this.uri}`, talla);
-  }
-
   public encontrarTalla(id:any):Observable<Talla>{
     return this.http.get<any>(`${this.uri}/${id}`);
   }
-
-  public editarTalla(talla:Talla):Observable<Talla>{
-    return this.http.put<any>(`${this.uri}`,talla);
-  }
-
-  public eliminarTalla(id:any):Observable<any>{
-    return this.http.delete<any>(`${this.uri}/${id}`);
-  }
-
 }

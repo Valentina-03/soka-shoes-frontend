@@ -27,6 +27,18 @@ export class UsuarioService {
     return this.http.get<any>(`${this.uri}/${idUsuario}/carrito`);
   }
 
+  public addCarrito(idUsuario:number, detalle:any):Observable<Carrito>{
+    return this.http.post<any>(`${this.uri}/${idUsuario}/addCarrito`,detalle);
+  }
+
+  public editarCarritos(idUsuario:number, carritos:any):Observable<any>{
+    return this.http.post<any>(`${this.uri}/${idUsuario}/editarCarritos`,carritos);
+  }
+
+  public eliminarCarrito(idUsuario:number, idcarro:number):Observable<any>{
+    return this.http.delete<any>(`${this.uri}/${idUsuario}/${idcarro}/eliminar`);
+  }
+
   public comprasDeUsuario(id:any):Observable<Compra[]>{
     return this.http.get<any>(`${this.uri}/${id}/compras`);
   }
