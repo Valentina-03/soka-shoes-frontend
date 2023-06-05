@@ -50,7 +50,7 @@ export class AuthLoginComponent implements OnInit {
         this.tokenService.setEmail(data.email);
         this.tokenService.setAuthorities(data.authorities);
         this.roles = data.authorities;
-        this.toastr.success('Bienvenido ' + data.username, 'OK', {
+        this.toastr.success('Bienvenido ' + data.email, 'OK', {
           timeOut: 3000, positionClass: 'toast-top-center'
         });
 
@@ -60,7 +60,6 @@ export class AuthLoginComponent implements OnInit {
         }
         
         else{
-       
           this.router.navigate(['/inicio']);  
         }
           
