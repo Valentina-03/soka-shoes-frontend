@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CarritoComponent } from './carrito/carrito.component';
-import { DashboardAdminComponent } from './dashboard-admin/dashboard-admin.component';
+import { DashboardAdminComponent } from './administracion/dashboard-admin/dashboard-admin.component';
 import { ContactoComponent } from './home/contacto/contacto.component';
 import { DashboardComponent } from './home/dashboard/dashboard.component';
 import { FormProductComponent } from './home/productos/form-product/form-productos.component';

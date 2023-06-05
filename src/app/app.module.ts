@@ -23,7 +23,7 @@ import { PaqInterceptorService } from './security/interceptors/paq-interceptor.s
 import { ProductosComponent } from './home/productos/productos.component';
 import { interceptorProvider } from './security/interceptors/paq-interceptor.service';
 import { DashboardComponent } from './home/dashboard/dashboard.component';
-import { DashboardAdminComponent } from './dashboard-admin/dashboard-admin.component';
+import { DashboardAdminComponent } from './administracion/dashboard-admin/dashboard-admin.component';
 import { XdComponent } from './prueba/xd/xd.component';
 import { FormProductComponent } from './home/productos/form-product/form-productos.component';
 import { HeaderAdminComponent } from './home/header-admin/header-admin.component';
