@@ -60,8 +60,8 @@ export class AuthLoginComponent implements OnInit {
         }
         
         else{
-          window.location.reload()
-          this.router.navigate(['/']);
+       
+          this.router.navigate(['/inicio']);  
         }
           
       },
