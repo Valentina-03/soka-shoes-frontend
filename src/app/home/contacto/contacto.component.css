@@ -88,6 +88,12 @@
     font-weight: bolder;
     text-decoration: none;
 }
+.tittle{
+    color: #f17de5;
+    font-family: cursive;
+    font-weight: bolder;
+    text-decoration: none;
+}
 @media screen and (max-width:1100px) {
     .container-contacts{
         width: 90%;
