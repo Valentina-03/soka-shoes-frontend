@@ -34,6 +34,10 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ContactoComponent } from './home/contacto/contacto.component';
 import { InformacionPagoComponent } from './informacion-pago/informacion-pago.component';
+import { EditarInfoComponent } from './administracion/page/editar-info/editar-info.component';
+import { EmpleadoComponent } from './administracion/page/empleado/empleado.component';
+import { AddEmpleadoComponent } from './administracion/page/empleado/add-empleado/add-empleado.component';
+import { MisComprasComponent } from './home/mis-compras/mis-compras.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,6 +58,10 @@ import { InformacionPagoComponent } from './informacion-pago/informacion-pago.co
     TableProductComponent,
     ContactoComponent,
     InformacionPagoComponent,
+    EditarInfoComponent,
+    EmpleadoComponent,
+    AddEmpleadoComponent,
+    MisComprasComponent,
   ],
   imports: [
     BrowserModule,

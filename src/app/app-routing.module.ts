@@ -11,6 +11,9 @@ import { PayuComponent } from './payu/payu.component';
 import { ProductosComponent } from './home/productos/productos.component';
 import { AuthLoginComponent } from './security/auth/auth-login/auth-login.component';
 import { AuthRegistroComponent } from './security/auth/auth-register/auth-registro.component';
+import { MisComprasComponent } from './home/mis-compras/mis-compras.component';
+import { EditarInfoComponent } from './administracion/page/editar-info/editar-info.component';
+
 
 const routes: Routes = [
   {path: 'pagos',component: PayuComponent},
@@ -22,6 +25,12 @@ const routes: Routes = [
   {path: 'miCuenta',component: DashboardComponent},
   {path: 'admin',component: DashboardAdminComponent},
   {path: 'contacto',component: ContactoComponent},
+
+  {path: 'miscompras',component: MisComprasComponent},
+  {path: 'editarinfo',component: MisComprasComponent},
+  {path: 'miscompras',component: MisComprasComponent},
+  {path: 'miscompras',component: MisComprasComponent},
+
 
   {path: '',component: InicioComponent},
   {path: 'listaproductos',component: TableProductComponent},
