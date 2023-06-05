@@ -12,6 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 export class AuthLoginComponent implements OnInit {
   isLogged = false;
   isLoginFail = false;
+  isAdmin = false;
   loginUsuario!: LoginUsuario;
   email!: string;
   password!: string;
@@ -34,6 +35,12 @@ export class AuthLoginComponent implements OnInit {
     }
   }
 
+  isAdministrador(){
+    if(this.roles.length == 2){
+      this.isAdmin=true;
+    }
+  }
+
   onLogin(): void {
     this.loginUsuario = new LoginUsuario(this.email, this.password);
     this.authService.login(this.loginUsuario).subscribe(
@@ -47,10 +54,16 @@ export class AuthLoginComponent implements OnInit {
           timeOut: 3000, positionClass: 'toast-top-center'
         });
 
-        if(this.tokenService.getAuthorities().length>1)
+        this.isAdministrador();
+        if(this.isAdmin){
           this.router.navigate(['/admin']);
-        else
+        }
+        
+        else{
+          window.location.reload()
           this.router.navigate(['/']);
+        }
+          
       },
       err => {
         this.isLogged = false;
