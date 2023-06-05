@@ -13,8 +13,8 @@ import { AuthLoginComponent } from './security/auth/auth-login/auth-login.compon
 import { AuthRegistroComponent } from './security/auth/auth-register/auth-registro.component';
 import { MisComprasComponent } from './home/mis-compras/mis-compras.component';
 import { EditarInfoComponent } from './administracion/page/editar-info/editar-info.component';
-
-
+import { EmpleadoComponent } from './administracion/page/empleado/empleado.component';
+import { AddEmpleadoComponent } from './administracion/page/empleado/add-empleado/add-empleado.component';
 const routes: Routes = [
   {path: 'pagos',component: PayuComponent},
   {path: 'productos',component: ProductosComponent},
@@ -26,10 +26,11 @@ const routes: Routes = [
   {path: 'admin',component: DashboardAdminComponent},
   {path: 'contacto',component: ContactoComponent},
 
+  //Componentes CR
   {path: 'miscompras',component: MisComprasComponent},
-  {path: 'editarinfo',component: MisComprasComponent},
-  {path: 'miscompras',component: MisComprasComponent},
-  {path: 'miscompras',component: MisComprasComponent},
+  {path: 'editarinfo',component: EditarInfoComponent},
+  {path: 'empleados',component: EmpleadoComponent},
+  {path: 'nuevoempleado',component: AddEmpleadoComponent},
 
 
   {path: '',component: InicioComponent},
