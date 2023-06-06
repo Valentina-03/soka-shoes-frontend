@@ -8860,9 +8860,9 @@ h1 {
     .dash-nav a:hover {
       text-decoration: none; }
   .dash-nav.dash-nav-dark {
-    background-color: #F17DE5; }
+    background-color: rgba(230 , 187 , 231 , 0.3); }
     .dash-nav.dash-nav-dark a {
-      color: #fff; }
+      color: #000; }
 
 .spur-logo {
   font-family: "Nunito", sans-serif;
@@ -9076,7 +9076,7 @@ h1 {
 
 .dash-toolbar {
   min-height: 84px;
-  background-color: #F17DE5;
+  background-color: rgba(230 , 187 , 231 , 0.3);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
