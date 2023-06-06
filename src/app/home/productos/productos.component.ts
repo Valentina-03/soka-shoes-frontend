@@ -21,15 +21,17 @@ export class ProductosComponent implements OnInit
   email  = "";
 
   //Cargar productos y detalles
-  productos:any = [];
-  detalles:any[] = [];
-  selected = [-1, -1];
+  productos:any = []
+  detalles:any[] = []
+  selected = [-1, -1]
 
   //Cargar filtros
-  allMarcas:any = [];
-  allCategorias:any = [];
-  allColores:any = [];
-  allTallas:any = [];
+  allMarcas:any = []
+  allCategorias:any = []
+  allColores:any = []
+  allTallas:any = []
+  precio:any = []
+  talla:any = []
 
   constructor(
     private prodser: ProductoService,
@@ -89,8 +91,7 @@ export class ProductosComponent implements OnInit
 
   filtrar(){
     //var filter:any = [{}, {}, {}, {}, {}];
-    var filter:any [] = [];
-    filter[0] = []; filter[1] = []; filter[2] = []; filter[3] = []; filter[4] = [];
+    var filter:any [] = []; filter[0] = [], filter[1] = [], filter[2] = [], filter[3] = [], filter[4]  = []
     if($("#filter-marca").is(':visible')) {
       let i = 0;
       $("[name= 'filter-marca']").each(function () {
@@ -116,18 +117,21 @@ export class ProductosComponent implements OnInit
       });
     }
     if($("#filter-talla").is(':visible')) {
-      if($("#filter-talla-min").val() != 0 && $("#filter-talla-max").val() != 0){
-        filter[3][0] = $("#filter-talla-min").val();
-        filter[3][1] = $("#filter-talla-max").val();
-      }
+      filter[3] = this.talla
+      console.log(filter[3]);
     }
     if($("#filter-precio").is(':visible')) {
-      if($("#filter-precio-min").val() != 0 && $("#filter-precio-max").val() != 0){
+      filter[4] = this.precio
+      console.log(filter[4]);
+
+
+      /*if($("#filter-precio-min").val() != 0 && $("#filter-precio-max").val() != 0){
         alert($("#filter-precio-max").val());
         filter[4][0] = $("#filter-precio-min").val();
         filter[4][1] = $("#filter-precio-max").val();
-      }
+      }*/
     }
+    console.log(filter);
     this.productos = this.prodser.getProductosFiltrados(filter).subscribe(productos => {
       this.productos = productos;
       this.cargarDetallesProductos();
@@ -169,13 +173,11 @@ export class ProductosComponent implements OnInit
   toggleClick(id:any) {
     $("#"+id).toggle();
     if(id == "filter-talla"){
-      $("#filter-talla-min").val(0);
-      $("#filter-talla-max").val(0);
+      this.talla = [30, 50]
       return;
     }
     if(id == "filter-precio"){
-      $("#filter-precio-min").val(0);
-      $("#filter-precio-max").val(0);
+      this.precio = [30000, 500000]
       return;
     }
     $("[name= '"+ id + "']").prop("checked", false);
