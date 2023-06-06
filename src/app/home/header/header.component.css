@@ -1,0 +1,24 @@
+.header{
+    align-items: center;
+    text-align: center;
+    padding-left: 10rem;
+    padding-right: 12rem;
+}
+.color:hover{
+    color: #f17de5; 
+    font-size: 16px;
+}
+nav{
+    color: gray;
+}
+.pr-1{
+    font-size: 10px;
+}
+.icons{
+    color: grey ;
+    font-size: 20px;
+}
+.icons:hover{
+    font-size: 25px;
+    color: #f17de5;
+}

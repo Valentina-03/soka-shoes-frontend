@@ -1,92 +1,56 @@
-<header class="header header-2 header-intro-clearance">
-    <div class="header-top">
-        <div class="container"></div>
-    </div><!-- End .header-top -->
-
-    <div class="header-middle">
-        <div class="container">
-            <div class="header-left">
-                <button class="mobile-menu-toggler">
-                    <span class="sr-only">Toggle mobile menu</span>
-                    <i class="icon-bars"></i>
-                </button>
-
-                <a href="index.html" class="logo">
-                    <img src="https://github.com/SantiagoAndresSerrano/img-soka/blob/master/sokaSlogo.png?raw=true" alt="Molla Logo" width="105" height="25">
-                </a>
+<header >
+    <div class="header">
+        <nav class="row">
+            <ul class="menu col-6 ">
+                <li>
+                    <a routerLink="/inicio" class="sf-with color">Inicio</a>
+                </li>
+                <li>
+                    <a routerLink="/productos" class="sf-with color">Lista de Productos</a>
+                </li>
+                <li>
+                    <a routerLink="/contacto" class="sf-with color">Productos del mes</a>
+                </li>
+                <li>
+                    <a routerLink="/contacto" class="sf-with color">Contactanos</a>
+                </li>
+                <li>
+                    <a *ngIf="isAdmin" routerLink="/admin" class="sf-with color">Admin</a>
+                </li>
+                
+            </ul>
+            <div class="menu col-6 justify-content-end ">
+                <div class="row row-right" style="gap: 10px;">
+            
+                    <div *ngIf="isLogged" class="account">
+                        <a routerLink="/miCuenta" title="My account" class="color">
+                            <i class="fas fa-user icons"></i>
+                            <p class="pr-1">Mi Cuenta</p>
+                        </a>
+                    </div>
+    
+                    <div *ngIf="!isLogged" class="account">
+                        <a routerLink="/login" title="My account" >
+                            <i class="fas fa-user icons"></i>
+                            <p class="pr-1">Iniciar sesion</p>
+                        </a>
+                    </div>
+                    <div class="">
+                        <a routerLink="/carrito" class="color">
+                            <i class="fas fa-shopping-bag icons"></i>
+                            <p class="pr-1">Mis compras</p>
+                        </a>
+                    </div>
+                    <div class="">
+                        <a routerLink="/carrito" class="color">
+                            <i class="fas fa-shopping-cart icons"></i>
+                            <p class="pr-1">Carrito</p>
+                        </a>
+                    </div>
+                
+                </div>
             </div>
-            <!-- End .header-left -->
-
-            <div class="header-right">
-                <div *ngIf="isLogged" class="account">
-                    <a routerLink="/miCuenta" title="My account">
-                        <div class="icon">
-                            <i class="icon-user"></i>
-                        </div>
-                        <p>Mi Cuenta</p>
-                    </a>
-                </div><!-- End .compare-dropdown -->
-
-                <div *ngIf="!isLogged" class="account">
-                    <a routerLink="/login" title="My account">
-                        <div class="icon">
-                            <i class="icon-user"></i>
-                        </div>
-                        <p>Iniciar sesion</p>
-                    </a>
-                </div><!-- End .compare-dropdown -->
-
-
-                <!-- <div class="wishlist">
-                    <a href="wishlist.html" title="Wishlist">
-                        <div class="icon">
-                            <i class="icon-heart-o"></i>
-                            <span class="wishlist-count badge">3</span>
-                        </div>
-                        <p>Wishlist</p>
-                    </a>
-                </div>End .compare-dropdown -->
-
-                <div class="dropdown cart-dropdown">
-                    <a routerLink="/carrito" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false" data-display="static">
-                        <div class="icon">
-                            <i class="icon-shopping-cart"></i>
-                        </div>
-                        <p>Carrito</p>
-                    </a>
-                </div><!-- End .cart-dropdown -->
-            </div><!-- End .header-right -->
-        </div><!-- End .container -->
-    </div><!-- End .header-middle -->
-
-    <div class="header-bottom sticky-header">
-        <div class="container">
-
-
-            <div class="header-center">
-                <nav class="main-nav">
-                    <ul class="menu sf-arrows">
-                        <li>
-                            <a routerLink="/inicio" class="sf-with">Inicio</a>
-                        </li>
-                        <li>
-                            <a routerLink="/productos" class="sf-with">Lista de Productos</a>
-                        </li>
-                        <li>
-                            <a routerLink="/contacto" class="sf-with">Contactanos</a>
-                        </li>
-                        <li>
-                            <a *ngIf="isAdmin" routerLink="/admin" class="sf-with">Admin</a>
-                        </li>
-
-                        
-                    </ul><!-- End .menu -->
-                </nav><!-- End .main-nav -->
-            </div><!-- End .header-center -->
-
-            <div class="header-right">
-                <i class="la la-lightbulb-o"></i><p>Compra<span class="highlight">&nbsp; con nosotros</span></p>
-            </div>
-        </div><!-- End .container -->
-    </div><!-- End .header-bottom -->
-</header><!-- End .header -->
+            
+        </nav>
+    </div>
+</header>
