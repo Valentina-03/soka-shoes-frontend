@@ -42,6 +42,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CategoriaComponent } from './administracion/page/categoria/categoria.component';
 import { FormCategoriaComponent } from './administracion/page/categoria/form-categoria/form-categoria.component';
+import { MarcasComponent } from './home/marcas/marcas.component';
+import { FormMarcasComponent } from './home/marcas/form-marcas/form-marcas.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,6 +69,8 @@ import { FormCategoriaComponent } from './administracion/page/categoria/form-cat
     MisComprasComponent,
     CategoriaComponent,
     FormCategoriaComponent,
+    MarcasComponent,
+    FormMarcasComponent,
   ],
   imports: [
     BrowserModule,

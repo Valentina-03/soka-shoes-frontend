@@ -17,6 +17,9 @@ import { EmpleadoComponent } from './administracion/page/empleado/empleado.compo
 import { AddEmpleadoComponent } from './administracion/page/empleado/add-empleado/add-empleado.component';
 import { CategoriaComponent } from './administracion/page/categoria/categoria.component';
 import { FormCategoriaComponent } from './administracion/page/categoria/form-categoria/form-categoria.component';
+import { MarcasComponent } from './home/marcas/marcas.component';
+import { FormMarcasComponent } from './home/marcas/form-marcas/form-marcas.component';
+
 const routes: Routes = [
   {path: 'pagos',component: PayuComponent},
   {path: 'productos',component: ProductosComponent},
@@ -37,6 +40,9 @@ const routes: Routes = [
   //Componentes Ber
   {path: 'categorias', component: CategoriaComponent},
   {path: 'form-categoria', component: FormCategoriaComponent},
+  //Componentes Dani la linda
+  {path: 'marcas',component: MarcasComponent},
+  {path: 'editarMarca/:idMarca',component: FormMarcasComponent},
 
   {path: '',component: InicioComponent},
   {path: 'listaproductos',component: TableProductComponent},

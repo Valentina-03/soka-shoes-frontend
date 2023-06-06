@@ -8860,7 +8860,7 @@ h1 {
     .dash-nav a:hover {
       text-decoration: none; }
   .dash-nav.dash-nav-dark {
-    background-color: #181F2C; }
+    background-color: #F17DE5; }
     .dash-nav.dash-nav-dark a {
       color: #fff; }
 
@@ -9076,7 +9076,7 @@ h1 {
 
 .dash-toolbar {
   min-height: 84px;
-  background-color: #F3F3F3;
+  background-color: #F17DE5;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
