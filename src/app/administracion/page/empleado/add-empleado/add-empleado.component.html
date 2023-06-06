@@ -1,1 +1,85 @@
-<p>add-empleado works!</p>
+<body>
+    <div class="dash">
+        <div class="dash-app">
+
+            <app-menu-admin></app-menu-admin>
+            <app-header-admin></app-header-admin>
+            <main class="dash-content">
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-9">
+                        <div class="card spur-card">
+                            <div class="card-header rounded-card">
+                                <div class="spur-card-icon">
+                                    <i class="fas fa-chart-bar"></i>
+                                </div>
+                                <div class="spur-card-title" id="spur-card-title">AGREGAR EMPLEADO</div>
+                            </div>
+                           
+                            <div class="card-body rounded">
+                                <form [formGroup]="form" (submit)="enviarData()" class="contact100-form validate-form">
+                                    <span class="contact100-form-title">
+                                        <P class="col-sm-10">{{titulo | uppercase}}</P>
+                                    </span>
+                                    <hr style="color: rgb(5, 168, 5);">
+                                    <input formControlName="id_usuario" hidden type="text" class="form-control"
+                                        id="inputIdUsuario">
+
+                                    <div class="wrap-input100 validate-input"
+                                        data-validate="Por favor ingrese el nombre completo">
+                                        <span class="contact100-form-combo">Nombre</span>
+                                        <input formControlName="username" class="input100 form-control" type="text"
+                                            placeholder="Nombre del empleado" id="inputUsername"
+                                            [class.is-invalid]="form.controls.username.status!='VALID'"
+                                            [class.is-valid]="form.controls.username.status=='VALID'">
+                                        <span class="focus-input100"></span>
+                                        <div class="invalid-feedback" style="text-align: center;">
+                                            Ingresa nombre entre 5 y 25 caracteres
+                                        </div>
+                                    </div>
+
+                                    <div class="wrap-input100 validate-input"
+                                        data-validate="Por favor ingrese el nombre completo">
+                                        <span class="contact100-form-combo">Email</span>
+                                        <input formControlName="email" class="input100 form-control" type="text"
+                                            placeholder="Ingrese el correo" id="inputEmail"
+                                            [class.is-invalid]="form.controls.email.status!='VALID'"
+                                            [class.is-valid]="form.controls.email.status=='VALID'">
+                                        <span class="focus-input100"></span>
+                                        <div class="invalid-feedback" style="text-align: center;">
+                                            correooooo
+                                        </div>
+                                    </div>
+
+                                    <div class="wrap-input100 validate-input"
+                                        data-validate="Por favor ingrese el nombre completo">
+                                        <span class="contact100-form-combo">Contraseña</span>
+                                        <input formControlName="password" class="input100 form-control" type="text"
+                                            placeholder="Ingrese la Contraseña" id="inputPassword"
+                                            [class.is-invalid]="form.controls.password.status!='VALID'"
+                                            [class.is-valid]="form.controls.password.status=='VALID'">
+                                        <span class="focus-input100"></span>
+                                        <div class="invalid-feedback" style="text-align: center;">
+                                            Contraseñaaaaa
+                                        </div>
+                                    </div>
+
+
+
+                                    <hr style="color: rgb(5, 168, 5);">
+                                    <div class="container-contact100-form-btn">
+                                        <button class="btn" type="submit">Agregar Empleado</button>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+
+</body>
