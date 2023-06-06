@@ -20,6 +20,14 @@ export class UsuarioService {
     return this.http.get<any>(`${this.uri}/${email}/email`);
   }
 
+  public usuarioPorUsername(username:string):Observable<any>{
+    return this.http.get<any>(`${this.uri}/${username}/username`);
+  }
+
+  public post(userData: any): Observable<any> {
+    return this.http.post<any>(`${this.uri}`, userData);
+  }
+  
   public carritoDeUsuario(idUsuario:number):Observable<any[]>{
     return this.http.get<any>(`${this.uri}/${idUsuario}/carrito`);
   }
@@ -43,6 +51,11 @@ export class UsuarioService {
   public getUsuarios():Observable<any[]>{
     return this.http.get<any>(`${this.uri}`);
   }
+
+  public listarEmpleado():Observable<any>{    
+    return this.http.get<any>(`${this.uri}`);
+  }
+
 
   public guardarUsuario(user:any):Observable<any>{
     return this.http.post<any>(`${this.uri}`,user);
