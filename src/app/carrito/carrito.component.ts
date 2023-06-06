@@ -7,6 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-carrito',
   templateUrl: './carrito.component.html',
+  styleUrls: ['./carrito.component.css']
 })
 export class CarritoComponent implements OnInit
 {

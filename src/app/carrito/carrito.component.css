@@ -1,0 +1,86 @@
+a{
+  color: black;
+}
+
+.table-mobile thead {
+  background: rgba(241, 126, 213, 0.18);
+  border: 1px solid rgba(241, 126, 213, 0.67) !important;
+  border-radius: 10px;
+}
+
+.table-mobile tbody,
+.table-mobile tr {
+  border: 1px solid rgba(241, 126, 213, 0.67) !important;
+  border-radius: 10px !important;
+}
+
+.table-mobile td {
+  border-bottom: 1px solid rgba(241, 126, 213, 0.67) !important;
+  border-radius: 10px !important;
+  color: #9F9F9F !important;
+}
+
+.table-mobile th {
+  border-bottom: 1px solid rgba(241, 126, 213, 0.67) !important;
+
+  color: black;
+}
+
+.table-mobile td h3 {
+  color: #9F9F9F;
+}
+
+.total-card {
+  position: absolute;
+  width: 393px;
+  height: 390px;
+  left: 68%;
+  top: 405px;
+  background: rgba(241, 126, 213, 0.2);
+  border-radius: 20px;
+}
+
+.total-title {
+  position: absolute;
+  top: 5%;
+  font-size: 32px;
+  color: #000000;
+  border-bottom: 1px solid black !important;
+}
+
+.total-table {
+  position: absolute;
+  top: 18%;
+  width: 80%;
+  left: 10%;
+}
+
+.total-table td {
+  border-bottom: 1px solid black !important;
+  border-radius: 10px !important;
+  color: black;
+}
+
+.total-comprar {
+  position: absolute;
+  top: 80%;
+  width: 70%;
+  left: 15%;
+  background-color: white;
+  border: 1px solid black !important;
+}
+
+.total-pagar {
+  position: absolute;
+  top: 60%;
+  width: 60%;
+  height: 58px;
+  left: 20%;
+  background-color: white;
+  border: 1px solid black !important;
+
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+}
