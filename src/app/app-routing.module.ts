@@ -39,7 +39,8 @@ const routes: Routes = [
 
   //Componentes Ber
   {path: 'categorias', component: CategoriaComponent},
-  {path: 'form-categoria', component: FormCategoriaComponent},
+  {path: 'formCategoria', component: FormCategoriaComponent},
+  
   //Componentes Dani la linda
   {path: 'marcas',component: MarcasComponent},
   {path: 'editarMarca/:idMarca',component: FormMarcasComponent},

@@ -1,0 +1,14 @@
+
+td{
+    vertical-align: middle;
+  }
+  
+  .btn-primary{
+    background-color: rgba(241, 126, 213, 0.67) !important;
+    color:#FFFFFF;
+  }
+  
+  .card-body{
+    border-color: rgba(241, 126, 213, 0.18); border-style: solid;
+  }
+  

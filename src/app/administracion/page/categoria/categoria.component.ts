@@ -24,9 +24,9 @@ export class CategoriaComponent implements OnInit {
     this.router.navigateByUrl("/editarProducto/"+id);
   }
   agregar(){
-    this.router.navigateByUrl("/agregarCategoria");
+    this.router.navigateByUrl("/formCategoria");
   }
-  eliminar(){
+  eliminar(id:any){
 
   }
 }

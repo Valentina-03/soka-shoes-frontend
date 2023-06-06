@@ -1,0 +1,40 @@
+<body>
+    <div class="dash">
+      <div class="dash-app">
+        <app-menu-admin></app-menu-admin>
+        <app-header-admin></app-header-admin>
+        <main class="dash-content">
+          <div class="row">
+            <div class="col-2"></div>
+            <div class="col-9">
+              <div class="card spur-card">
+                <div class="card-header rounded-card" style="background-color: rgba(241, 126, 213, 0.18);">
+                  <div class="spur-card-icon">
+                    <i class="fas fa-chart-bar" style="color: #f17ed5;"></i>
+                  </div>
+                  <div class="spur-card-title" id="spur-card-title"></div>
+                </div>
+                <div class="card-body rounded">
+                  <form [formGroup]="form">
+                    <input formControlName="idProducto" type="hidden" class="form-control">
+                    <div class="form-group">
+                      <label for="nombre">Nombre</label>
+                      <input formControlName="nombre" type="text" class="form-control" id="nombre" placeholder="Nombre">
+                    </div>
+  
+                    <div class="form-group">
+                      <label for="descripcion">Descripcion</label>
+                      <input formControlName="descripcion" type="text" class="form-control" id="descripcion" placeholder="Descripcion">
+                    </div>
+  
+                    <button type="button" class="btn btn-primary" (click)="agregarProducto()">Agregar</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+  
