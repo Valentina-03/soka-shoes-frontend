@@ -15,6 +15,8 @@ import { MisComprasComponent } from './home/mis-compras/mis-compras.component';
 import { EditarInfoComponent } from './administracion/page/editar-info/editar-info.component';
 import { EmpleadoComponent } from './administracion/page/empleado/empleado.component';
 import { AddEmpleadoComponent } from './administracion/page/empleado/add-empleado/add-empleado.component';
+import { CategoriaComponent } from './administracion/page/categoria/categoria.component';
+import { FormCategoriaComponent } from './administracion/page/categoria/form-categoria/form-categoria.component';
 const routes: Routes = [
   {path: 'pagos',component: PayuComponent},
   {path: 'productos',component: ProductosComponent},
@@ -25,13 +27,16 @@ const routes: Routes = [
   {path: 'miCuenta',component: DashboardComponent},
   {path: 'admin',component: DashboardAdminComponent},
   {path: 'contacto',component: ContactoComponent},
-
+  
   //Componentes CR
   {path: 'miscompras',component: MisComprasComponent},
   {path: 'editarinfo',component: EditarInfoComponent},
   {path: 'empleados',component: EmpleadoComponent},
   {path: 'nuevoempleado',component: AddEmpleadoComponent},
 
+  //Componentes Ber
+  {path: 'categorias', component: CategoriaComponent},
+  {path: 'form-categoria', component: FormCategoriaComponent},
 
   {path: '',component: InicioComponent},
   {path: 'listaproductos',component: TableProductComponent},
