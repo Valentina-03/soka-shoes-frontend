@@ -14,7 +14,7 @@
                 </div>
                 <div class="spur-card-title" id="spur-card-title" style="color: black"></div>
               </div>
-              <div class="card-body rounded" style="border-color: rgba(241, 126, 213, 0.18); border-style: solid;">
+              <div class="card-body rounded">
                 <form [formGroup]="form">
                   <input formControlName="idProducto" type="hidden" class="form-control">
                   <div class="form-group">
@@ -74,34 +74,34 @@
                   </thead>
                   <tbody >
                     <tr *ngFor="let detalle of detalles; let i=index">
-                      <td style="vertical-align: middle;"><img class="img-tabla" src="{{detalle.url}}" alt=""></td>
-                      <td style="vertical-align: middle;">{{detalle.color.nombre}}</td>
-                      <td style="vertical-align: middle;">
+                      <td><img class="img-tabla" src="{{detalle.url}}" alt=""></td>
+                      <td>{{detalle.color.nombre}}</td>
+                      <td>
                         <select id="talla-{{i}}" (change)="onSelectTalla(i)">
                           <option *ngFor="let talla of detalle.tallas; let j=index" value="{{j}}">{{talla.first.numero}}
                           </option>
                         </select>
                       </td>
-                      <td style="vertical-align: middle;" id="cnt-det-{{i}}">{{detalle.tallas[0].second}}</td>
-                      <td style="vertical-align: middle;">{{detalle.cantidad}}</td>
-                      <td style="vertical-align: middle;"><button (click)="mostrarDetalle(i)" class="btn-editar">
+                      <td id="cnt-det-{{i}}">{{detalle.tallas[0].second}}</td>
+                      <td>{{detalle.cantidad}}</td>
+                      <td><button (click)="mostrarDetalle(i)" class="btn-editar">
                         <i class="fas fa-edit"></i></button></td>
-                      <td style="vertical-align: middle;"><button (click)="eliminar(i)"class="btn-eliminar btn-danger">
+                      <td><button (click)="eliminar(i)"class="btn-eliminar btn-danger">
                           <i class="fas fa-trash-alt"></i></button></td>
                     </tr>
                   </tbody>
                 </table><br>
-                <button class="btn btn-primary" (click)="mostrarDetalle(-1)" style="background-color: rgba(241, 126, 213, 0.67) !important; color:#FFFFFF">Agregar</button>
+                <button class="btn btn-primary" (click)="mostrarDetalle(-1)">Agregar</button>
                 <div class="row justify-content-end">
-                  <button (click)="cancelar()" class="col-md-2 btn btn-primary" style="background-color: rgba(241, 126, 213, 0.67) !important; color:#FFFFFF">Cancelar</button>
-                  <button (click)="onSubmit()" id="btn-submit" [disabled]="!this.form.valid" class="col-md-2 btn btn-primary" style="background-color: rgba(241, 126, 213, 0.67) !important; color:#FFFFFF">Terminar</button>
+                  <button (click)="cancelar()" class="col-md-2 btn btn-primary">Cancelar</button>
+                  <button (click)="onSubmit()" id="btn-submit" [disabled]="!this.form.valid" class="col-md-2 btn btn-primary">Terminar</button>
                 </div>
               </div>
 
-              <div id="editDetail-modal" class="modal card-body rounded" style="border-color: rgba(241, 126, 213, 0.18); border-style: solid;">
+              <div id="editDetail-modal" class="modal card-body rounded">
                 <!-- Modal content -->
                 <div class="card-body rounded modal-content">
-                  <div class="card-body rounded" style="border-color: rgba(241, 126, 213, 0.18); border-style: solid;">
+                  <div class="card-body rounded" >
                     <div id="first-edit">
                       <div class="form-group-row">
                         <label for="img">Url</label>
@@ -124,9 +124,9 @@
                       </table><br><br>
 
                       <div class="form-group row">
-                        <button (click)="submitDetalle()" id="submit-detalle" class="btn btn-primary" style="background-color: rgba(241, 126, 213, 0.67) !important; color:#FFFFFF">Terminar</button>
-                        <button (click)="ocultarDetalle()" class="btn btn-primary" style="background-color: rgba(241, 126, 213, 0.67) !important; color:#FFFFFF">Cancelar</button>
-                        <button (click)="newTalla(0)" id="new-talla" class="btn btn-primary" style="background-color: rgba(241, 126, 213, 0.67) !important; color:#FFFFFF">Nueva talla</button>
+                        <button (click)="submitDetalle()" id="submit-detalle" class="btn btn-primary" >Terminar</button>
+                        <button (click)="ocultarDetalle()" class="btn btn-primary" >Cancelar</button>
+                        <button (click)="newTalla(0)" id="new-talla" class="btn btn-primary">Nueva talla</button>
                       </div>
                     </div>
 
@@ -151,10 +151,10 @@
                 </div>
               </div>
 
-              <div id="aggDetail-modal" class="modal card-body rounded" style="border-color: rgba(241, 126, 213, 0.18); border-style: solid;">
+              <div id="aggDetail-modal" class="modal card-body rounded">
                 <!-- Modal content -->
-                <div class="card-body rounded modal-content" style="border-color: rgba(241, 126, 213, 0.18); border-style: solid;">
-                  <div class="card-body rounded" style="border-color: rgba(241, 126, 213, 0.18); border-style: solid;">
+                <div class="card-body rounded modal-content">
+                  <div class="card-body rounded">
                     <div id="first">
                       <input type="hidden" id="id-detalle">
                       <div class="form-group row">
@@ -175,8 +175,8 @@
                         </div>
                       </div>
                       <div class="form-group row">
-                        <button (click)="addTalla(0)" id="new-talla" class="btn btn-primary" style="background-color: rgba(241, 126, 213, 0.67) !important; color:#FFFFFF">Agregar Tallas</button>
-                        <button (click)="ocultarDetalle()" class="btn btn-primary" style="background-color: rgba(241, 126, 213, 0.67) !important; color:#FFFFFF">Cancelar</button>
+                        <button (click)="addTalla(0)" id="new-talla" class="btn btn-primary">Agregar Tallas</button>
+                        <button (click)="ocultarDetalle()" class="btn btn-primary">Cancelar</button>
                       </div>
                     </div>
 
@@ -192,9 +192,9 @@
                         </div>
                       </div>
                       <div class="form-group row">
-                        <button (click)="addTalla(2)" class="btn btn-primary" style="background-color: rgba(241, 126, 213, 0.67) !important; color:#FFFFFF">Terminar</button>
-                        <button (click)="addTalla(1)" id="other-talla" class="btn btn-primary" style="background-color: rgba(241, 126, 213, 0.67) !important; color:#FFFFFF">Agregar Otra</button>
-                        <button (click)="ocultarDetalle()" class="btn btn-primary" style="background-color: rgba(241, 126, 213, 0.67) !important; color:#FFFFFF">Cancelar</button>
+                        <button (click)="addTalla(2)" class="btn btn-primary">Terminar</button>
+                        <button (click)="addTalla(1)" id="other-talla" class="btn btn-primary" >Agregar Otra</button>
+                        <button (click)="ocultarDetalle()" class="btn btn-primary">Cancelar</button>
                       </div>
                     </div>
                   </div>

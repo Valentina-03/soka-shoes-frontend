@@ -23,7 +23,7 @@
             <table class="table table-cart table-mobile">
               <thead>
                 <tr>
-                  <th></th>
+                  <th ></th>
                   <th>Producto</th>
                   <th>Color</th>
                   <th>Talla</th>
@@ -34,7 +34,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let carrito of carritos; let i = index" id="carrito-{{i}}">
+                <tr  *ngFor="let carrito of carritos; let i = index" id="carrito-{{i}}">
                   <td width="100" class="product-col">
                     <div class="product">
                       <figure class="product-media"> <img src="{{carrito.detalleProducto.img}}" alt="Product image">
@@ -59,41 +59,42 @@
                   <td width="50" class="total-col">{{carrito.detalleProducto.producto.precio}}</td>
                   <td class="total-col">{{carrito.cantidad * carrito.detalleProducto.producto.precio}}</td>
                   <td class="remove-col">
-                    <button class="btn-remove" (click)="eliminarCarrito(i)"><i class="icon-close"></i></button>
+                    <button class="btn-remove" (click)="eliminarCarrito(i)"><i class="icon-close" style="color: #f17ed5;"></i></button>
                   </td>
                 </tr>
               </tbody>
             </table><!-- End .table table-wishlist -->
 
             <div class="cart-bottom">
-              <button (click)="actualizarCarrito()" class="btn btn-outline-dark-2 btn-round">
+              <button (click)="actualizarCarrito()" class="btn btn-outline-dark-2 btn-round" style="border: 1px solid black !important;">
                 <span>Actualizar carrito</span><i class="icon-refresh"></i>
               </button>
             </div><!-- End .cart-bottom -->
           </div><!-- End .col-lg-9 -->
-          <aside class="col-lg-3">
-            <div class="summary summary-cart">
-              <h3 class="summary-title">Total</h3><!-- End .summary-title -->
-              <table class="table table-summary">
+          <aside class="total-card col-lg-3">
+              <h3 class="summary-title total-title">Total</h3>
+              <table class="table table-summary total-table">
                 <tbody>
                   <tr class="summary-subtotal">
                     <td>Subtotal</td>
                     <td id="subtotal-pagar">${{total}}</td>
-                  </tr><!-- End .summary-subtotal -->
+                  </tr>
                   <tr class="summary-total">
                     <td>Total:</td>
                     <td id="total-pagar">${{total}}</td>
-                  </tr><!-- End .summary-total -->
+                  </tr>
                 </tbody>
-              </table><!-- End .table table-summary -->
-            </div><!-- End .summary -->
-            <button routerLink="/productos" class="btn btn-outline-dark-2 btn-round">
+              </table>
+              <button class="btn btn-outline-dark-2 btn-round total-pagar">
+                <span>Pagar Payu</span><i class="icon-refresh"></i>
+              </button>
+            <button routerLink="/productos" class="btn btn-outline-dark-2 btn-round total-comprar">
               <span>Continua comprando</span><i class="icon-refresh"></i>
             </button>
-          </aside><!-- End .col-lg-3 -->
-        </div><!-- End .row -->
-      </div><!-- End .container -->
-    </div><!-- End .cart -->
-  </div><!-- End .page-content -->
-</main><!-- End .main -->
+          </aside>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
 <app-footer></app-footer>
