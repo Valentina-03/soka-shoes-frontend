@@ -1,13 +1,26 @@
+.contact100-form-title{
+  padding-top: 10px;
+  text-align: center;
+  align-items: center;
+}
 .contact100-form-combo {
 
     font-family: SourceSansPro-Bold; 
     font-size: 18px;
-    color: rgb(0, 128, 128);
+    color: rgba(243, 103, 208, 0.9);
     line-height: 1.2;
     text-align: center;
     margin-left: 18px;
+    margin-right: 15px;
+    margin-top: 10px;
+    padding-top: 20px;
   }
 
+  .wrap-input100 {
+    text-align: center;
+    margin-top: 10px;
+    padding-top: 20px;
+  }
   
 .contact100-form-title {
     display: block;
@@ -25,47 +38,33 @@
     width: 100%;
   }
 
+.col-sm-10{
+  text-align: center;
+  align-items: center;
+}
   
 .contact100-form-btn {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 20px;
-    min-width: 160px;
-    height: 42px;
-    background-color: rgba(0, 128, 128, 0.9);
-    border-radius: 21px;
+   text-align: center;
+    height: 30px;
+    background-color: rgba(243, 103, 208, 0.9);
+    border-radius: 15px;
   
     font-family: JosefinSans-Bold;
     font-size: 14px;
     color: #fff;
     line-height: 1.2;
-    text-transform: uppercase;
-    padding-top: 5px;
+    text-transform: uppercase;  
   
-    -webkit-transition: all 0.4s;
-    -o-transition: all 0.4s;
-    -moz-transition: all 0.4s;
-    transition: all 0.4s;
-  
-    box-shadow: 0 10px 30px 0px rgba(6, 199, 70, 0.5);
-    -moz-box-shadow: 0 10px 30px 0px rgba(6, 199, 70, 0.5);
-    -webkit-box-shadow: 0 10px 30px 0px rgba(6, 199, 70, 0.5);
-    -o-box-shadow: 0 10px 30px 0px rgba(6, 199, 70, 0.5);
-    -ms-box-shadow: 0 10px 30px 0px rgba(6, 199, 70, 0.5);
+    box-shadow: 0 10px 30px 0px rgba(244, 195, 229, 0.5);
   }
   
   .contact100-form-btn:hover {
-    background-color: rgb(0, 95, 95);
-    box-shadow: 0 10px 30px 0px rgba(0, 128, 128, 0.8);
-    -moz-box-shadow: 0 10px 30px 0px rgba(0, 128, 128, 0.8);
-    -webkit-box-shadow: 0 10px 30px 0px rgba(0, 128, 128, 0.8);
-    -o-box-shadow: 0 10px 30px 0px rgba(0, 128, 128, 0.8);
-    -ms-box-shadow: 0 10px 30px 0px rgba(0, 128, 128, 0.8);
+    background-color: rgba(243, 103, 208, 0.9);;
+    box-shadow: 0 10px 30px 0px rgba(243, 103, 208, 0.9);;
+    -moz-box-shadow: 0 10px 30px 0px rgba(243, 103, 208, 0.9);;
+    -webkit-box-shadow: 0 10px 30px 0px rgba(243, 103, 208, 0.9);;
+    -o-box-shadow: 0 10px 30px 0px rgba(243, 103, 208, 0.9);;
+    -ms-box-shadow: 0 10px 30px 0px rgba(243, 103, 208, 0.9);;
   }
   
   .act-group{
@@ -91,3 +90,9 @@
     }
   }
   
+  .container-contact100-form-btn{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    align-items: center;
+  }

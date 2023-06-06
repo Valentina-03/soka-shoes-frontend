@@ -50,6 +50,7 @@ export class TableProductComponent implements OnInit {
       window.location.reload();
      })
    }
+   
    editar(id:any){
     this.router.navigateByUrl("/editarProducto/"+id);
   }

@@ -5,53 +5,68 @@
             <app-header-admin></app-header-admin>
             <div class="container-contact100">
                 <div class="wrap-contact100">
+
+                    <span class="contact100-form-title">
+                        <span class="contact100-form-combo">MI PERFIL</span>
+                    </span>
+
                     <div class="row">
+
+
+
                         <div class="col-6">
+
+
                             <form [formGroup]="form" (submit)="guardarUsuario()" class="contact100-form validate-form">
-                                <span class="contact100-form-title">
-                                    <h4 class="col-sm-10">Editar administrador</h4>
-                                </span>
+
                                 <hr style="color: rgb(5, 168, 5); height: 2px" />
 
                                 <input formControlName="id_Usuario" hidden type="hidden" class="form-control" />
                                 <input formControlName="roles" hidden type="hidden" class="form-control" />
                                 <input formControlName="password" hidden type="hidden" class="form-control" />
 
-                                <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
+                                <div class="wrap-input100 validate-input"
+                                    data-validate="Por favor ingrese el nombre completo">
                                     <span class="contact100-form-combo">Username</span>
                                     <input style="height: 30px"
                                         [class.is-valid]="form.controls.username.status == 'VALID'"
                                         [class.is-invalid]="form.controls.username.status == 'INVALID'"
-                                        formControlName="username" class="input100" type="text" placeholder="Username" />
+                                        formControlName="username" class="input100" type="text"
+                                        placeholder="Username" />
                                     <span class="focus-input100"></span>
                                 </div>
 
-                                <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
+                                <div class="wrap-input100 validate-input"
+                                    data-validate="Por favor ingrese el nombre completo">
                                     <span class="contact100-form-combo">Email</span>
-                                    <input style="height: 30px" formControlName="email" class="input100" type="text" placeholder="email" />
+                                    <input style="height: 30px" formControlName="email" class="input100" type="text"
+                                        placeholder="email" />
                                     <span class="focus-input100"></span>
                                 </div>
 
-                                <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
+                                <div class="wrap-input100 validate-input"
+                                    data-validate="Por favor ingrese el nombre completo">
                                     <span class="contact100-form-combo">Contraseña</span>
-                                    <textarea style="height: 50px" formControlName="password" class="input100" type="password" placeholder="password"></textarea>
+                                    <input style="height: 30px" formControlName="password" class="input100"
+                                        type="password" placeholder="password" />
                                     <span class="focus-input100"></span>
                                 </div>
 
                                 <hr style="color: rgb(5, 168, 5)" />
 
-                                <div class="container-contact100-form-btn">
+                                <div class="container-contact100-form-btn" style="align-items: center;">
                                     <button class="contact100-form-btn" type="submit">Guardar</button>
                                 </div>
                             </form>
                         </div>
-
                         <div class="col-6">
-                            <img [src]="" style="width: 100%; height: auto" alt="" srcset="" />
+                            <img src="https://www.cheso.com.py/images/users/31330.png" style="width: 55%; height: 250px"
+                                alt="" srcset="" />
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 </body>

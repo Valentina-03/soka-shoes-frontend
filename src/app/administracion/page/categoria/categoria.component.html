@@ -11,45 +11,30 @@
                 <div class="spur-card-icon">
                   <i class="fas fa-table"></i>
                 </div>
-                <div class="spur-card-title">Lista de Usuarios</div>
+                <div class="spur-card-title">Lista de Categorias</div>
               </div>
               <div class="card-body ">
                 <table class="table table-in-card">
-
                   <thead>
                     <tr>
-                      <th scope="col">ID</th>
-                      <th scope="col">Id_usuario</th>
-                      <th scope="col">Email</th>
-                      <th scope="col">Username</th>
-                      <th scope="col">Password</th>
+                      <th scope="col">Id</th>
+                      <th scope="col">Categoria</th>
+                      <th scope="col">Descripcion</th>
                       <th scope="col">Editar</th>
-
+                      <th scope="col">Eliminar</th>
                     </tr>
                   </thead>
-
-
                   <tbody>
-                    <tr *ngFor="let usuario of usuarios; let i =index">
+                    <tr *ngFor="let categoria of categorias; let i =index">
                       <td scope="row">{{i+1}}</td>
-                      <td>{{usuario.id_usuario}}</td>
-                      <td>{{usuario.email}}</td>
-                      <td>{{usuario.username}}</td>
-                      <td>{{usuario.password}}</td>
-
-                      <td><button (click)="editar(usuario.id_usuario)" class="btn-editar"><i class="fas fa-edit"></i></button></td>
-                     
+                      <td>{{categoria.nombre}}</td>
+                      <td>{{categoria.descripcion}}</td>
+                      <td><button (click)="editar(categoria.idCategoria)" class="btn-editar"><i class="fas fa-edit"></i></button></td>
+                      <td><button (click)="editar(categoria.idCategoria)" class="btn-editar"><i class="fas fa-trash-alt"></i></button></td>
                     </tr>
                   </tbody>
                 </table><br>
-
-                <div class="container-contact100-form-btn">
-                  <button (click)="agregar()" class="btn " type="submit">Agregar</button>
-              </div>
-              
-
-
-
+                <button (click)="agregar()" class="btn btn-primary">Agregar</button>
               </div>
             </div>
           </div>

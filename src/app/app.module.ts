@@ -40,6 +40,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
+import { CategoriaComponent } from './administracion/page/categoria/categoria.component';
+import { FormCategoriaComponent } from './administracion/page/categoria/form-categoria/form-categoria.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,6 +65,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     EmpleadoComponent,
     AddEmpleadoComponent,
     MisComprasComponent,
+    CategoriaComponent,
+    FormCategoriaComponent,
   ],
   imports: [
     BrowserModule,
