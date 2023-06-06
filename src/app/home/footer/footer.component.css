@@ -1,0 +1,55 @@
+footer img{
+    width: 100%;
+    height: 50%;
+    display: block;
+}
+.backrosa{
+    border-end-end-radius: 50%;
+    border-end-start-radius: 50%;
+    background-color: rgba(252, 47, 183, 0.521);
+    padding-top: 2rem;
+    height: 60%;
+}
+.foot{
+    padding-top: 2rem;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.048);
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+    height: 30rem;  
+   
+}
+.redes{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 1.5rem;
+}
+.fab{
+    color: #3b3b3b;
+}
+.terms{
+    margin-top: 1rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 1.5rem;
+    height: 20%;
+}
+.card{
+    border-radius: 5%;
+    text-align: center;
+    width: 40%;
+}
+.center{
+    display: flex;
+    margin-bottom:1%;
+    justify-content: center;
+    align-items: center;
+    text-align: center; 
+}
+a{
+    color: black;
+}

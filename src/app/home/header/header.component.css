@@ -3,6 +3,8 @@
     text-align: center;
     padding-left: 10rem;
     padding-right: 12rem;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.048);
+    margin-bottom: 10px;
 }
 .color:hover{
     color: #f17de5; 
@@ -21,4 +23,7 @@ nav{
 .icons:hover{
     font-size: 25px;
     color: #f17de5;
+}
+.terms{
+    
 }
