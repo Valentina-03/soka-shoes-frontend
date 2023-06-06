@@ -78,7 +78,7 @@
             <div class="sidebar sidebar-shop">
               <div class="widget widget-clean" >
                 <label>Filtros:</label>
-                <a href="#" (click) ="cleanFilter()" class="sidebar-filter-clear">Limpiar todo</a>
+                <a href="" (click) ="cleanFilter()" class="sidebar-filter-clear">Limpiar todo</a>
               </div>
               <div class="widget widget-collapsible">
                 <h3 class="widget-title">
@@ -172,7 +172,7 @@
                 <div class="collapse" id="filter-precio">
                   <div class="widget-body">
                     <div class="filter-items filter-items-count">
-                      <mat-slider min="30000" max="500000" step="10000">
+                      <mat-slider color="accent" min="30000" max="500000" step="10000">
                         <input [(ngModel)]="precio[0]" matSliderStartThumb>
                         <input [(ngModel)]="precio[1]" matSliderEndThumb>
                       </mat-slider>
@@ -191,7 +191,6 @@
     </div>
   </main>
 </div>
-<button id="scroll-top" title="Volver arriba"><i class="icon-arrow-up"></i></button>
 
 <div class="mobile-menu-overlay"></div>
 
