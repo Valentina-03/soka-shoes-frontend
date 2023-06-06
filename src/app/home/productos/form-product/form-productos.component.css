@@ -1,3 +1,6 @@
+td{
+  vertical-align: middle;
+}
 .modal {
   display: none; /* Hidden by default */
   position: absolute; /* Stay in place */
@@ -41,4 +44,13 @@
   border-color: black;
   border-width: 1px;
   border-style: solid;
+}
+
+.btn-primary{
+  background-color: rgba(241, 126, 213, 0.67) !important;
+  color:#FFFFFF;
+}
+
+.card-body{
+  border-color: rgba(241, 126, 213, 0.18); border-style: solid;
 }

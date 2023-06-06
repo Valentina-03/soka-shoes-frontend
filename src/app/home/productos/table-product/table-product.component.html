@@ -13,7 +13,7 @@
               </div>
               <div class="spur-card-title" style="color: black">Lista de productos</div>
             </div>
-            <div class="card-body" style="border-color: rgba(241, 126, 213, 0.18); border-style: solid;">
+            <div class="card-body">
               <table class="table table-in-card">
                 <thead>
                   <tr>
@@ -39,16 +39,16 @@
                     <td *ngIf="producto.estado==true">ACTIVO</td>
                     <td *ngIf="producto.estado==false">INACTIVO</td>
                     <td><button (click)="editar(producto.idProducto)" class="btn-editar"><i class="fas fa-edit"></i></button></td>
-                    <td *ngIf="producto.estado==true" style="vertical-align: middle;">
+                    <td *ngIf="producto.estado==true">
                       <button (click)="estado(producto.idProducto, 0)" class="btn-eliminar btn-danger"><i class="fas fa-trash-alt"></i></button>
                     </td>
-                    <td *ngIf="producto.estado==false" style="vertical-align: middle; align-items:center; display:felx;">
+                    <td *ngIf="producto.estado==false">
                       <button (click)="estado(producto.idProducto, 1)" class="btn-success btn-eliminar"><i class="fas fa-solid fa-plus"></i></button>
                     </td>
                   </tr>
                 </tbody>
               </table><br>
-              <button (click)="agregar()" class="btn btn-primary" style="background-color: rgba(241, 126, 213, 0.67) !important; color:#FFFFFF">Agregar</button>
+              <button (click)="agregar()" class="btn btn-primary">Agregar</button>
             </div>
           </div>
         </div>
