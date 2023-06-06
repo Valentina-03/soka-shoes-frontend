@@ -1,1 +1,60 @@
-<p>empleado works!</p>
+<body>
+    <div class="dash">
+      <div class="dash-app">
+        <app-menu-admin></app-menu-admin>
+        <app-header-admin></app-header-admin>
+        <div class="row">
+          <div class="col-lg-1"></div>
+          <div class="col-lg-10">
+            <div style="margin: 10px;" class="card spur-card">
+              <div class="card-header">
+                <div class="spur-card-icon">
+                  <i class="fas fa-table"></i>
+                </div>
+                <div class="spur-card-title">Lista de Usuarios</div>
+              </div>
+              <div class="card-body ">
+                <table class="table table-in-card">
+
+                  <thead>
+                    <tr>
+                      <th scope="col">ID</th>
+                      <th scope="col">Id_usuario</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">Username</th>
+                      <th scope="col">Password</th>
+                      <th scope="col">Editar</th>
+
+                    </tr>
+                  </thead>
+
+
+                  <tbody>
+                    <tr *ngFor="let usuario of usuarios; let i =index">
+                      <td scope="row">{{i+1}}</td>
+                      <td>{{usuario.id_usuario}}</td>
+                      <td>{{usuario.email}}</td>
+                      <td>{{usuario.username}}</td>
+                      <td>{{usuario.password}}</td>
+
+                      <td><button (click)="editar(usuario.id_usuario)" class="btn-editar"><i class="fas fa-edit"></i></button></td>
+                     
+                    </tr>
+                  </tbody>
+                </table><br>
+
+                <div class="container-contact100-form-btn">
+                  <button (click)="agregar()" class="btn " type="submit">Agregar</button>
+              </div>
+              
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  
