@@ -33,70 +33,36 @@
                 </a>
               </div>
         </div><!-- End .container -->
-<br>
+        <br>
         <div class="banner-group">
-            <div class="container">
+            <div class="container"><hr>
                 <div class="row">
-                    <div class="col-lg-8">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="banner banner-overlay">
-                                    <a href="">
-                                        <img style="box-shadow: 5px 5px 5px 0px rgba(193, 194, 193, 0.7);"  src="https://www.audleyshoes.com/12653-large_default/violet.jpg" alt="Banner">
-                                    </a>
-
-                                    <!-- <div class="banner-content banner-content-right">
-                                        <h4 class="banner-subtitle"><a href="#">New Arrivals</a></h4>
-                                        <h3 class="banner-title text-white"><a href="#">Sneakers & <br>Athletic Shoes</a></h3>
-                                        <a href="#" class="btn btn-outline-white banner-link btn-round">Discover Now</a>
-                                    </div> -->
-                                </div>
-                            </div><!-- End .col-sm-6 -->
-                            <div class="col-sm-6">
-                                <div class="banner banner-overlay">
-                                    <a href="/productos">
-                                        <img style="box-shadow: 5px 5px 5px 0px rgba(193, 194, 193, 0.7);" src="https://www.audleyshoes.com/12606-large_default/sandalia-de-tacon-medio-dinorah.jpg" alt="Banner">
-                                    </a>
-
-                                    <!-- <div class="banner-content banner-content-right">
-                                        <h4 class="banner-subtitle"><a href="#">New Arrivals</a></h4>
-                                        <h3 class="banner-title text-white"><a href="#">Sneakers & <br>Athletic Shoes</a></h3>
-                                        <a href="#" class="btn btn-outline-white banner-link btn-round">Discover Now</a>
-                                    </div> -->
-                                </div><!-- End .banner -->
-                            </div><!-- End .col-sm-6 -->
+                    <div class="col-lg-12 text-center">
+                        <h3>Categorias</h3>
+                        <p class="mb-4">Revisa nuestras categorias de zapatos, donde puedes encontrar lo mejor en calzado en la Ciudad de Cúcuta</p><br>
+                        <div class="row ">
+                            <div class="col-4 " *ngFor="let categoria of categorias; let img of imgs">
+                                <img src="../../../assets/images/image 11.png" alt="img">
+                                <!-- <img src="{{img.src}}" alt="img"> -->
+                                <h4>{{categoria.nombre}}</h4>
+                                <p>{{categoria.descripcion}}</p>
+                            </div>
 
                           
                         </div><!-- End .row -->
 
-                        <div class="banner banner-large banner-overlay d-none d-sm-block">
-                            <a href="/productos">
-                                <img style="box-shadow: 5px 5px 5px 0px rgba(193, 194, 193, 0.7);" src="https://github.com/SantiagoAndresSerrano/img-soka/blob/master/ca.png?raw=true" alt="Banner">
-                            </a>
-
-                            <div class="banner-content">
-                                <h4 class="banner-subtitle text-white"><a href="/productos">Nueva Coleccion</a></h4><!-- End .banner-subtitle -->
-                                <h3 class="banner-title text-white"><a href="/productos">Modelos praga</a></h3><!-- End .banner-title -->
-                               <!-- <div class="banner-text text-white"><a href="#">up to 30% off</a></div> End .banner-text -->
-                                <a href="/productos" class="btn btn-outline-white banner-link btn-round">Ver mas</a>
-                            </div><!-- End .banner-content -->
-                        </div><!-- End .banner -->
+                        
                     </div><!-- End .col-lg-8 -->
 
-                    <div class="col-lg-4 d-sm-none d-lg-block">
-                        <div class="banner banner-middle banner-overlay">
-                            <a href="/productos">
-                                <img style="box-shadow: 5px 5px 5px 0px rgba(193, 194, 193, 0.7);" src="https://github.com/SantiagoAndresSerrano/img-soka/blob/master/tacon.png?raw=true" alt="Banner">
-                            </a>
-
-                            <div class="banner-content banner-content-bottom">
-                               
-                                <div class="banner-text text-black"> <h3 class="banner-title text-black"><a href="/productos">Modelos Frest</a></h3></div>
-                             
-                            </div><!-- End .banner-content -->
-                        </div><!-- End .banner -->
-                    </div><!-- End .col-lg-4 -->
-                </div><!-- End .row -->
+                    
+                </div><!-- End .row --><hr>
+                <div class="row mt-4 insta">
+                    <div class="col-lg-12 text-center">
+                        <h3 class="mt-4 mb-4">Nuestro Instagram</h3>
+                        <p class="mt-4 mb-4">Siguenos en nuestra red social principal</p>
+                        <div ><a href="https://www.instagram.com"><i class="fab fa-instagram fa-lg" style="color: #f17de5; font-size: 100px;"></i></a> </div>
+                    </div>
+                </div>
             </div><!-- End .container -->
         </div><!-- End .banner-group -->
 

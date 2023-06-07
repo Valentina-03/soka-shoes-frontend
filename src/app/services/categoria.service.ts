@@ -15,6 +15,10 @@ export class CategoriaService {
     return this.http.get<any>(`${this.uri}/${id}/productos`);
   }
 
+  public getImgProduct(id:number):Observable<any>{
+    return this.http.get<any>(`${this.uri}/${id}/imagen`);
+  }
+
   public getCntProductos(id:number):Observable<number>{
     return this.http.get<any>(`${this.uri}/${id}/cntProductos`);
   }

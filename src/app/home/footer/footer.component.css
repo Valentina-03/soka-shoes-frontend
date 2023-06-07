@@ -27,7 +27,7 @@ footer img{
     font-size: 1.5rem;
 }
 .fab{
-    color: #3b3b3b;
+    color: #f17de5;
 }
 .terms{
     margin-top: 1rem;
@@ -37,6 +37,7 @@ footer img{
     font-weight: bolder;
     font-size: 1.5rem;
     height: 20%;
+    color: #f17de5;
 }
 .card{
     border-radius: 5%;
@@ -52,4 +53,7 @@ footer img{
 }
 a{
     color: black;
+}
+.card-body{
+    text-align: justify;
 }

@@ -1,0 +1,13 @@
+.carousel-item{
+    max-height: 400px;
+    width: 100%;
+}
+
+.insta{
+    background-image: url(../../../assets/images/Rectangle17.png);
+}
+
+h3{
+    font-weight: bolder;
+    font-family: cursive;
+}
