@@ -11,3 +11,34 @@ h3{
     font-weight: bolder;
     font-family: cursive;
 }
+#imgCate{
+    max-height: 200px;
+}
+.center{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.explora{
+    display: flex;
+    padding: 2rem 2rem 0 2rem;
+}
+#imgExp{
+    max-width: 500px;
+}
+.exploratext{
+    padding-top: 5rem;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+.btn-product{
+    border: solid 5.5px rgba(39, 39, 39, 0.67);
+}
+.btn-product:hover{
+    background-color    : rgba(241, 126, 213, 0.67);
+    border: solid 2.5px rgba(241, 126, 213, 0.67);
+    
+  }
