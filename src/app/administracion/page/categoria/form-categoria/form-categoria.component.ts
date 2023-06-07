@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormControlName } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-form-categoria',
@@ -12,6 +14,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 })
 export class FormCategoriaComponent implements OnInit {
   form: FormGroup;
+  categorias : any[] = [];
+  categoriaService: CategoriaService;
+  id: number;
+  
   constructor(
     private formBuilder: FormBuilder
     ) { }
@@ -23,10 +29,12 @@ export class FormCategoriaComponent implements OnInit {
       descripcion: ['']
     });
   }
-  agregarProducto() {
-    // Aquí puedes agregar la lógica para procesar los datos del formulario y guardar el producto
-    // Por ejemplo:
-    const producto = this.form.value;
-    console.log(producto);
-  }
+  guardarCategoria() {
+    if (this.form.valid) {
+      const producto = this.form.value;
+      this.categorias.push(producto); // Agregar la categoría al array de categorías
+      this.form.reset(); // Reiniciar el formulario después de guardar la categoría
+    }
+}
+
 }
