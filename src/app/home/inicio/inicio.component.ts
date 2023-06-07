@@ -8,8 +8,10 @@ import { CategoriaService } from 'src/app/services/categoria.service';
   templateUrl: './inicio.component.html',
   styleUrls: ['./inicio.component.css']
 })
+
 export class InicioComponent implements OnInit {
-  imgs : any[] = [];
+  
+  imgs : String[] = [];
   categorias : any[] = [];
   constructor(private categoriaService : CategoriaService, private router : Router,private toastS: ToastrService) { }
 
@@ -23,8 +25,8 @@ export class InicioComponent implements OnInit {
   public cargarImg(){
     for(let i = 0; i<this.categorias.length; i++)
       this.categoriaService.getImgProduct(this.categorias[i].idCategoria).subscribe(img =>{
-        this.imgs[i] = URL.createObjectURL(img);
-        console.log(img);
+        this.imgs[i] =  img[0];
+        console.log( this.imgs[i]);
         
       } );
       
