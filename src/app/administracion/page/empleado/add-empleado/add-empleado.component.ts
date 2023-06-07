@@ -30,33 +30,27 @@ public form!:FormGroup;
 
   ) {
 
-    this.id = aRouter.snapshot.paramMap.get('idCargo');
+    this.id = aRouter.snapshot.paramMap.get('idUsuario');
 
    }
 
   ngOnInit(): void {
-    this.usuarioService.getUsuarios().subscribe(usuarios=> this.usuarios = usuarios);
+    this.usuarioService.getUsuarios().subscribe(data=> this.usuarios = data);
     this.cargarToken();
     this.esEditar();
    // this.deshabilitar();
     this.form = this.formBuilder.group({
-      idCargo: ['', ],
-      estado: ['', Validators.required],
-      nombre: ['', Validators.compose([
+      idUsuario: ['', ],
+      email: ['', Validators.required],
+      password: ['', Validators.compose([
         Validators.required,
-        Validators.minLength(5),
-        Validators.maxLength(25)
+        Validators.minLength(5)
       ])],
-      descripcion: ['',
+      username: ['',
         Validators.compose([
           Validators.required,
           Validators.maxLength(200)
         ])],
-      sueldo: ['', Validators.compose([
-        Validators.required,
-        Validators.min(10000),
-        Validators.max(9999999),
-      ])],
     });
   }
 
@@ -71,11 +65,47 @@ public form!:FormGroup;
   }
 
   esEditar() {
-   
+    // this.aRouter.snapshot.paramMap("idCargo");
+    if (this.id !== null) {
+      this.titulo = 'Editar Empleado';
+      this.boton = 'Editar Empleado';
+      this.usuarioService.encontrarUsuario(this.id).subscribe((data) => {
+        this.form.setValue({
+          idUsuario: data.idUsuario,
+          email: data.email,
+          password: data.password,
+          username: data.username,
+        });
+      });
+    }
   }
 
   public enviarData() {
    
+    if (!this.form.valid) {
+      this.toastS.error('¡Datos incorrectos!', 'ERROR', {
+        timeOut: 3000, positionClass: 'toast-top-center'
+      });
+      return;
+    }
+    if (this.id !== null) {
+      this.usuarioService.editarUsuario(this.id, this.form.value).subscribe((data) => {
+        this.toastS.success('Usuario Editado Con Exito!', 'usuario Editado',{
+          positionClass: 'toast-bottom-right'
+        });
+        this.router.navigate(["/empleados"]);
+      });
+    } else {
+      this.usuarioService.post(this.form.value).subscribe((data) => {
+        this.toastS.success('Usuario Agregado Con Exito!', 'Usuario Registrado',{
+          positionClass: 'toast-bottom-right'
+        });
+        this.router.navigate(["/empleados"]);
+      });
+
+    
+    }
+
   }
 
 }

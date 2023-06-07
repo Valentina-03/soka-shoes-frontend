@@ -64,11 +64,14 @@ export class UsuarioService {
   public encontrarUsuario(id:any):Observable<any>{
     return this.http.get<any>(`${this.uri}/${id}`);
   }
-
+/*
   public editarUsuario(user:any):Observable<any>{
     return this.http.put<any>(`${this.uri}`,user);
   }
-
+  */
+  public editarUsuario(id:any,user:any):Observable<any>{
+    return this.http.put<any>(`${this.uri}`,user);
+  }
   public eliminarUsuario(id:any):Observable<any>{
     return this.http.delete<any>(`${this.uri}/${id}`);
   }

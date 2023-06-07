@@ -18,11 +18,9 @@
                            
                             <div class="card-body rounded">
                                 <form [formGroup]="form" (submit)="enviarData()" class="contact100-form validate-form">
-                                    <span class="contact100-form-title">
-                                        <P class="col-sm-10">{{titulo | uppercase}}</P>
-                                    </span>
+                                  
                                     <hr style="color: rgb(5, 168, 5);">
-                                    <input formControlName="id_usuario" hidden type="text" class="form-control"
+                                    <input formControlName="idUsuario" hidden type="text" class="form-control"
                                         id="inputIdUsuario">
 
                                     <div class="wrap-input100 validate-input"
@@ -47,7 +45,7 @@
                                             [class.is-valid]="form.controls.email.status=='VALID'">
                                         <span class="focus-input100"></span>
                                         <div class="invalid-feedback" style="text-align: center;">
-                                            correooooo
+                                            correo
                                         </div>
                                     </div>
 
@@ -60,7 +58,7 @@
                                             [class.is-valid]="form.controls.password.status=='VALID'">
                                         <span class="focus-input100"></span>
                                         <div class="invalid-feedback" style="text-align: center;">
-                                            Contraseñaaaaa
+                                            Contraseña
                                         </div>
                                     </div>
 

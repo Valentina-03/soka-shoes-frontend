@@ -30,13 +30,19 @@
                   <tbody>
                     <tr *ngFor="let usuario of usuarios; let i =index">
                       <td>{{usuario.idUsuario}}</td>
-                      <td>{{usuario.idUsuario.idrol}}</td>
-
                       <td>{{usuario.email}}</td>
                       <td>{{usuario.username}}</td>
 
-                      <td><button (click)="editar(usuario.id_usuario)" class="btn-editar"><i class="fas fa-edit"></i></button></td>
-                     
+
+                      
+              
+
+                      <td nzAlign="center">           
+                        <a [routerLink]="['/editarEmpleado',usuario.idUsuario]">
+                          g<i nz-icon nzType="edit" nzTheme="outline" style="font-size: 20px"></i>
+                        </a>
+                      </td>
+
                     </tr>
                   </tbody>
                 </table><br>

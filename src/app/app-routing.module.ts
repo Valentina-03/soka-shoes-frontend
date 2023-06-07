@@ -36,6 +36,8 @@ const routes: Routes = [
   {path: 'editarinfo',component: EditarInfoComponent},
   {path: 'empleados',component: EmpleadoComponent},
   {path: 'nuevoempleado',component: AddEmpleadoComponent},
+  {path:"editarEmpleado/:idUsuario", component:AddEmpleadoComponent},
+       
 
   //Componentes Ber
   {path: 'categorias', component: CategoriaComponent},
