@@ -32,14 +32,14 @@
                     <td>{{marca.nombre}}</td>
                     
                     <td nzAlign="center">           
-                      <a [routerLink]="['/editarMarca',marca.idMarca]">
-                        g<i nz-icon nzType="edit" nzTheme="outline" style="font-size: 20px"></i>
+                      <a [routerLink]="['/editarMarca',marca.idMarca]" >
+                        <i class="  fas fa-edit" nz-icon nzType="edit" nzTheme="outline" style="font-size: 20px"></i>
                       </a>
                     </td>
 
                     <td nzAlign="center">           
                       <a [routerLink]="['/eliminarMarca',marca.idMarca]">
-                        g<i nz-icon nzType="eliminar" nzTheme="outline" style="font-size: 20px"></i>
+                        <i class="fas fa-trash-alt" nz-icon nzType="eliminar" nzTheme="outline" style="font-size: 20px"></i>
                       </a>
                     </td>
 
