@@ -36,7 +36,7 @@ const routes: Routes = [
   {path: 'editarinfo',component: EditarInfoComponent},
   {path: 'empleados',component: EmpleadoComponent},
   {path: 'nuevoempleado',component: AddEmpleadoComponent},
-  {path:"editarEmpleado/:idUsuario", component:AddEmpleadoComponent},
+  {path: 'editarEmpleado/:idUsuario', component:AddEmpleadoComponent},
        
 
   //Componentes Ber
@@ -46,6 +46,8 @@ const routes: Routes = [
   //Componentes Dani la linda
   {path: 'marcas',component: MarcasComponent},
   {path: 'editarMarca/:idMarca',component: FormMarcasComponent},
+  {path: 'agregarMarca',component: FormMarcasComponent},
+
 
   {path: '',component: InicioComponent},
   {path: 'listaproductos',component: TableProductComponent},

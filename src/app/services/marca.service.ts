@@ -31,7 +31,7 @@ export class MarcaService {
     return this.http.get<any>(`${this.uri}/${id}`);
   }
 
-  public editarMarca(marca:any):Observable<any>{
+  public editarMarca(id:any,marca:any):Observable<any>{
     return this.http.put<any>(`${this.uri}`,marca);
   }
 

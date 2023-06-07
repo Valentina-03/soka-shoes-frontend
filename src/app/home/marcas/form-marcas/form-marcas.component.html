@@ -1,1 +1,55 @@
-<p>form-marcas works!</p>
+<body>
+    <div class="dash">
+        <div class="dash-app">
+
+            <app-menu-admin></app-menu-admin>
+            <app-header-admin></app-header-admin>
+            <main class="dash-content">
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-9">
+                        <div class="card spur-card">
+                            <div class="card-header rounded-card">
+                                <div class="spur-card-icon">
+                                    <i class="fas fa-chart-bar"></i>
+                                </div>
+                                <div class="spur-card-title" id="spur-card-title">AGREGAR MARCA</div>
+                            </div>
+                           
+                            <div class="card-body rounded">
+                                <form [formGroup]="form" (submit)="enviarData()" class="contact100-form validate-form">
+                                  
+                                    <hr style="color: rgb(5, 168, 5);">
+                                    <input formControlName="idMarca" hidden type="text" class="form-control"
+                                        id="inputIdMarca">
+
+                                    <div class="wrap-input100 validate-input"
+                                        data-validate="Por favor ingrese el nombre de la marca">
+                                        <span class="contact100-form-combo">Nombre</span>
+                                        <input formControlName="nombre" class="input100 form-control" type="text"
+                                            placeholder="Nombre de la marca" id="inputNombre"
+                                            [class.is-invalid]="form.controls.nombre.status!='VALID'"
+                                            [class.is-valid]="form.controls.nombre.status=='VALID'">
+                                        <span class="focus-input100"></span>
+                                        <div class="invalid-feedback" style="text-align: center;">
+                                            Ingresa un nombre entre 5 y 25 caracteres
+                                        </div>
+                                    </div>
+
+                                    <hr style="color: rgb(5, 168, 5);">
+                                    <div class="container-contact100-form-btn">
+                                        <button class="btn" type="submit">Agregar Marca</button>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+
+</body>

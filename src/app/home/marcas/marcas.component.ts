@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { MarcaService } from 'src/app/services/marca.service';
 import { TokenService } from 'src/app/services/token.service';
@@ -11,12 +12,12 @@ import { TokenService } from 'src/app/services/token.service';
 export class MarcasComponent implements OnInit {
 
   marcas:any = [];
-  router: any;
 
   constructor(
     private mser: MarcaService,
     private toastr: ToastrService,
-    private token:TokenService
+    private router: Router
+
   ) { }
 
   ngOnInit(): void {
