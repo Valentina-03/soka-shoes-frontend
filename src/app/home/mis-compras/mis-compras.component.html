@@ -1,0 +1,73 @@
+<app-header></app-header>
+<main class="main">
+    <div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
+        <div class="container">
+            <h1 class="page-title">Mis Compras<span>Comprar</span></h1>
+        </div><!-- End .container -->
+    </div><!-- End .page-header -->
+    <nav aria-label="breadcrumb" class="breadcrumb-nav">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+                <li class="breadcrumb-item"><a routerLink="/productos">Comprar</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Mis Compras</li>
+            </ol>
+        </div><!-- End .container -->
+    </nav><!-- End .breadcrumb-nav -->
+
+    <div class="page-content">
+        <div class="cart">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9">
+                        <table class="table table-cart table-mobile">
+                            <thead>
+                                <tr>
+                                    <th>Id Compra</th>
+                                    <th>Estado</th>
+                                    <th>TotalCompra</th>
+                                    <th>Fecha</th>
+                                    <th>Direccion</th>
+                                    <th>Ciudad</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let compra of compras">
+
+                                    <td width="150" class="product-col">
+                                        <h3 class="product-title"> {{compra.idCompra}}</h3>
+                                    </td>
+
+                                    <td width="80">
+                                        <h3 class="product-title"> {{compra.estado}}</h3>
+                                    </td>
+                                    
+                                    <td width="80">
+                                        <h3 class="product-title"> {{compra.totalCompra}}</h3>
+                                    </td>
+
+                                    <td width="100">
+                                        <h3 class="product-title"> {{compra.fecha}}</h3>
+                                    </td>
+                                    <td width="80">
+                                        <h3 class="product-title"> {{compra.direccion.direccion}}</h3>
+                                    </td>
+                                    <td width="80">
+                                        <h3 class="product-title"> {{compra.direccion.ciudad.nombre}}</h3>
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table><!-- End .table table-wishlist -->
+
+
+                    </div><!-- End .col-lg-9 -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<app-footer></app-footer>
