@@ -1,14 +1,20 @@
+.btn{
+  color: rgb(255, 255, 255);
+  border-radius: 20px;
+  background-color: rgba(241, 126, 213, 0.67) !important;
+    }
+  
+    .container-contact100-form-btn{
+  align-items: center;
+  text-align: center;
+    }
 
+    
 td{
-    vertical-align: middle;
-  }
-  
-  .btn-primary{
-    background-color: rgba(241, 126, 213, 0.67) !important;
-    color:#FFFFFF;
-  }
-  
-  .card-body{
-    border-color: rgba(241, 126, 213, 0.18); border-style: solid;
-  }
-  
+  vertical-align: middle;
+}
+
+
+.card-body{
+  border-color: rgba(236, 81, 197, 0.563); border-style: solid;
+}

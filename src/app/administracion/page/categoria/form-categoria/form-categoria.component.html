@@ -1,40 +1,70 @@
-<body>
+  <body>
     <div class="dash">
-      <div class="dash-app">
-        <app-menu-admin></app-menu-admin>
-        <app-header-admin></app-header-admin>
-        <main class="dash-content">
-          <div class="row">
-            <div class="col-2"></div>
-            <div class="col-9">
-              <div class="card spur-card">
-                <div class="card-header rounded-card" style="background-color: rgba(241, 126, 213, 0.18);">
-                  <div class="spur-card-icon">
-                    <i class="fas fa-chart-bar" style="color: #f17ed5;"></i>
-                  </div>
-                  <div class="spur-card-title" id="spur-card-title"></div>
-                </div>
-                <div class="card-body rounded">
-                  <form [formGroup]="form">
-                    <input formControlName="idProducto" type="hidden" class="form-control">
-                    <div class="form-group">
-                      <label for="nombre">Nombre</label>
-                      <input formControlName="nombre" type="text" class="form-control" id="nombre" placeholder="Nombre">
+        <div class="dash-app">
+
+            <app-menu-admin></app-menu-admin>
+            <app-header-admin></app-header-admin>
+            <main class="dash-content">
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-9">
+                        <div class="card spur-card">
+                            <div class="card-header rounded-card">
+                                <div class="spur-card-icon">
+                                    <i class="fas fa-chart-bar"></i>
+                                </div>
+                                <div class="spur-card-title" id="spur-card-title">AGREGAR Categoria</div>
+                            </div>
+                           
+                            <div class="card-body rounded">
+                                <form [formGroup]="form" (submit)="enviarData()" class="contact100-form validate-form">
+                                  
+                                    <hr style="color: rgb(5, 168, 5);">
+                                    <input formControlName="idCategoria" hidden type="text" class="form-control"
+                                        id="inputIdCategoria">
+
+                                    <div class="wrap-input100 validate-input"
+                                        data-validate="Por favor ingrese el nombre dela categoria">
+                                        <span class="contact100-form-combo">Nombre</span>
+                                        <input formControlName="nombre" class="input100 form-control" type="text"
+                                            placeholder="nombre de la categoria" id="inputCategoria"
+                                            >
+                                            <span class="focus-input100"></span>
+                                        <div class="invalid-feedback" style="text-align: center;">
+                                            nombre
+                                        </div>
+                                    </div>
+
+                                    <div class="wrap-input100 validate-input"
+                                        data-validate="Por favor ingrese el nombre completo">
+                                        <span class="contact100-form-combo">Descripcion</span>
+                                        <input formControlName="descripcion" class="input100 form-control" type="text"
+                                            placeholder="Ingrese la descripcion" id="inputDescripcion"
+                                            >
+                                        <span class="focus-input100"></span>
+                                        <div class="invalid-feedback" style="text-align: center;">
+                                            descripcion
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <hr style="color: rgb(5, 168, 5);">
+                                    <div class="container-contact100-form-btn">
+                                        <button class="btn" type="submit">Agregar Categoria</button>
+                                    </div>
+                                    
+
+                                </form>
+                            </div>
+                        </div>
+
                     </div>
-  
-                    <div class="form-group">
-                      <label for="descripcion">Descripcion</label>
-                      <input formControlName="descripcion" type="text" class="form-control" id="descripcion" placeholder="Descripcion">
-                    </div>
-  
-                    <button type="button" class="btn btn-primary" (click)="guardarCategoria()">Guardar</button>
-                  </form>
                 </div>
-              </div>
-            </div>
-          </div>
-        </main>
-      </div>
+            </main>
+        </div>
     </div>
-  </body>
-  
+
+
+</body>

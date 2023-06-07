@@ -7,6 +7,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CategoriaService {
+  post(value: any) {
+    throw new Error('Method not implemented.');
+  }
 
   uri = `${global.url}/categoria`;
   constructor(private http:HttpClient) { }
@@ -31,11 +34,11 @@ export class CategoriaService {
     return this.http.post<any>(`${this.uri}`, categoria);
   }
 
-  public encontrarCategoria(id:number):Observable<any>{
+  public encontrarCategoria(id:any):Observable<any>{
     return this.http.get<any>(`${this.uri}/${id}`);
   }
 
-  public editarCategoria(categoria:any):Observable<any>{
+  public editarCategoria(id: any, categoria:any):Observable<any>{
     return this.http.put<any>(`${this.uri}`,categoria);
   }
 

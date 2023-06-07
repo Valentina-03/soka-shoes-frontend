@@ -9,32 +9,53 @@
             <div style="margin: 10px;" class="card spur-card">
               <div class="card-header" style="background-color: rgba(241, 126, 213, 0.18);">
                 <div class="spur-card-icon">
-                  <i class="fas fa-table" style="color: #f17ed5;"></i>
+                  <i class="fas fa-table"style="color: #f17ed5;"></i>
                 </div>
                 <div class="spur-card-title" style="color: black">Lista de Categorias</div>
               </div>
               <div class="card-body ">
                 <table class="table table-in-card">
+
                   <thead>
                     <tr>
-                      <th scope="col">Id</th>
+                      <th scope="col">ID </th>
                       <th scope="col">Categoria</th>
                       <th scope="col">Descripcion</th>
                       <th scope="col">Editar</th>
                       <th scope="col">Eliminar</th>
+
                     </tr>
                   </thead>
+
+
                   <tbody>
                     <tr *ngFor="let categoria of categorias; let i =index">
-                      <td scope="row">{{i+1}}</td>
+                      <td>{{categoria.idCategoria}}</td>
                       <td>{{categoria.nombre}}</td>
                       <td>{{categoria.descripcion}}</td>
-                      <td><button (click)="editar(categoria.idCategoria)" class="btn-editar"><i class="fas fa-edit"></i></button></td>
-                      <td><button (click)="editar(categoria.idCategoria)" class="btn-eliminar btn-danger"><i class="fas fa-trash-alt"></i></button></td>
+                      <td nzAlign="center">           
+                        <a [routerLink]="['/editarCategoria',categoria.idCategoria]" >
+                          <i class="fas fa-edit"></i>
+                        </a>
+                      </td>
+
+                      <td nzAlign="center">           
+                        <a [routerLink]="['/eliminarCategoria', categoria.idCategoria]">
+                          <i class="fas fa-trash-alt"></i>
+                        </a>
+                      </td>
+
                     </tr>
                   </tbody>
                 </table><br>
-                <button (click)="agregar()" class="btn btn-primary">Agregar</button>
+
+                <div class="container-contact100-form-btn">
+                  <button (click)="agregar()" class="btn " type="submit">Agregar</button>
+              </div>
+              
+
+
+
               </div>
             </div>
           </div>
