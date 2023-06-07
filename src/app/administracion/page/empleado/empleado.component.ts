@@ -8,9 +8,10 @@ import { UsuarioService } from 'src/app/services/usuario.service';
   styleUrls: ['./empleado.component.css']
 })
 export class EmpleadoComponent implements OnInit {
-  usuarios:any [] = [];
+  usuarios:any = [];
 
-  constructor( private usuarioService:UsuarioService,
+  constructor( 
+  private usuarioService:UsuarioService,
   private router: Router,
   private toastS: ToastrService) { }
  

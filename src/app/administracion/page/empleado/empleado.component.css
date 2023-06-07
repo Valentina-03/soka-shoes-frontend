@@ -19,3 +19,15 @@ td{
     border-color: rgba(236, 81, 197, 0.563); border-style: solid;
   }
   
+  
+  th,td{
+    text-align: center;
+    align-items: center;
+    padding-left: 50px;
+      }
+    
+      table{
+    
+        align-items: center;
+        text-align: center;
+      }
